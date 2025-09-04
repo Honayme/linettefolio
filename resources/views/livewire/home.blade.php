@@ -10,7 +10,7 @@
                             <div class="avatar min-w-[300px] min-h-[300px] relative rounded-full" data-type="wave">
                                 <!-- data-type values are: "wave", "circle", "square"-->
                                 <div class="image absolute inset-0 bg-no-repeat bg-center bg-cover"
-                                     data-img-url="assets/img/portfolio/1.jpg"></div>
+                                     data-img-url="{{ asset('img/portfolio/1.jpg') }}></div>
                             </div>
                             <div class="details ml-[80px]">
                                 <h3 class="name text-[55px] font-extrabold uppercase mb-[14px]">Adriano

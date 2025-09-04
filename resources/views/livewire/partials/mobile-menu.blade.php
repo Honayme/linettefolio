@@ -4,8 +4,7 @@
         <div class="topbar_inner w-full h-full clear-both flex items-center justify-between py-0 px-[20px]">
             <div class="logo" data-type="image">
                 <a href="{{ route('home') }}">
-                    <img class="max-w-[100px] max-h-[40px]" src="{{ asset('assets/img/logo/dark.png') }}" alt="Logo du site" />
-                    {{-- J'ai gardé le H3 si jamais vous vouliez l'utiliser en mode "texte" --}}
+                    <img class="max-w-[100px] max-h-[40px]" src="{{ asset('img/logo/dark.png') }}" alt="Logo du site" />
                     <h3 class="font-black font-poppins text-[25px] tracking-[4px]">TOKYO</h3>
                 </a>
             </div>
@@ -24,27 +23,27 @@
         <div class="menu_list w-full h-auto clear-both float-left text-right px-[20px] pt-[100px] pb-[0px]">
             <ul class="transition_link list-none">
                 <li class="{{ request()->routeIs('home') ? 'active' : '' }} mb-[7px]">
-                    <a class="text-black font-montserrat" href="{{ route('home') }}">Home</a>
+                    <a class="text-black font-montserrat" href="{{ route('home') }} " wire:navigate>Home</a>
                 </li>
 
                 <li class="{{ request()->routeIs('about') ? 'active' : '' }} mb-[7px]">
-                    <a class="text-black font-montserrat" href="{{ route('about') }}">About</a>
+                    <a class="text-black font-montserrat" href="{{ route('about') }} " wire:navigate>About</a>
                 </li>
 
                 <li class="{{ request()->routeIs('services') ? 'active' : '' }} mb-[7px]">
-                    <a class="text-black font-montserrat" href="{{ route('services') }}">Service</a>
+                    <a class="text-black font-montserrat" href="{{ route('services') }} " wire:navigate>Service</a>
                 </li>
 
                 <li class="{{ request()->routeIs('portfolio') ? 'active' : '' }} mb-[7px]">
-                    <a class="text-black font-montserrat" href="{{ route('portfolio') }}">Portfolio</a>
+                    <a class="text-black font-montserrat" href="{{ route('portfolio') }} " wire:navigate>Portfolio</a>
                 </li>
 
                 <li class="{{ request()->routeIs('news') ? 'active' : '' }} mb-[7px]">
-                    <a class="text-black font-montserrat" href="{{ route('news') }}">News</a>
+                    <a class="text-black font-montserrat" href="{{ route('news') }} " wire:navigate>News</a>
                 </li>
 
                 <li class="{{ request()->routeIs('contact') ? 'active' : '' }}">
-                    <a class="text-black font-montserrat" href="{{ route('contact') }}">Contact</a>
+                    <a class="text-black font-montserrat" href="{{ route('contact') }} " wire:navigate>Contact</a>
                 </li>
             </ul>
         </div>

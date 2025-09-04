@@ -22,7 +22,7 @@
     {{-- 2. CONTENU PRINCIPAL AVEC TRANSITION --}}
     {{-- Cet élément <main> contient votre contenu qui change à chaque page. --}}
     {{-- Les classes de transition et wire:loading créent un effet de fondu (fade-out/fade-in). --}}
-    <main>
+    <main wire:transition>
 
         @yield('content')
 
