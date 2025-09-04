@@ -21,29 +21,45 @@
     {{-- Le menu mobile qui s'affiche au clic --}}
     <div class="tokyo_tm_mobile_menu fixed top-[50px] right-[-200px] h-[100vh] w-[200px] z-[15] bg-white transition-all duration-300">
         <div class="menu_list w-full h-auto clear-both float-left text-right px-[20px] pt-[100px] pb-[0px]">
-            <ul class="transition_link list-none">
-                <li class="{{ request()->routeIs('home') ? 'active' : '' }} mb-[7px]">
-                    <a class="text-black font-montserrat" href="{{ route('home') }} " wire:navigate>Home</a>
+            <ul class="m-0 list-none p-0">
+                <li class="mb-[7px]">
+                    <a href="{{ route('home') }}" wire:navigate
+                       wire:current.exact="text-black font-semibold"
+                       class="block text-[#767676] font-montserrat transition-colors duration-200 hover:text-black">
+                        Home
+                    </a>
                 </li>
 
-                <li class="{{ request()->routeIs('about') ? 'active' : '' }} mb-[7px]">
-                    <a class="text-black font-montserrat" href="{{ route('about') }} " wire:navigate>About</a>
+                <li class="mb-[7px]">
+                    <a href="{{ route('about') }}" wire:navigate
+                       wire:current.exact="text-black font-semibold"
+                       class="block text-[#767676] font-montserrat transition-colors duration-200 hover:text-black">
+                        About
+                    </a>
                 </li>
 
-                <li class="{{ request()->routeIs('services') ? 'active' : '' }} mb-[7px]">
-                    <a class="text-black font-montserrat" href="{{ route('services') }} " wire:navigate>Service</a>
+                <li class="mb-[7px]">
+                    <a href="{{ route('services') }}" wire:navigate
+                       wire:current.exact="text-black font-semibold"
+                       class="block text-[#767676] font-montserrat transition-colors duration-200 hover:text-black">
+                        Service
+                    </a>
                 </li>
 
-                <li class="{{ request()->routeIs('portfolio') ? 'active' : '' }} mb-[7px]">
-                    <a class="text-black font-montserrat" href="{{ route('portfolio') }} " wire:navigate>Portfolio</a>
+                <li class="mb-[7px]">
+                    <a href="{{ route('portfolio') }}" wire:navigate
+                       wire:current.exact="text-black font-semibold"
+                       class="block text-[#767676] font-montserrat transition-colors duration-200 hover:text-black">
+                        Portfolio
+                    </a>
                 </li>
 
-                <li class="{{ request()->routeIs('news') ? 'active' : '' }} mb-[7px]">
-                    <a class="text-black font-montserrat" href="{{ route('news') }} " wire:navigate>News</a>
-                </li>
-
-                <li class="{{ request()->routeIs('contact') ? 'active' : '' }}">
-                    <a class="text-black font-montserrat" href="{{ route('contact') }} " wire:navigate>Contact</a>
+                <li>
+                    <a href="{{ route('contact') }}" wire:navigate
+                       wire:current.exact="text-black font-semibold"
+                       class="block text-[#767676] font-montserrat transition-colors duration-200 hover:text-black">
+                        Contact
+                    </a>
                 </li>
             </ul>
         </div>

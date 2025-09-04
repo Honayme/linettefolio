@@ -20,6 +20,8 @@
     font-style: normal;
 }
 
+
+
 /**
  * 1. Injection des directives de base de Tailwind v3
  */
@@ -41,4 +43,3 @@ input:invalid, textarea:invalid, select:invalid {
 [x-cloak] {
     display: none !important;
 }
-

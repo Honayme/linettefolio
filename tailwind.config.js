@@ -9,6 +9,8 @@ export default {
         "./resources/**/*.js",
         "./resources/**/*.vue",
     ],
+    safelist: ['opacity-0','-translate-x-6','translate-x-6'],
+
 
     theme: {
         // 2. On place vos customisations dans "extend" pour ne pas écraser les classes par défaut de Tailwind
@@ -23,6 +25,15 @@ export default {
                 poppins: ['Poppins', "sans-serif"],
                 montserrat: ['Montserrat', "sans-serif"],
                 mulish: ['Mulish', "sans-serif"],
+            },
+            keyframes: {
+                'page-in': {
+                    'from': { opacity: '0', transform: 'translateY(6px)' },
+                    'to':   { opacity: '1', transform: 'translateY(0)'  },
+                },
+            },
+            animation: {
+                'page-in': 'page-in 300ms ease-out both',
             },
         },
     },

@@ -18,18 +18,38 @@
     <livewire:partials.menu />
     @endpersist
 
-
-    {{-- 2. CONTENU PRINCIPAL AVEC TRANSITION --}}
-    {{-- Cet élément <main> contient votre contenu qui change à chaque page. --}}
-    {{-- Les classes de transition et wire:loading créent un effet de fondu (fade-out/fade-in). --}}
-    <main wire:transition>
-
+    <main id="page"
+          x-data="pageFx()"
+          x-ref="page"
+          x-init="init()"
+          x-on:livewire:navigate.window="markNav()"
+          x-show="shown"
+          x-transition:enter.origin.left.duration.400ms
+          class="opacity-100">
+        {{ $slot ?? '' }}
         @yield('content')
-
-        @isset($slot)
-            {{ $slot }}
-        @endisset
-
     </main>
 
+    <script>
+        function pageFx() {
+            return {
+                shown: true,
+
+                // Appelé au montage de CHAQUE page (après un swap Livewire)
+                init() {
+                    // Si on arrive via une navigation Livewire, on déclenche seulement un fade-in
+                    if (window.__lwNav === true) {
+                        this.shown = false;                // état initial (invisible)
+                        this.$nextTick(() => { this.shown = true }) // déclenche le x-transition.opacity
+                    } else {
+                        // Chargement initial (hard load): pas d'animation
+                        this.shown = true;
+                    }
+                },
+
+                // Marqueur global persistant entre pages (car window est conservé)
+                markNav() { window.__lwNav = true },
+            }
+        }
+    </script>
 @endsection
