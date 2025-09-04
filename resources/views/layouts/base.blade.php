@@ -27,6 +27,8 @@
     <body>
     <div class="tokyo_tm_all_wrap" data-magic-cursor="show" data-enter="fadeInLeft" data-exit="">
         @yield('body')
+        <div class="mouse-cursor cursor-outer"></div>
+        <div class="mouse-cursor cursor-inner"></div>
     </div>
     </body>
 </html>

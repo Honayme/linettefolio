@@ -1,0 +1,381 @@
+/******** Bigger Screens *********/
+
+@media (max-width: 1600px) {
+    .container {
+        max-width: 968px;
+    }
+
+    .tokyo_tm_all_wrap .leftpart {
+        width: 350px;
+        padding-top: 0px;
+        padding-bottom: 0px;
+        padding-left: 70px;
+        padding-right: 70px;
+    }
+
+    .tokyo_tm_all_wrap .rightpart {
+        padding-left: 350px;
+    }
+
+    .tokyo_tm_home .avatar {
+        min-height: 250px;
+        min-width: 250px;
+    }
+
+    .tokyo_tm_home .details .name {
+        margin-bottom: 10px;
+        font-size: 48px;
+    }
+
+    .tokyo_tm_home .details .\!name {
+        margin-bottom: 10px;
+        font-size: 48px;
+    }
+
+    .tokyo_tm_home .details .job {
+        margin-bottom: 22px;
+    }
+
+    .tokyo_tm_modalbox .box_inner {
+        width: 850px;
+    }
+}
+
+/******** Larger Screens *********/
+
+@media (max-width: 1200px) {
+    .tokyo_tm_section {
+        padding-left: 0px;
+    }
+
+    .tokyo_tm_all_wrap .leftpart {
+        display: none;
+    }
+
+    .tokyo_tm_all_wrap .rightpart {
+        padding-left: 0px;
+    }
+
+    .tokyo_tm_all_wrap .rightpart_in {
+        border-left-width: 0px;
+    }
+
+    .tokyo_tm_about {
+        padding-top: 130px;
+    }
+
+    .tokyo_tm_portfolio {
+        padding-top: 130px;
+    }
+
+    .tokyo_tm_contact {
+        padding-top: 130px;
+    }
+
+    .tokyo_tm_news {
+        padding-top: 130px;
+    }
+
+    .tokyo_tm_services {
+        padding-top: 130px;
+    }
+
+    .tokyo_tm_modalbox .description_wrap {
+        padding: 40px;
+    }
+
+    .tokyo_tm_modalbox .box_inner {
+        width: 500px;
+    }
+
+    .tokyo_tm_modalbox .main_details {
+        flex-direction: column;
+    }
+
+    .tokyo_tm_modalbox .main_details .textbox {
+        margin-bottom: 30px;
+        width: 100%;
+        padding-right: 0px;
+    }
+
+    .tokyo_tm_modalbox .main_details .detailbox {
+        width: 100%;
+        padding-left: 0px;
+    }
+
+    .tokyo_tm_modalbox .additional_images ul {
+        margin: 0px;
+    }
+
+    .tokyo_tm_modalbox .additional_images ul li {
+        width: 100%;
+        padding-left: 0px;
+    }
+
+    .tokyo_tm_modalbox .description_wrap:after {
+        height: 40px;
+    }
+
+    .tokyo_tm_modalbox .description_wrap:before {
+        height: 40px;
+    }
+}
+
+/******** Middle Screens *********/
+
+@media (max-width: 1040px) {
+    .mouse-cursor {
+        display: none;
+    }
+
+    .tokyo_tm_home .home_content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .tokyo_tm_home .avatar {
+        margin-bottom: 30px;
+    }
+
+    .tokyo_tm_home .details {
+        margin-left: 0px;
+    }
+
+    .tokyo_tm_title .title_flex {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .tokyo_tm_title .portfolio_filter {
+        padding-top: 48px;
+    }
+
+    .container {
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 0px;
+        padding-bottom: 0px;
+    }
+
+    .tokyo_tm_services .list ul li {
+        width: 50%;
+    }
+
+    .tokyo_tm_services .\!list ul li {
+        width: 50%;
+    }
+
+    .tokyo_tm_partners ul li {
+        width: 33.333333%;
+    }
+
+    .tokyo_tm_modalbox .details .title {
+        font-size: 20px;
+    }
+
+    .tokyo_tm_modalbox .portfolio_main_title h3 {
+        font-size: 20px;
+    }
+
+    .tokyo_tm_modalbox .service_popup_informations .main_title h3 {
+        font-size: 20px;
+    }
+}
+
+/******** Small Screens *********/
+
+@media (max-width: 768px) {
+    .tokyo_tm_home .details .name {
+        font-size: 30px;
+    }
+
+    .tokyo_tm_home .details .\!name {
+        font-size: 30px;
+    }
+
+    .tokyo_tm_home .avatar {
+        min-height: 200px;
+        min-width: 200px;
+    }
+
+    .tokyo_tm_portfolio .portfolio_list {
+        margin: 0px;
+    }
+
+    .tokyo_tm_portfolio .portfolio_list li {
+        width: 100%;
+        padding-left: 0px;
+    }
+
+    .tokyo_tm_news ul {
+        margin: 0px;
+    }
+
+    .tokyo_tm_news ul li {
+        width: 100%;
+        padding-left: 0px;
+    }
+
+    .tokyo_tm_news ul li .details {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    .tokyo_tm_modalbox .main_content .icon {
+        position: relative;
+        margin-bottom: 25px;
+    }
+
+    .tokyo_tm_modalbox .main_content .quotebox {
+        padding-left: 0px;
+    }
+
+    .tokyo_tm_modalbox .close a {
+        height: 30px;
+        width: 30px;
+        font-size: 14px;
+    }
+
+    .tokyo_tm_modalbox .close {
+        left: auto;
+        right: 0px;
+        top: -40px;
+    }
+
+    .tokyo_tm_modalbox .box_inner {
+        width: 300px;
+    }
+
+    .tokyo_tm_modalbox .description_wrap {
+        padding: 20px;
+    }
+
+    .tokyo_tm_short_info {
+        flex-direction: column;
+    }
+
+    .tokyo_tm_short_info .left {
+        width: 100%;
+        padding-right: 0px;
+    }
+
+    .tokyo_tm_short_info .right {
+        width: 100%;
+        padding-left: 0px;
+    }
+
+    .tokyo_tm_progressbox .in {
+        flex-direction: column;
+    }
+
+    .tokyo_tm_progressbox .in .left {
+        margin-bottom: 60px;
+        width: 100%;
+        padding-right: 0px;
+    }
+
+    .tokyo_tm_progressbox .in .right {
+        width: 100%;
+        padding-left: 0px;
+    }
+
+    .tokyo_tm_skillbox .in {
+        flex-direction: column;
+    }
+
+    .tokyo_tm_skillbox .in .left {
+        margin-bottom: 60px;
+        width: 100%;
+        padding-right: 0px;
+    }
+
+    .tokyo_tm_skillbox .in .right {
+        width: 100%;
+        padding-left: 0px;
+    }
+
+    .tokyo_tm_resumebox .in {
+        flex-direction: column;
+    }
+
+    .tokyo_tm_resumebox .in .left {
+        margin-bottom: 60px;
+        width: 100%;
+        padding-right: 0px;
+    }
+
+    .tokyo_tm_resumebox .in .right {
+        width: 100%;
+        padding-left: 0px;
+    }
+
+    .tokyo_tm_services .list ul {
+        margin: 0px;
+    }
+
+    .tokyo_tm_services .\!list ul {
+        margin: 0px;
+    }
+
+    .tokyo_tm_services .list ul li {
+        width: 100%;
+        padding-left: 0px;
+    }
+
+    .tokyo_tm_services .\!list ul li {
+        width: 100%;
+        padding-left: 0px;
+    }
+
+    .tokyo_tm_partners ul li {
+        width: 50%;
+    }
+
+    .tokyo_tm_facts .list ul {
+        margin: 0px;
+    }
+
+    .tokyo_tm_facts .\!list ul {
+        margin: 0px;
+    }
+
+    .tokyo_tm_facts .list ul li {
+        width: 100%;
+        padding-left: 0px;
+    }
+
+    .tokyo_tm_facts .\!list ul li {
+        width: 100%;
+        padding-left: 0px;
+    }
+
+    .tokyo_tm_pricing .list > ul {
+        margin: 0px;
+    }
+
+    .tokyo_tm_pricing .\!list > ul {
+        margin: 0px;
+    }
+
+    .tokyo_tm_pricing .list > ul > li {
+        width: 100%;
+        padding-left: 0px;
+    }
+
+    .tokyo_tm_pricing .\!list > ul > li {
+        width: 100%;
+        padding-left: 0px;
+    }
+
+    .tokyo_tm_modalbox .description_wrap:after {
+        height: 20px;
+    }
+
+    .tokyo_tm_modalbox .description_wrap:before {
+        height: 20px;
+    }
+
+    .tokyo_tm_modalbox .portfolio_main_title {
+        margin-bottom: 20px;
+    }
+}

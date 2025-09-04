@@ -2,7 +2,7 @@
     <div class="rightpart w-full min-h-[100vh] float-left relative bg-[#f8f8f8] pl-[450px]">
         <div
             class="rightpart_in relative w-full float-left clear-both border-solid border-[#ebebeb] border-l min-h-[100vh]">
-            <div id="news" class="tokyo_tm_section">
+            <div id="news">
                 <div class="container">
                     <div class="tokyo_tm_news w-full clear-both float-left h-auto pt-[100px] px-0 pb-[45px]">
                         <div class="tokyo_tm_title w-full h-auto clear-both float-left mb-[62px]">

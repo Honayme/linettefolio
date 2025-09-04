@@ -1,7 +1,7 @@
 <div>
     <div class="rightpart w-full min-h-[100vh] float-left relative bg-[#f8f8f8] pl-[450px]">
         <div class="rightpart_in relative w-full float-left clear-both border-solid border-[#ebebeb] border-l min-h-[100vh]">
-            <div id="about" class="tokyo_tm_section">
+            <div id="about">
                 <div class="container">
                     <div class="tokyo_tm_about w-full h-auto clear-both float-left py-[100px] px-0">
                         <div class="tokyo_tm_title w-full h-auto clear-both float-left mb-[62px]">
@@ -14,7 +14,8 @@
                             </div>
                         </div>
                         <div class="top_author_image w-full h-auto clear-both float-left relative mb-[35px]">
-                            <img class="min-w-full" src="assets/img/slider/1.jpg" alt=""/>
+                            <img class="w-full h-auto object-cover" src="{{ asset('img/slider/1.jpg') }}" alt="Description pertinente de l'image">
+
                         </div>
                         <div
                             class="about_title w-full h-auto clear-both float-left border-solid border-[#DFDFDF] border-b pb-[20px] mb-[30px]">
@@ -80,7 +81,7 @@
                             </div>
                         </div>
                         <div class="tokyo_tm_button" data-position="left">
-                            <a href="assets/img/cv/1.jpg" download>
+                            <a href="{{ asset('img/cv/1.jpg') }}" download>
                                 <span>Download CV</span>
                             </a>
                         </div>

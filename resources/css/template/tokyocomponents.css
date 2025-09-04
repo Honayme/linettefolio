@@ -1,0 +1,545 @@
+.container {
+    position: relative;
+    clear: both;
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+    width: 100%;
+    max-width: 1070px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.tokyo_tm_all_wrap {
+    position: relative;
+    float: left;
+    clear: both;
+    min-height: 100vh;
+    width: 100%;
+}
+
+.tokyo_tm_all_wrap,
+.tokyo_tm_all_wrap * {
+    box-sizing: border-box;
+}
+
+.tokyo_tm_button {
+    float: left;
+    clear: both;
+    height: auto;
+    width: 100%;
+}
+
+.tokyo_tm_button a {
+    display: inline-block;
+    --tw-bg-opacity: 1;
+    background-color: rgb(0 0 0 / var(--tw-bg-opacity));
+    padding-top: 9px;
+    padding-right: 40px;
+    padding-bottom: 14px;
+    padding-left: 40px;
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity));
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms;
+}
+
+.tokyo_progress {
+    float: left;
+    clear: both;
+    height: auto;
+    width: 100%;
+}
+
+.progress_inner {
+    margin-bottom: 17px;
+    width: 100%;
+}
+
+.progress_inner:last-child {
+    margin-bottom: 0px;
+}
+
+.progress_inner > span {
+    margin-bottom: 5px;
+    display: block;
+    width: 100%;
+    text-align: left;
+    --tw-text-opacity: 1;
+    color: rgb(0 0 0 / var(--tw-text-opacity));
+}
+
+.progress_inner span.number {
+    float: right;
+}
+
+.progress_inner .background {
+    position: relative;
+    height: 3px;
+    width: 100%;
+    min-width: 100%;
+    background-color: rgba(0,0,0,.09);
+}
+
+.progress_inner .background .bar_in {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    bottom: 0px;
+    overflow: hidden;
+    --tw-bg-opacity: 1;
+    background-color: rgb(0 0 0 / var(--tw-bg-opacity));
+}
+
+.progress_inner .background .bar {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+.tokyo_tm_read_more {
+    position: relative;
+    float: left;
+    clear: both;
+    height: auto;
+    width: 100%;
+    overflow: hidden;
+}
+
+.tokyo_tm_read_more a {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    padding-right: 32px;
+    font-family: Montserrat, sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    --tw-text-opacity: 1;
+    color: rgb(0 0 0 / var(--tw-text-opacity));
+}
+
+.tokyo_tm_services .list ul li .tokyo_tm_read_more {
+    margin-top: 7px;
+}
+
+.tokyo_tm_services .\!list ul li .tokyo_tm_read_more {
+    margin-top: 7px;
+}
+
+.tokyo_tm_full_link {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    z-index: 4;
+}
+
+.tokyo_tm_modalbox .service_popup_informations .image {
+    position: relative;
+    float: left;
+    margin-bottom: 37px;
+    width: 100%;
+}
+
+.tokyo_tm_modalbox .service_popup_informations .image img {
+    position: relative;
+    min-width: 100%;
+    opacity: 0;
+}
+
+.tokyo_tm_modalbox .service_popup_informations .image .main {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.tokyo_tm_modalbox .service_popup_informations .main_title {
+    float: left;
+    margin-bottom: 23px;
+    width: 100%;
+}
+
+.tokyo_tm_modalbox .service_popup_informations .main_title h3 {
+    font-size: 23px;
+    font-weight: 600;
+}
+
+.tokyo_tm_pricing .price span {
+    position: relative;
+    display: inline-block;
+}
+
+.tokyo_tm_modalbox {
+    visibility: hidden;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    z-index: 15;
+    height: 100vh;
+    background-color: rgba(0,0,0,.8);
+    opacity: 0;
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms;
+}
+
+.tokyo_tm_modalbox.opened {
+    visibility: visible;
+    opacity: 1;
+}
+
+.tokyo_tm_modalbox .container {
+    height: 100vh;
+}
+
+.tokyo_tm_modalbox .box_inner {
+    visibility: hidden;
+    position: absolute;
+    top: 70px;
+    bottom: 70px;
+    left: 50%;
+    z-index: 1;
+    margin-top: -20px;
+    width: 968px;
+    --tw-translate-x: -50%;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+    --tw-bg-opacity: 1;
+    background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+    opacity: 0;
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-delay: 300ms;
+    transition-duration: 300ms;
+}
+
+.tokyo_tm_modalbox.opened .box_inner {
+    visibility: visible;
+    margin-top: 0px;
+    opacity: 1;
+}
+
+.tokyo_tm_modalbox .close {
+    position: fixed;
+    left: 100%;
+    top: 0px;
+    z-index: 10;
+    margin-left: 30px;
+}
+
+.tokyo_tm_modalbox .close a {
+    position: relative;
+    display: block;
+    height: 40px;
+    width: 40px;
+    border-radius: 10px;
+    border-width: 2px;
+    border-style: solid;
+    --tw-border-opacity: 1;
+    border-color: rgb(255 255 255 / var(--tw-border-opacity));
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity));
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms;
+}
+
+.tokyo_tm_modalbox .close a:hover {
+    border-radius: 9999px;
+}
+
+.tokyo_tm_modalbox .close a i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    --tw-translate-x: -50%;
+    --tw-translate-y: -50%;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.tokyo_tm_modalbox .description_wrap {
+    position: relative;
+    float: left;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    overflow-y: scroll;
+    padding: 50px;
+}
+
+.tokyo_tm_modalbox .description_wrap:after {
+    position: fixed;
+    right: 0px;
+    left: 0px;
+    bottom: 0px;
+    z-index: 3;
+    height: 50px;
+    --tw-bg-opacity: 1;
+    background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+    --tw-content: "";
+    content: var(--tw-content);
+}
+
+.tokyo_tm_modalbox .description_wrap:before {
+    position: fixed;
+    right: 0px;
+    left: 0px;
+    top: 0px;
+    z-index: 3;
+    height: 50px;
+    --tw-bg-opacity: 1;
+    background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+    --tw-content: "";
+    content: var(--tw-content);
+}
+
+.tokyo_tm_pricing .price .currency {
+    bottom: 10px;
+    right: -10px;
+    font-size: 15px;
+}
+
+.tokyo_tm_pricing .item li.active {
+    opacity: 1;
+}
+
+.tokyo_tm_pricing .\!item li.active {
+    opacity: 1;
+}
+
+.tokyo_tm_pricing .tokyo_tm_button {
+    margin-top: 30px;
+}
+
+.tokyo_tm_portfolio_titles {
+    visibility: hidden;
+    position: fixed;
+    z-index: 15;
+    white-space: nowrap;
+    --tw-bg-opacity: 1;
+    background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    font-family: Montserrat, sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    --tw-text-opacity: 1;
+    color: rgb(0 0 0 / var(--tw-text-opacity));
+    opacity: 0;
+}
+
+.tokyo_tm_portfolio_titles .work__cat {
+    position: absolute;
+    top: 100%;
+    left: 0px;
+    margin-top: -10px;
+    --tw-bg-opacity: 1;
+    background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-family: Mulish, sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    --tw-text-opacity: 1;
+    color: rgb(118 118 118 / var(--tw-text-opacity));
+}
+
+.entry {
+    position: relative;
+}
+
+.\!entry {
+    position: relative;
+}
+
+.tokyo_tm_modalbox .popup_details .top_image {
+    position: relative;
+    margin-bottom: 37px;
+    overflow: hidden;
+}
+
+.tokyo_tm_modalbox .popup_details .top_image img {
+    position: relative;
+    min-width: 100%;
+    opacity: 0;
+}
+
+.tokyo_tm_modalbox .popup_details .top_image .main {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.tokyo_tm_modalbox .portfolio_main_title {
+    float: left;
+    margin-bottom: 28px;
+    width: 100%;
+}
+
+.tokyo_tm_modalbox .portfolio_main_title h3 {
+    margin-bottom: 5px;
+    font-size: 23px;
+    font-weight: 700;
+}
+
+.tokyo_tm_portfolio .popup_details {
+    visibility: hidden;
+    position: absolute;
+    z-index: -111;
+    display: none;
+    opacity: 0;
+}
+
+.tokyo_tm_modalbox .popup_details {
+    float: left;
+    clear: both;
+    height: auto;
+    width: 100%;
+}
+
+.tokyo_tm_modalbox .additional_images ul li:nth-child(3n-2) {
+    width: 100%;
+}
+
+.tokyo_tm_news ul li .extra:before {
+    position: absolute;
+    bottom: -7px;
+    height: 1px;
+    width: 100%;
+    background-color: rgba(0,0,0,.1);
+    --tw-content: "";
+    content: var(--tw-content);
+}
+
+.tokyo_tm_modalbox .details .extra {
+    position: relative;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.tokyo_tm_modalbox .details .extra:before {
+    position: absolute;
+    bottom: -10px;
+    height: 1px;
+    width: 100%;
+    background-color: rgba(0,0,0,.1);
+    --tw-content: "";
+    content: var(--tw-content);
+}
+
+.tokyo_tm_news ul li .details .date span:before {
+    position: relative;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 2px;
+    padding-right: 7px;
+    font-size: 10px;
+    --tw-content: "/";
+    content: var(--tw-content);
+}
+
+.tokyo_tm_modalbox .details {
+    float: left;
+    margin-bottom: 20px;
+    width: 100%;
+    padding: 0px;
+}
+
+.tokyo_tm_modalbox .description_wrap .image {
+    position: relative;
+    z-index: -1;
+    margin-bottom: 40px;
+}
+
+.tokyo_tm_modalbox .description_wrap .image img {
+    min-width: 100%;
+}
+
+.tokyo_tm_modalbox .description_wrap .image .main {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.tokyo_tm_modalbox .details .title {
+    margin-bottom: 9px;
+    font-size: 23px;
+    font-weight: 600;
+}
+
+.tokyo_tm_modalbox .date {
+    font-family: Montserrat, sans-serif;
+    font-size: 12px;
+    text-transform: uppercase;
+    --tw-text-opacity: 1;
+    color: rgb(118 118 118 / var(--tw-text-opacity));
+}
+
+.tokyo_tm_modalbox .date a {
+    --tw-text-opacity: 1;
+    color: rgb(118 118 118 / var(--tw-text-opacity));
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms;
+}
+
+.tokyo_tm_modalbox .date a:hover {
+    --tw-text-opacity: 1;
+    color: rgb(0 0 0 / var(--tw-text-opacity));
+}
+
+.tokyo_tm_modalbox .date span {
+    position: relative;
+    margin-bottom: 11px;
+}
+
+.tokyo_tm_modalbox .date span:before {
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    margin-top: 0px;
+    margin-right: 7px;
+    height: 9px;
+    width: 1px;
+    --tw-translate-y: -50%;
+    --tw-rotate: 15deg;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+    --tw-bg-opacity: 1;
+    background-color: rgb(147 147 147 / var(--tw-bg-opacity));
+    --tw-content: "";
+    content: var(--tw-content);
+}
+
+.tokyo_tm_news .main_content {
+    visibility: hidden;
+    position: absolute;
+    z-index: -111;
+    display: none;
+    opacity: 0;
+}

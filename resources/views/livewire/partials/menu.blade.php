@@ -8,7 +8,7 @@
                 </a>
             </div>
             <div class="menu px-[0px] py-[50px] w-full float-left">
-                <ul class="transition_link m-0 list-none">
+                <ul class="m-0 list-none">
                     <li class="{{ request()->routeIs('home') ? 'active' : '' }} m-0 w-full float-left">
                         <a href="{{ route('home') }}"  class="text-[#767676] inline-block font-medium font-montserrat transition-all duration-300 hover:text-black">Home</a>
                     </li>
