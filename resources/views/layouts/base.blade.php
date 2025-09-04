@@ -25,6 +25,8 @@
     </head>
 
     <body>
+    <div class="tokyo_tm_all_wrap" data-magic-cursor="show" data-enter="fadeInLeft" data-exit="">
         @yield('body')
+    </div>
     </body>
 </html>

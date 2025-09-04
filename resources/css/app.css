@@ -3,7 +3,7 @@
 
 
 @font-face {
-    font-family: 'Frontello';
+    font-family: 'fontello';
     src: url('../font/fontello.eot'); /* Le chemin est ../font/ */
     src: url('../font/fontello.eot?#iefix') format('embedded-opentype'),
     url('../font/fontello.woff2') format('woff2'),

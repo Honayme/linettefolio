@@ -1,5 +1,5 @@
 <div>
-    <div id="preloader">
+{{--    <div id="preloader">
         <div class="loader_line"></div>
-    </div>
+    </div>--}}
 </div>
