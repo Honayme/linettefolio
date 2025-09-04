@@ -529,3 +529,9 @@ function tokyo_tm_owl_carousel(){
 		}
 	});
 }
+
+document.addEventListener('livewire:navigated', function () {
+    console.log('NAVIGATED');
+    tokyo_tm_modalbox();
+    tokyo_tm_service_popup();
+});
