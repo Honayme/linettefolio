@@ -30,8 +30,7 @@
                                         <a class="tokyo_tm_full_link" href="#"></a>
 
                                         <!-- Service Popup Start -->
-                                        <img class="popup_service_image opacity-0 invisible hidden absolute z-[-111]"
-                                             src="assets/img/news/1.jpg" alt=""/>
+                                        <img class="popup_service_image hidden absolute z-[-111]" src="{{ asset('assets/img/news/1.jpg') }}" alt="Image du service"/>
                                         <div
                                             class="service_hidden_details opacity-0 invisible hidden absolute z-[-111]">
                                             <div class="service_popup_informations w-full h-auto clear-both float-left">
@@ -75,7 +74,7 @@
 
                                         <!-- Service Popup Start -->
                                         <img class="popup_service_image opacity-0 invisible hidden absolute z-[-111]"
-                                             src="assets/img/news/2.jpg" alt=""/>
+                                             src="{{ asset('img/news/2.jpg') }}" alt=""/>
                                         <div
                                             class="service_hidden_details opacity-0 invisible hidden absolute z-[-111]">
                                             <div class="service_popup_informations w-full h-auto clear-both float-left">
@@ -118,7 +117,7 @@
 
                                         <!-- Service Popup Start -->
                                         <img class="popup_service_image opacity-0 invisible hidden absolute z-[-111]"
-                                             src="assets/img/news/3.jpg" alt=""/>
+                                             src="{{ asset('img/news/3.jpg') }}" alt=""/>
                                         <div
                                             class="service_hidden_details opacity-0 invisible hidden absolute z-[-111]">
                                             <div class="service_popup_informations w-full h-auto clear-both float-left">
@@ -161,7 +160,7 @@
 
                                         <!-- Service Popup Start -->
                                         <img class="popup_service_image opacity-0 invisible hidden absolute z-[-111]"
-                                             src="assets/img/news/4.jpg" alt=""/>
+                                             src="{{ asset('img/news/4.jpg') }}" alt=""/>
                                         <div
                                             class="service_hidden_details opacity-0 invisible hidden absolute z-[-111]">
                                             <div class="service_popup_informations w-full h-auto clear-both float-left">
@@ -204,7 +203,7 @@
 
                                         <!-- Service Popup Start -->
                                         <img class="popup_service_image opacity-0 invisible hidden absolute z-[-111]"
-                                             src="assets/img/news/1.jpg" alt=""/>
+                                             src="{{ asset('img/news/5.jpg') }}" alt=""/>
                                         <div
                                             class="service_hidden_details opacity-0 invisible hidden absolute z-[-111]">
                                             <div class="service_popup_informations w-full h-auto clear-both float-left">
@@ -247,7 +246,7 @@
 
                                         <!-- Service Popup Start -->
                                         <img class="popup_service_image opacity-0 invisible hidden absolute z-[-111]"
-                                             src="assets/img/news/2.jpg" alt=""/>
+                                             src="{{ asset('img/news/2.jpg') }}" alt=""/>
                                         <div
                                             class="service_hidden_details opacity-0 invisible hidden absolute z-[-111]">
                                             <div class="service_popup_informations w-full h-auto clear-both float-left">
@@ -287,61 +286,46 @@
                         <div class="partners_inner w-full h-auto clear-both float-left">
                             <ul class="mt-[-2px] mr-[-10px] mb-[-2px] ml-[-2px] list-none pt-[2px] float-left pl-[2px]">
                                 <li class="m-0 float-left w-1/4 border-solid border-[#eee] border-2 text-center h-[145px] leading-[145px] relative mt-[-2px] ml-[-2px] overflow-hidden">
-                                    <div
-                                        class="list_inner w-full h-full clear-both float-left opacity-50 transition-all duration-300 hover:opacity-100">
-                                        <img class="max-w-[50%] max-h-[100px] inline-block"
-                                             src="assets/img/partners/dark/1.png" alt=""/>
+                                    <div class="list_inner w-full h-full clear-both float-left opacity-50 transition-all duration-300 hover:opacity-100">
+                                        <img class="max-w-[50%] max-h-[100px] inline-block" src="{{ asset('img/partners/dark/1.png') }}" alt="Logo partenaire 1"/>
                                     </div>
                                 </li>
                                 <li class="m-0 float-left w-1/4 border-solid border-[#eee] border-2 text-center h-[145px] leading-[145px] relative mt-[-2px] ml-[-2px] overflow-hidden">
-                                    <div
-                                        class="list_inner w-full h-full clear-both float-left opacity-50 transition-all duration-300 hover:opacity-100">
-                                        <img class="max-w-[50%] max-h-[100px] inline-block"
-                                             src="assets/img/partners/dark/2.png" alt=""/>
+                                    <div class="list_inner w-full h-full clear-both float-left opacity-50 transition-all duration-300 hover:opacity-100">
+                                        <img class="max-w-[50%] max-h-[100px] inline-block" src="{{ asset('img/partners/dark/2.png') }}" alt="Logo partenaire 2"/>
                                     </div>
                                 </li>
                                 <li class="m-0 float-left w-1/4 border-solid border-[#eee] border-2 text-center h-[145px] leading-[145px] relative mt-[-2px] ml-[-2px] overflow-hidden">
-                                    <div
-                                        class="list_inner w-full h-full clear-both float-left opacity-50 transition-all duration-300 hover:opacity-100">
-                                        <img class="max-w-[50%] max-h-[100px] inline-block"
-                                             src="assets/img/partners/dark/3.png" alt=""/>
+                                    <div class="list_inner w-full h-full clear-both float-left opacity-50 transition-all duration-300 hover:opacity-100">
+                                        <img class="max-w-[50%] max-h-[100px] inline-block" src="{{ asset('img/partners/dark/3.png') }}" alt="Logo partenaire 3"/>
                                     </div>
                                 </li>
                                 <li class="m-0 float-left w-1/4 border-solid border-[#eee] border-2 text-center h-[145px] leading-[145px] relative mt-[-2px] ml-[-2px] overflow-hidden">
-                                    <div
-                                        class="list_inner w-full h-full clear-both float-left opacity-50 transition-all duration-300 hover:opacity-100">
-                                        <img class="max-w-[50%] max-h-[100px] inline-block"
-                                             src="assets/img/partners/dark/4.png" alt=""/>
+                                    <div class="list_inner w-full h-full clear-both float-left opacity-50 transition-all duration-300 hover:opacity-100">
+                                        <img class="max-w-[50%] max-h-[100px] inline-block" src="{{ asset('img/partners/dark/4.png') }}" alt="Logo partenaire 4"/>
                                     </div>
                                 </li>
                                 <li class="m-0 float-left w-1/4 border-solid border-[#eee] border-2 text-center h-[145px] leading-[145px] relative mt-[-2px] ml-[-2px] overflow-hidden">
-                                    <div
-                                        class="list_inner w-full h-full clear-both float-left opacity-50 transition-all duration-300 hover:opacity-100">
-                                        <img class="max-w-[50%] max-h-[100px] inline-block"
-                                             src="assets/img/partners/dark/5.png" alt=""/>
+                                    <div class="list_inner w-full h-full clear-both float-left opacity-50 transition-all duration-300 hover:opacity-100">
+                                        <img class="max-w-[50%] max-h-[100px] inline-block" src="{{ asset('img/partners/dark/5.png') }}" alt="Logo partenaire 5"/>
                                     </div>
                                 </li>
                                 <li class="m-0 float-left w-1/4 border-solid border-[#eee] border-2 text-center h-[145px] leading-[145px] relative mt-[-2px] ml-[-2px] overflow-hidden">
-                                    <div
-                                        class="list_inner w-full h-full clear-both float-left opacity-50 transition-all duration-300 hover:opacity-100">
-                                        <img class="max-w-[50%] max-h-[100px] inline-block"
-                                             src="assets/img/partners/dark/6.png" alt=""/>
+                                    <div class="list_inner w-full h-full clear-both float-left opacity-50 transition-all duration-300 hover:opacity-100">
+                                        <img class="max-w-[50%] max-h-[100px] inline-block" src="{{ asset('img/partners/dark/6.png') }}" alt="Logo partenaire 6"/>
                                     </div>
                                 </li>
                                 <li class="m-0 float-left w-1/4 border-solid border-[#eee] border-2 text-center h-[145px] leading-[145px] relative mt-[-2px] ml-[-2px] overflow-hidden">
-                                    <div
-                                        class="list_inner w-full h-full clear-both float-left opacity-50 transition-all duration-300 hover:opacity-100">
-                                        <img class="max-w-[50%] max-h-[100px] inline-block"
-                                             src="assets/img/partners/dark/7.png" alt=""/>
+                                    <div class="list_inner w-full h-full clear-both float-left opacity-50 transition-all duration-300 hover:opacity-100">
+                                        <img class="max-w-[50%] max-h-[100px] inline-block" src="{{ asset('img/partners/dark/7.png') }}" alt="Logo partenaire 7"/>
                                     </div>
                                 </li>
                                 <li class="m-0 float-left w-1/4 border-solid border-[#eee] border-2 text-center h-[145px] leading-[145px] relative mt-[-2px] ml-[-2px] overflow-hidden">
-                                    <div
-                                        class="list_inner w-full h-full clear-both float-left opacity-50 transition-all duration-300 hover:opacity-100">
-                                        <img class="max-w-[50%] max-h-[100px] inline-block"
-                                             src="assets/img/partners/dark/8.png" alt=""/>
+                                    <div class="list_inner w-full h-full clear-both float-left opacity-50 transition-all duration-300 hover:opacity-100">
+                                        <img class="max-w-[50%] max-h-[100px] inline-block" src="{{ asset('img/partners/dark/8.png') }}" alt="Logo partenaire 8"/>
                                     </div>
                                 </li>
+
                             </ul>
                         </div>
                     </div>
