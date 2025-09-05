@@ -3,8 +3,9 @@
         <div
             class="rightpart_in relative w-full float-left clear-both border-solid border-[#ebebeb] border-l min-h-[100vh]">
             <div id="home" class="tokyo_tm_section animated">
-                <div class="container">
-                    <div
+                <div class="container" style="max-width: none !important;">
+
+                <div
                         class="tokyo_tm_home w-full min-h-[100vh] clear-both flex items-center justify-center relative">
                         <div class="home_content flex items-center">
                             <div class="w-full">

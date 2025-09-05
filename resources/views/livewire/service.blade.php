@@ -16,264 +16,49 @@
                         </div>
                         <div class="list w-full h-auto clear-both float-left">
                             <ul class="ml-[-40px] list-none flex flex-wrap">
-                                <li class="mb-[40px] w-1/3 pl-[40px]">
-                                    <div
-                                        class="list_inner w-full h-auto clear-both float-left relative border-solid border-[rgba(0,0,0,.1)] border bg-white pt-[45px] pr-[30px] pb-[40px] pl-[30px] transition-all duration-300">
-                                        <span
-                                            class="number inline-block mb-[25px] relative w-[60px] h-[60px] leading-[60px] text-center rounded-full bg-[rgba(0,0,0,.03)] font-bold text-black font-montserrat transition-all duration-300">01</span>
-                                        <h3 class="title font-bold text-black text-[18px] mb-[15px]">Web Design</h3>
-                                        <p class="text">Web development is the most famous job in the world and it is
-                                            very interesting...</p>
-                                        <div class="tokyo_tm_read_more">
-                                            <a href="#"><span>Read More</span></a>
-                                        </div>
-                                        <a class="tokyo_tm_full_link" href="#"></a>
 
-                                        <!-- Service Popup Start -->
-                                        <img class="popup_service_image hidden absolute z-[-111]" src="{{ asset('assets/img/news/1.jpg') }}" alt="Image du service"/>
+                                {{-- On vérifie s'il y a des services à afficher --}}
+                                @forelse ($services as $service)
+                                    <li class="mb-[40px] w-1/3 pl-[40px]">
                                         <div
-                                            class="service_hidden_details opacity-0 invisible hidden absolute z-[-111]">
-                                            <div class="service_popup_informations w-full h-auto clear-both float-left">
-                                                <div class="descriptions w-full float-left">
-                                                    <p class="mb-[15px]">Tokyo is a leading web design agency with an
-                                                        award-winning design team that creates innovative, effective
-                                                        websites that capture your brand, improve your conversion rates,
-                                                        and maximize your revenue to help grow your business and achieve
-                                                        your goals.</p>
-                                                    <p class="mb-[15px]">In today’s digital world, your website is the
-                                                        first interaction consumers have with your business. That's why
-                                                        almost 95 percent of a user’s first impression relates to web
-                                                        design. It’s also why web design services can have an immense
-                                                        impact on your company’s bottom line.</p>
-                                                    <p>That’s why more companies are not only reevaluating their
-                                                        website’s design but also partnering with Tokyo, the web design
-                                                        agency that’s driven more than $2.4 billion in revenue for its
-                                                        clients. With over 50 web design awards under our belt, we're
-                                                        confident we can design a custom website that drives sales for
-                                                        your unique business.</p>
+                                            class="list_inner w-full h-auto clear-both float-left relative border-solid border-[rgba(0,0,0,.1)] border bg-white pt-[45px] pr-[30px] pb-[40px] pl-[30px] transition-all duration-300">
+                                            <span
+                                                class="number inline-block mb-[25px] relative w-[60px] h-[60px] leading-[60px] text-center rounded-full bg-[rgba(0,0,0,.03)] font-bold text-black font-montserrat transition-all duration-300">
+                                                {{-- On affiche le numéro formaté (01, 02, etc.) --}}
+                                                {{ str_pad($loop->iteration, 2, '0', STR_PAD_LEFT) }}
+                                            </span>
+                                            <h3 class="title font-bold text-black text-[18px] mb-[15px]">{{ $service->title }}</h3>
+                                            <p class="text">{{ $service->excerpt }}</p>
+                                            <div class="tokyo_tm_read_more">
+                                                <a href="#"><span>Read More</span></a>
+                                            </div>
+                                            <a class="tokyo_tm_full_link" href="#"></a>
+
+                                            <!-- Service Popup Start -->
+                                            {{-- On utilise asset() pour générer le bon chemin vers l'image --}}
+                                            <img class="popup_service_image hidden absolute z-[-111]"
+                                                 src="{{ asset($service->image_path) }}"
+                                                 alt="Image du service {{ $service->title }}"/>
+                                            <div
+                                                class="service_hidden_details opacity-0 invisible hidden absolute z-[-111]">
+                                                <div
+                                                    class="service_popup_informations w-full h-auto clear-both float-left">
+                                                    <div class="descriptions w-full float-left">
+                                                        {{-- IMPORTANT : On utilise {!! !!} pour que le HTML du contenu complet soit interprété et non affiché comme du texte brut --}}
+                                                        {!! $service->full_content !!}
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <!-- /Service Popup End -->
+                                            <!-- /Service Popup End -->
 
-                                    </div>
-                                </li>
-                                <li class="mb-[40px] w-1/3 pl-[40px]">
-                                    <div
-                                        class="list_inner w-full h-auto clear-both float-left relative border-solid border-[rgba(0,0,0,.1)] border bg-white pt-[45px] pr-[30px] pb-[40px] pl-[30px] transition-all duration-300">
-                                        <span
-                                            class="number inline-block mb-[25px] relative w-[60px] h-[60px] leading-[60px] text-center rounded-full bg-[rgba(0,0,0,.03)] font-bold text-black font-montserrat transition-all duration-300">02</span>
-                                        <h3 class="title font-bold text-black text-[18px] mb-[15px]">Content
-                                            Writing</h3>
-                                        <p class="text">Web development is the most famous job in the world and it is
-                                            very interesting...</p>
-                                        <div class="tokyo_tm_read_more">
-                                            <a href="#"><span>Read More</span></a>
                                         </div>
-                                        <a class="tokyo_tm_full_link" href="#"></a>
+                                    </li>
+                                @empty
+                                    <li class="w-full text-center">
+                                        <p>Aucun service n'est disponible pour le moment.</p>
+                                    </li>
+                                @endforelse
 
-                                        <!-- Service Popup Start -->
-                                        <img class="popup_service_image opacity-0 invisible hidden absolute z-[-111]"
-                                             src="{{ asset('img/news/2.jpg') }}" alt=""/>
-                                        <div
-                                            class="service_hidden_details opacity-0 invisible hidden absolute z-[-111]">
-                                            <div class="service_popup_informations w-full h-auto clear-both float-left">
-                                                <div class="descriptions w-full float-left">
-                                                    <p class="mb-[15px]">Tokyo is a leading web design agency with an
-                                                        award-winning design team that creates innovative, effective
-                                                        websites that capture your brand, improve your conversion rates,
-                                                        and maximize your revenue to help grow your business and achieve
-                                                        your goals.</p>
-                                                    <p class="mb-[15px]">In today’s digital world, your website is the
-                                                        first interaction consumers have with your business. That's why
-                                                        almost 95 percent of a user’s first impression relates to web
-                                                        design. It’s also why web design services can have an immense
-                                                        impact on your company’s bottom line.</p>
-                                                    <p>That’s why more companies are not only reevaluating their
-                                                        website’s design but also partnering with Tokyo, the web design
-                                                        agency that’s driven more than $2.4 billion in revenue for its
-                                                        clients. With over 50 web design awards under our belt, we're
-                                                        confident we can design a custom website that drives sales for
-                                                        your unique business.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- /Service Popup End -->
-
-                                    </div>
-                                </li>
-                                <li class="mb-[40px] w-1/3 pl-[40px]">
-                                    <div
-                                        class="list_inner w-full h-auto clear-both float-left relative border-solid border-[rgba(0,0,0,.1)] border bg-white pt-[45px] pr-[30px] pb-[40px] pl-[30px] transition-all duration-300">
-                                        <span
-                                            class="number inline-block mb-[25px] relative w-[60px] h-[60px] leading-[60px] text-center rounded-full bg-[rgba(0,0,0,.03)] font-bold text-black font-montserrat transition-all duration-300">03</span>
-                                        <h3 class="title font-bold text-black text-[18px] mb-[15px]">Brand Identity</h3>
-                                        <p class="text">Web development is the most famous job in the world and it is
-                                            very interesting...</p>
-                                        <div class="tokyo_tm_read_more">
-                                            <a href="#"><span>Read More</span></a>
-                                        </div>
-                                        <a class="tokyo_tm_full_link" href="#"></a>
-
-                                        <!-- Service Popup Start -->
-                                        <img class="popup_service_image opacity-0 invisible hidden absolute z-[-111]"
-                                             src="{{ asset('img/news/3.jpg') }}" alt=""/>
-                                        <div
-                                            class="service_hidden_details opacity-0 invisible hidden absolute z-[-111]">
-                                            <div class="service_popup_informations w-full h-auto clear-both float-left">
-                                                <div class="descriptions w-full float-left">
-                                                    <p class="mb-[15px]">Tokyo is a leading web design agency with an
-                                                        award-winning design team that creates innovative, effective
-                                                        websites that capture your brand, improve your conversion rates,
-                                                        and maximize your revenue to help grow your business and achieve
-                                                        your goals.</p>
-                                                    <p class="mb-[15px]">In today’s digital world, your website is the
-                                                        first interaction consumers have with your business. That's why
-                                                        almost 95 percent of a user’s first impression relates to web
-                                                        design. It’s also why web design services can have an immense
-                                                        impact on your company’s bottom line.</p>
-                                                    <p>That’s why more companies are not only reevaluating their
-                                                        website’s design but also partnering with Tokyo, the web design
-                                                        agency that’s driven more than $2.4 billion in revenue for its
-                                                        clients. With over 50 web design awards under our belt, we're
-                                                        confident we can design a custom website that drives sales for
-                                                        your unique business.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- /Service Popup End -->
-
-                                    </div>
-                                </li>
-                                <li class="mb-[40px] w-1/3 pl-[40px]">
-                                    <div
-                                        class="list_inner w-full h-auto clear-both float-left relative border-solid border-[rgba(0,0,0,.1)] border bg-white pt-[45px] pr-[30px] pb-[40px] pl-[30px] transition-all duration-300">
-                                        <span
-                                            class="number inline-block mb-[25px] relative w-[60px] h-[60px] leading-[60px] text-center rounded-full bg-[rgba(0,0,0,.03)] font-bold text-black font-montserrat transition-all duration-300">04</span>
-                                        <h3 class="title font-bold text-black text-[18px] mb-[15px]">Live Chat</h3>
-                                        <p class="text">Web development is the most famous job in the world and it is
-                                            very interesting...</p>
-                                        <div class="tokyo_tm_read_more">
-                                            <a href="#"><span>Read More</span></a>
-                                        </div>
-                                        <a class="tokyo_tm_full_link" href="#"></a>
-
-                                        <!-- Service Popup Start -->
-                                        <img class="popup_service_image opacity-0 invisible hidden absolute z-[-111]"
-                                             src="{{ asset('img/news/4.jpg') }}" alt=""/>
-                                        <div
-                                            class="service_hidden_details opacity-0 invisible hidden absolute z-[-111]">
-                                            <div class="service_popup_informations w-full h-auto clear-both float-left">
-                                                <div class="descriptions w-full float-left">
-                                                    <p class="mb-[15px]">Tokyo is a leading web design agency with an
-                                                        award-winning design team that creates innovative, effective
-                                                        websites that capture your brand, improve your conversion rates,
-                                                        and maximize your revenue to help grow your business and achieve
-                                                        your goals.</p>
-                                                    <p class="mb-[15px]">In today’s digital world, your website is the
-                                                        first interaction consumers have with your business. That's why
-                                                        almost 95 percent of a user’s first impression relates to web
-                                                        design. It’s also why web design services can have an immense
-                                                        impact on your company’s bottom line.</p>
-                                                    <p>That’s why more companies are not only reevaluating their
-                                                        website’s design but also partnering with Tokyo, the web design
-                                                        agency that’s driven more than $2.4 billion in revenue for its
-                                                        clients. With over 50 web design awards under our belt, we're
-                                                        confident we can design a custom website that drives sales for
-                                                        your unique business.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- /Service Popup End -->
-
-                                    </div>
-                                </li>
-                                <li class="mb-[40px] w-1/3 pl-[40px]">
-                                    <div
-                                        class="list_inner w-full h-auto clear-both float-left relative border-solid border-[rgba(0,0,0,.1)] border bg-white pt-[45px] pr-[30px] pb-[40px] pl-[30px] transition-all duration-300">
-                                        <span
-                                            class="number inline-block mb-[25px] relative w-[60px] h-[60px] leading-[60px] text-center rounded-full bg-[rgba(0,0,0,.03)] font-bold text-black font-montserrat transition-all duration-300">05</span>
-                                        <h3 class="title font-bold text-black text-[18px] mb-[15px]">After Effects</h3>
-                                        <p class="text">Web development is the most famous job in the world and it is
-                                            very interesting...</p>
-                                        <div class="tokyo_tm_read_more">
-                                            <a href="#"><span>Read More</span></a>
-                                        </div>
-                                        <a class="tokyo_tm_full_link" href="#"></a>
-
-                                        <!-- Service Popup Start -->
-                                        <img class="popup_service_image opacity-0 invisible hidden absolute z-[-111]"
-                                             src="{{ asset('img/news/5.jpg') }}" alt=""/>
-                                        <div
-                                            class="service_hidden_details opacity-0 invisible hidden absolute z-[-111]">
-                                            <div class="service_popup_informations w-full h-auto clear-both float-left">
-                                                <div class="descriptions w-full float-left">
-                                                    <p class="mb-[15px]">Tokyo is a leading web design agency with an
-                                                        award-winning design team that creates innovative, effective
-                                                        websites that capture your brand, improve your conversion rates,
-                                                        and maximize your revenue to help grow your business and achieve
-                                                        your goals.</p>
-                                                    <p class="mb-[15px]">In today’s digital world, your website is the
-                                                        first interaction consumers have with your business. That's why
-                                                        almost 95 percent of a user’s first impression relates to web
-                                                        design. It’s also why web design services can have an immense
-                                                        impact on your company’s bottom line.</p>
-                                                    <p>That’s why more companies are not only reevaluating their
-                                                        website’s design but also partnering with Tokyo, the web design
-                                                        agency that’s driven more than $2.4 billion in revenue for its
-                                                        clients. With over 50 web design awards under our belt, we're
-                                                        confident we can design a custom website that drives sales for
-                                                        your unique business.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- /Service Popup End -->
-
-                                    </div>
-                                </li>
-                                <li class="mb-[40px] w-1/3 pl-[40px]">
-                                    <div
-                                        class="list_inner w-full h-auto clear-both float-left relative border-solid border-[rgba(0,0,0,.1)] border bg-white pt-[45px] pr-[30px] pb-[40px] pl-[30px] transition-all duration-300">
-                                        <span
-                                            class="number inline-block mb-[25px] relative w-[60px] h-[60px] leading-[60px] text-center rounded-full bg-[rgba(0,0,0,.03)] font-bold text-black font-montserrat transition-all duration-300">06</span>
-                                        <h3 class="title font-bold text-black text-[18px] mb-[15px]">Mobile App</h3>
-                                        <p class="text">Web development is the most famous job in the world and it is
-                                            very interesting...</p>
-                                        <div class="tokyo_tm_read_more">
-                                            <a href="#"><span>Read More</span></a>
-                                        </div>
-                                        <a class="tokyo_tm_full_link" href="#"></a>
-
-                                        <!-- Service Popup Start -->
-                                        <img class="popup_service_image opacity-0 invisible hidden absolute z-[-111]"
-                                             src="{{ asset('img/news/2.jpg') }}" alt=""/>
-                                        <div
-                                            class="service_hidden_details opacity-0 invisible hidden absolute z-[-111]">
-                                            <div class="service_popup_informations w-full h-auto clear-both float-left">
-                                                <div class="descriptions w-full float-left">
-                                                    <p class="mb-[15px]">Tokyo is a leading web design agency with an
-                                                        award-winning design team that creates innovative, effective
-                                                        websites that capture your brand, improve your conversion rates,
-                                                        and maximize your revenue to help grow your business and achieve
-                                                        your goals.</p>
-                                                    <p class="mb-[15px]">In today’s digital world, your website is the
-                                                        first interaction consumers have with your business. That's why
-                                                        almost 95 percent of a user’s first impression relates to web
-                                                        design. It’s also why web design services can have an immense
-                                                        impact on your company’s bottom line.</p>
-                                                    <p>That’s why more companies are not only reevaluating their
-                                                        website’s design but also partnering with Tokyo, the web design
-                                                        agency that’s driven more than $2.4 billion in revenue for its
-                                                        clients. With over 50 web design awards under our belt, we're
-                                                        confident we can design a custom website that drives sales for
-                                                        your unique business.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- /Service Popup End -->
-
-                                    </div>
-                                </li>
                             </ul>
                         </div>
                     </div>

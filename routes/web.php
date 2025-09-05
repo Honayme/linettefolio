@@ -25,3 +25,6 @@ Route::get('/about', About::class)->name('about');
 Route::get('/services', Service::class)->name('services');
 Route::get('/portfolio', Portfolio::class)->name('portfolio');
 Route::get('/contact', Contact::class)->name('contact');
+
+
+
