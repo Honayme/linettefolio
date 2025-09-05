@@ -533,5 +533,18 @@ function tokyo_tm_owl_carousel(){
 document.addEventListener('livewire:navigated', function () {
     console.log('NAVIGATED');
     tokyo_tm_modalbox();
+    // tokyo_tm_page_transition();
+    tokyo_tm_trigger_menu();
     tokyo_tm_service_popup();
+    tokyo_tm_modalbox_news();
+    tokyo_tm_modalbox_portfolio();
+    tokyo_tm_my_progress();
+    tokyo_tm_projects();
+    tokyo_tm_portfolio();
+    tokyo_tm_cursor();
+    tokyo_tm_imgtosvg();
+    tokyo_tm_popup();
+    tokyo_tm_data_images();
+    tokyo_tm_contact_form();
+    tokyo_tm_owl_carousel();
 });

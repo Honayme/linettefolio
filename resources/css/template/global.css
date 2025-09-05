@@ -49,17 +49,7 @@ html {
     /* 5 */
 }
 
-/*
-1. Remove the margin in all browsers.
-2. Inherit line-height from `html` so users can set them as a class directly on the `html` element.
-*/
 
-body {
-    margin: 0;
-    /* 1 */
-    line-height: inherit;
-    /* 2 */
-}
 
 /*
 1. Add the correct height in Firefox.
@@ -532,19 +522,10 @@ html {
     padding: 0px;
 }
 
-body {
-    width: 100%;
-    overflow-x: hidden;
-    --tw-bg-opacity: 1;
-    background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-    font-family: Mulish, sans-serif;
-    font-size: 15px;
-    font-weight: 400;
-    line-height: 30px;
-    letter-spacing: 0px;
-    --tw-text-opacity: 1;
-    color: rgb(118 118 118 / var(--tw-text-opacity));
-}
+/*
+1. Remove the margin in all browsers.
+2. Inherit line-height from `html` so users can set them as a class directly on the `html` element.
+*/
 
 body::-webkit-scrollbar {
     width: 0px;
