@@ -45,10 +45,10 @@
                                              data-category="Vimeo">
                                             <a class="popup-vimeo" href="https://vimeo.com/337293658">
                                                 <img class="opacity-0 min-w-full"
-                                                     src="{{ asset('img/thumbs/1-1.jpg') }} " alt=""/>
+                                                     src="https://picsum.photos/seed/large/600/600" alt=""/>
                                                 <div
                                                     class="abs_image absolute inset-0 bg-no-repeat bg-cover bg-center transition-all duration-300"
-                                                    data-img-url="assets/img/portfolio/5.jpg"></div>
+                                                    data-img-url="https://picsum.photos/seed/large/600/600"></div>
                                             </a>
                                         </div>
                                     </div>
@@ -59,10 +59,10 @@
                                              data-category="Youtube">
                                             <a class="popup-youtube" href="https://www.youtube.com/watch?v=7e90gBu4pas">
                                                 <img class="opacity-0 min-w-full"
-                                                     src="{{ asset('img/thumbs/1-1.jpg') }}" alt=""/>
+                                                     src="https://picsum.photos/seed/large/600/600" alt=""/>
                                                 <div
                                                     class="abs_image absolute inset-0 bg-no-repeat bg-cover bg-center transition-all duration-300"
-                                                    data-img-url="{{ asset('img/portfolio/6.jpg') }}"></div>
+                                                    data-img-url="https://picsum.photos/seed/large/600/600"></div>
                                             </a>
                                         </div>
                                     </div>
@@ -74,10 +74,10 @@
                                             <a class="soundcloude_link mfp-iframe audio"
                                                href="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/471954807&color=%23ff5500&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true">
                                                 <img class="opacity-0 min-w-full"
-                                                     src="{{ asset('img/thumbs/1-1.jpg') }}" alt=""/>
+                                                     src="https://picsum.photos/seed/large/600/600" alt=""/>
                                                 <div
                                                     class="abs_image absolute inset-0 bg-no-repeat bg-cover bg-center transition-all duration-300"
-                                                    data-img-url="{{ asset('img/portfolio/4.jpg') }}"></div>
+                                                    data-img-url="https://picsum.photos/seed/large/600/600"></div>
                                             </a>
                                         </div>
                                     </div>
@@ -86,12 +86,12 @@
                                     <div class="inner w-full h-auto clear-both float-left overflow-hidden relative">
                                         <div class="entry tokyo_tm_portfolio_animation_wrap" data-title="Gloria Jenkins"
                                              data-category="Image">
-                                            <a class="zoom" href="{{ asset('img/portfolio/3.jpg') }}">
+                                            <a class="popup-vimeo" href="https://vimeo.com/337293658">
                                                 <img class="opacity-0 min-w-full"
-                                                     src="{{ asset('img/thumbs/1-1.jpg') }}" alt=""/>
+                                                     src="https://picsum.photos/seed/thumb/600/600" alt="Image de remplacement"/>
                                                 <div
                                                     class="abs_image absolute inset-0 bg-no-repeat bg-cover bg-center transition-all duration-300"
-                                                    data-img-url="{{ asset('img/portfolio/3.jpg') }}"></div>
+                                                    data-img-url="https://picsum.photos/seed/large/600/600"></div>
                                             </a>
                                         </div>
                                     </div>
@@ -100,12 +100,12 @@
                                     <div class="inner w-full h-auto clear-both float-left overflow-hidden relative">
                                         <div class="entry tokyo_tm_portfolio_animation_wrap" data-title="Selena Gomez"
                                              data-category="Detail">
-                                            <a class="popup_info" href="#">
+                                            <a class="popup-vimeo" href="https://vimeo.com/337293658">
                                                 <img class="opacity-0 min-w-full"
-                                                     src="{{ asset('img/thumbs/1-1.jpg') }}" alt=""/>
+                                                     src="https://picsum.photos/seed/thumb/600/600" alt="Image de remplacement"/>
                                                 <div
                                                     class="abs_image absolute inset-0 bg-no-repeat bg-cover bg-center transition-all duration-300"
-                                                    data-img-url="{{ asset('img/portfolio/7.jpg') }}"></div>
+                                                    data-img-url="https://picsum.photos/seed/large/600/600"></div>
                                             </a>
                                         </div>
                                     </div>

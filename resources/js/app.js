@@ -4,6 +4,45 @@ import './bootstrap';
 import $ from 'jquery';
 window.$ = window.jQuery = $;
 
+// Importer Livewire et son instance d'Alpine
+import { Livewire, Alpine } from '../../vendor/livewire/livewire/dist/livewire.esm';
+
+// Enregistrer votre composant DIRECTEMENT sur l'objet Alpine
+Alpine.data('factCard', (targetNumber) => ({
+    isHovered: false,      // Gère l'état de survol de la carte
+    currentNumber: 0,      // Le nombre affiché actuellement
+    target: targetNumber,  // Le nombre cible à atteindre
+    hasAnimated: false,    // Pour s'assurer que l'animation ne se lance qu'une fois
+
+    // Initialise l'animation du compteur
+    startAnimation() {
+        // Si l'animation a déjà eu lieu, on ne fait rien
+        if (this.hasAnimated) return;
+        this.hasAnimated = true;
+
+        const duration = 1500; // Durée de l'animation en millisecondes
+        let startTime = null;
+
+        const animate = (timestamp) => {
+            if (!startTime) startTime = timestamp;
+            const progress = Math.min((timestamp - startTime) / duration, 1);
+
+            // Met à jour le nombre affiché en fonction de la progression
+            this.currentNumber = Math.floor(progress * this.target);
+
+            // Continue l'animation jusqu'à ce que la progression atteigne 100%
+            if (progress < 1) {
+                requestAnimationFrame(animate);
+            }
+        };
+
+        requestAnimationFrame(animate);
+    }
+}));
+
+// Maintenant que tout est configuré, démarrer Livewire (qui démarrera Alpine)
+Livewire.start();
+
 // Attend que le DOM soit entièrement chargé avant d'exécuter le code.
 $(function() {
     console.log("DOM is ready. Loading plugins first...");
@@ -58,3 +97,5 @@ function tokyo_tm_trigger_menu_delegated(){
 
 // Appelle cette fonction une seule fois au chargement initial de ton JS.
 tokyo_tm_trigger_menu_delegated();
+
+

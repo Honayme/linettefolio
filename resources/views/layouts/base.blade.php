@@ -18,7 +18,6 @@
 
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         @livewireStyles
-        @livewireScripts
 
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -30,6 +29,6 @@
         <div class="mouse-cursor cursor-outer"></div>
         <div class="mouse-cursor cursor-inner"></div>
     </div>
-    @stack('scripts')
+    @livewireScriptConfig
     </body>
 </html>

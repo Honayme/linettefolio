@@ -136,22 +136,23 @@
                         <div class="tokyo_section_title w-full h-auto clear-both float-left mb-[40px]">
                             <h3 class="text-[20px] font-bold">Quelques chiffres</h3>
                         </div>
-{{--                        <div class="list w-full">--}}
+                        <div class="list w-full">
                             <ul class="-mx-5 flex list-none flex-wrap">
 
+                                <!-- Carte 1: Age -->
                                 <li class="w-full px-5 pb-10 md:w-1/2 lg:w-1/3"
-                                    x-data="cardAnimation()"
+                                    x-data="factCard(25)"
                                     @mouseenter="isHovered = true"
                                     @mouseleave="isHovered = false">
                                     <div class="relative w-full cursor-pointer overflow-hidden border border-solid border-[rgba(0,0,0,.1)] p-10 text-center">
                                         <div class="relative z-10">
                                             <h3 class="mb-1 text-2xl font-semibold transition-colors duration-300"
-                                                x-data="counter(25)"
                                                 x-intersect:enter.once="startAnimation()"
                                                 x-text="currentNumber"
                                                 :class="isHovered ? 'text-white' : 'text-black'">
                                             </h3>
-                                            <span class="transition-colors duration-300" :class="isHovered ? 'text-white' : 'text-gray-600'">Age</span>
+                                            <span class="transition-colors duration-300"
+                                                  :class="isHovered ? 'text-white' : 'text-gray-600'">Age</span>
                                         </div>
                                         <div x-show="isHovered"
                                              x-transition:enter="transition ease-in-out duration-500 transform"
@@ -165,19 +166,20 @@
                                     </div>
                                 </li>
 
+                                <!-- Carte 2: Expériences -->
                                 <li class="w-full px-5 pb-10 md:w-1/2 lg:w-1/3"
-                                    x-data="cardAnimation()"
+                                    x-data="factCard(6)"
                                     @mouseenter="isHovered = true"
                                     @mouseleave="isHovered = false">
                                     <div class="relative w-full cursor-pointer overflow-hidden border border-solid border-[rgba(0,0,0,.1)] p-10 text-center">
                                         <div class="relative z-10">
                                             <h3 class="mb-1 text-2xl font-semibold transition-colors duration-300"
-                                                x-data="counter(6)"
                                                 x-intersect:enter.once="startAnimation()"
                                                 x-text="currentNumber"
                                                 :class="isHovered ? 'text-white' : 'text-black'">
                                             </h3>
-                                            <span class="transition-colors duration-300" :class="isHovered ? 'text-white' : 'text-gray-600'">Expériences en entreprise</span>
+                                            <span class="transition-colors duration-300"
+                                                  :class="isHovered ? 'text-white' : 'text-gray-600'">Expériences en entreprise</span>
                                         </div>
                                         <div x-show="isHovered"
                                              x-transition:enter="transition ease-in-out duration-500 transform"
@@ -191,19 +193,20 @@
                                     </div>
                                 </li>
 
+                                <!-- Carte 3: Entreprises -->
                                 <li class="w-full px-5 pb-10 md:w-1/2 lg:w-1/3"
-                                    x-data="cardAnimation()"
+                                    x-data="factCard(4)"
                                     @mouseenter="isHovered = true"
                                     @mouseleave="isHovered = false">
                                     <div class="relative w-full cursor-pointer overflow-hidden border border-solid border-[rgba(0,0,0,.1)] p-10 text-center">
                                         <div class="relative z-10">
                                             <h3 class="mb-1 text-2xl font-semibold transition-colors duration-300"
-                                                x-data="counter(4)"
                                                 x-intersect:enter.once="startAnimation()"
                                                 x-text="currentNumber"
                                                 :class="isHovered ? 'text-white' : 'text-black'">
                                             </h3>
-                                            <span class="transition-colors duration-300" :class="isHovered ? 'text-white' : 'text-gray-600'">Entreprises satisfaites</span>
+                                            <span class="transition-colors duration-300"
+                                                  :class="isHovered ? 'text-white' : 'text-gray-600'">Entreprises satisfaites</span>
                                         </div>
                                         <div x-show="isHovered"
                                              x-transition:enter="transition ease-in-out duration-500 transform"
@@ -216,10 +219,9 @@
                                         </div>
                                     </div>
                                 </li>
-
                             </ul>
                         </div>
-{{--                    </div>--}}
+                    </div>
                 </div>
 
             </div>
@@ -227,37 +229,3 @@
     </div>
 </div>
 
-@push('scripts')
-    <script>
-        document.addEventListener('alpine:init', () => {
-            // Le composant pour l'animation de la carte
-            Alpine.data('cardAnimation', () => ({
-                isHovered: false,
-            }));
-
-            // Votre composant pour le compteur (inchangé)
-            Alpine.data('counter', (targetNumber) => ({
-                currentNumber: 0,
-                target: targetNumber,
-                hasAnimated: false,
-
-                startAnimation() {
-                    if (this.hasAnimated) return;
-                    this.hasAnimated = true;
-                    const duration = 2000;
-                    let startTime = null;
-                    const animate = (timestamp) => {
-                        if (!startTime) startTime = timestamp;
-                        const progress = Math.min((timestamp - startTime) / duration, 1);
-                        this.currentNumber = Math.floor(progress * this.target);
-                        if (progress < 1) {
-                            requestAnimationFrame(animate);
-                        }
-                    };
-                    requestAnimationFrame(animate);
-                }
-            }));
-        });
-    </script>
-
-@endpush
