@@ -55,16 +55,17 @@ body {
     font-weight: 400;
     line-height: 30px;
     letter-spacing: 0px;
-    --tw-text-opacity: 1;
-    color: rgb(118 118 118 / var(--tw-text-opacity));
+    /* La ligne ci-dessous a été modifiée */
+    color: #333333;
 }
 
 h1,h2,h3,h4,h5,h6 {
     font-family: Montserrat, sans-serif;
     font-weight: 500;
     line-height: 1.4;
-    --tw-text-opacity: 1;
-    color: rgb(0 0 0 / var(--tw-text-opacity));
+/*    --tw-text-opacity: 1;
+    color: rgb(0 0 0 / var(--tw-text-opacity));*/
+    color: #f25835;
 }
 
 h1 {
@@ -89,4 +90,8 @@ h5 {
 
 h6 {
     font-size: 16px;
+}
+
+.rightpart {
+    background-color: #fff0e3;
 }

@@ -11,8 +11,6 @@ jQuery(document).ready(function(){
 	// here all ready functions
 
 	tokyo_tm_modalbox();
-	// tokyo_tm_page_transition();
-	tokyo_tm_trigger_menu();
 	tokyo_tm_service_popup();
 	tokyo_tm_modalbox_news();
 	tokyo_tm_modalbox_portfolio();
@@ -46,78 +44,6 @@ function tokyo_tm_modalbox(){
 	jQuery('.tokyo_tm_all_wrap').prepend('<div class="tokyo_tm_modalbox"><div class="box_inner"><div class="close"><a href="#"><i class="icon-cancel"></i></a></div><div class="description_wrap"></div></div></div>');
 }
 
-// -----------------------------------------------------
-// -------------   PAGE TRANSITION    ------------------
-// -----------------------------------------------------
-
-/*function tokyo_tm_page_transition(){
-
-	"use strict";
-
-	var section 		= jQuery('.tokyo_tm_section');
-	var allLi 			= jQuery('.transition_link li');
-	var button			= jQuery('.transition_link a');
-	var wrapper 		= jQuery('.tokyo_tm_all_wrap');
-	var enter	 		= wrapper.data('enter');
-	var exit		 	= wrapper.data('exit');
-
-	button.on('click',function(){
-		var element 	= jQuery(this);
-		var href		= element.attr('href');
-		if(element.parent().hasClass('tokyo_tm_button')){
-			jQuery('.menu .transition_link a[href="'+href+'"]').trigger('click');
-			hashtag();
-			return false;
-		}
-		var sectionID 	= jQuery(href);
-		var parent	 	= element.closest('li');
-			if(!parent.hasClass('active')) {
-				allLi.removeClass('active');
-				wrapper.find(section).removeClass('animated '+enter);
-				if(wrapper.hasClass('opened')) {
-					wrapper.find(section).addClass('animated '+exit);
-				}
-				parent.addClass('active');
-				wrapper.addClass('opened');
-				wrapper.find(sectionID).removeClass('animated '+exit).addClass('animated '+enter);
-				jQuery(section).addClass('hidden');
-				jQuery(sectionID).removeClass('hidden').addClass('active');
-			}
-		return false;
-	});
-}*/
-
-// -----------------------------------------------------
-// ---------------   TRIGGER MENU    -------------------
-// -----------------------------------------------------
-
-function tokyo_tm_trigger_menu(){
-
-	"use strict";
-
-	var hamburger 		= jQuery('.tokyo_tm_topbar .trigger .hamburger');
-	var mobileMenu		= jQuery('.tokyo_tm_mobile_menu');
-	var mobileMenuList	= jQuery('.tokyo_tm_mobile_menu ul li a');
-
-	hamburger.on('click',function(){
-		var element 	= jQuery(this);
-
-		if(element.hasClass('is-active')){
-			element.removeClass('is-active');
-			mobileMenu.removeClass('opened');
-		}else{
-			element.addClass('is-active');
-			mobileMenu.addClass('opened');
-		}
-		return false;
-	});
-
-	mobileMenuList.on('click',function(){
-		jQuery('.tokyo_tm_topbar .trigger .hamburger').removeClass('is-active');
-		mobileMenu.removeClass('opened');
-		return false;
-	});
-}
 
 // -------------------------------------------------
 // -------------  SERVICE POPUP  -------------------
@@ -533,8 +459,6 @@ function tokyo_tm_owl_carousel(){
 document.addEventListener('livewire:navigated', function () {
     console.log('NAVIGATED');
     tokyo_tm_modalbox();
-    // tokyo_tm_page_transition();
-    tokyo_tm_trigger_menu();
     tokyo_tm_service_popup();
     tokyo_tm_modalbox_news();
     tokyo_tm_modalbox_portfolio();

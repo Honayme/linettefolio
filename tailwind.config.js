@@ -13,6 +13,12 @@ export default {
 
     theme: {
         extend: {
+            colors: {
+                'orange': '#f25835',
+                // Vous pourriez même en ajouter des variantes !
+                // 'primary-light': '#fa7b5e',
+                // 'primary-dark': '#c4462a',
+            },
             screens: {
                 'bigger': {'max': '1600px'},
                 'large': {'max': '1200px'},
