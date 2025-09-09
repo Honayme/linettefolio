@@ -14,26 +14,7 @@
                                     <h3 class="font-extrabold font-montserrat">Creative Portfolio</h3>
                                 </div>
                                 <div class="portfolio_filter">
-                                    <ul class="list-none">
-                                        <li class="mr-[25px] inline-block"><a href="#"
-                                                                              class="current text-[#767676] inline-block font-medium font-montserrat transition-all duration-300 hover:text-black"
-                                                                              data-filter="*">All</a></li>
-                                        <li class="mr-[25px] inline-block"><a
-                                                class="text-[#767676] inline-block font-medium font-montserrat transition-all duration-300 hover:text-black"
-                                                href="#" data-filter=".vimeo">Vimeo</a></li>
-                                        <li class="mr-[25px] inline-block"><a
-                                                class="text-[#767676] inline-block font-medium font-montserrat transition-all duration-300 hover:text-black"
-                                                href="#" data-filter=".youtube">Youtube</a></li>
-                                        <li class="mr-[25px] inline-block"><a
-                                                class="text-[#767676] inline-block font-medium font-montserrat transition-all duration-300 hover:text-black"
-                                                href="#" data-filter=".soundcloud">Soundcloud</a></li>
-                                        <li class="mr-[25px] inline-block"><a
-                                                class="text-[#767676] inline-block font-medium font-montserrat transition-all duration-300 hover:text-black"
-                                                href="#" data-filter=".image">Image</a></li>
-                                        <li class="inline-block"><a
-                                                class="text-[#767676] inline-block font-medium font-montserrat transition-all duration-300 hover:text-black"
-                                                href="#" data-filter=".detail">Detail</a></li>
-                                    </ul>
+                                    @livewire('partials.category-navigation')
                                 </div>
                             </div>
                         </div>
@@ -207,7 +188,6 @@
                                         </div>
                                     </div>
                                     <!-- /Portfolio Popup End -->
-
                                 </li>
                                 <li class="detail mb-[40px] float-left w-1/3 pl-[40px]">
                                     <div class="inner w-full h-auto clear-both float-left overflow-hidden relative">
