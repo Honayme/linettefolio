@@ -2,30 +2,31 @@
 
 namespace App\Models;
 
+use App\Enums\PortfolioLayout;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+
+
+// app/Models/PortfolioItem.php
 
 class PortfolioItem extends Model
 {
     use HasFactory;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
+
     protected $fillable = [
         'category_id',
         'title',
         'description',
+        'layout',
         'cover_image',
         'cover_image_alt',
         'images',
         'video_url',
         'is_visible',
     ];
+
 
     /**
      * The attributes that should be cast.
@@ -35,6 +36,7 @@ class PortfolioItem extends Model
     protected $casts = [
         'images' => 'array',
         'is_visible' => 'boolean',
+        'layout' => PortfolioLayout::class, // Ajouté ici
     ];
 
     /**

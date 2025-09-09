@@ -18,6 +18,7 @@
                                 </div>
                             </div>
                         </div>
+{{--                        Faire un test par Layout et changer l'affichage en fonction de video photo slider ou présentation--}}
                         <div class="list_wrapper w-full h-auto clear-both float-left">
                             <ul class="portfolio_list gallery_zoom ml-[-40px] list-none">
                                 <li class="vimeo mb-[40px] float-left w-1/3 pl-[40px]">
