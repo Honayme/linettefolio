@@ -7,17 +7,20 @@ export default {
         "./resources/**/*.blade.php",
         "./resources/**/*.js",
         "./resources/**/*.vue",
+        './app/Filament/**/*.php',
+        './resources/views/filament/**/*.blade.php',
+        './vendor/filament/**/*.blade.php',
     ],
-    safelist: ['opacity-0','-translate-x-6','translate-x-6'],
+    safelist: ['opacity-0','-translate-x-6','translate-x-6', 'bg-gray','dark:bg-white/5'],
 
 
     theme: {
         extend: {
+            presets: [
+                require('./vendor/filament/filament/tailwind.config.preset')
+            ],
             colors: {
                 'orange': '#f25835',
-                // Vous pourriez même en ajouter des variantes !
-                // 'primary-light': '#fa7b5e',
-                // 'primary-dark': '#c4462a',
             },
             screens: {
                 'bigger': {'max': '1600px'},
