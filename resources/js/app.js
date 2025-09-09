@@ -98,4 +98,3 @@ function tokyo_tm_trigger_menu_delegated(){
 // Appelle cette fonction une seule fois au chargement initial de ton JS.
 tokyo_tm_trigger_menu_delegated();
 
-
