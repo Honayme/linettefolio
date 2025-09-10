@@ -10,7 +10,7 @@
                                 <div class="left">
                                     <span
                                         class="inline-block bg-[rgba(0,0,0,.04)] uppercase py-[4px] px-[10px] font-semibold text-[12px] text-[#333] font-montserrat tracking-[0px] mb-[11px]">Services</span>
-                                    <h3 class="font-extrabold font-montserrat">What I Do</h3>
+                                    <h3 class="font-extrabold font-montserrat">Ce que je fais</h3>
                                 </div>
                             </div>
                         </div>
@@ -66,67 +66,47 @@
                 <div class="tokyo_tm_partners w-full h-auto clear-both float-left bg-white py-[100px] px-0">
                     <div class="container">
                         <div class="tokyo_section_title w-full h-auto clear-both float-left mb-[40px]">
-                            <h3 class="text-[20px] font-bold">Partners</h3>
+                            <h3 class="text-[20px] font-bold">Ils m'ont fait confiance</h3>
                         </div>
                         <div class="partners_inner w-full h-auto clear-both float-left">
-                            <ul class="mt-[-2px] mr-[-10px] mb-[-2px] ml-[-2px] list-none pt-[2px] float-left pl-[2px]">
-                                <li class="m-0 float-left w-1/4 border-solid border-[#eee] border-2 text-center h-[145px] leading-[145px] relative mt-[-2px] ml-[-2px] overflow-hidden">
-                                    <div
-                                        class="list_inner w-full h-full clear-both float-left opacity-50 transition-all duration-300 hover:opacity-100">
-                                        <img class="max-w-[50%] max-h-[100px] inline-block"
-                                             src="{{ asset('img/partners/dark/1.png') }}" alt="Logo partenaire 1"/>
-                                    </div>
-                                </li>
-                                <li class="m-0 float-left w-1/4 border-solid border-[#eee] border-2 text-center h-[145px] leading-[145px] relative mt-[-2px] ml-[-2px] overflow-hidden">
-                                    <div
-                                        class="list_inner w-full h-full clear-both float-left opacity-50 transition-all duration-300 hover:opacity-100">
-                                        <img class="max-w-[50%] max-h-[100px] inline-block"
-                                             src="{{ asset('img/partners/dark/2.png') }}" alt="Logo partenaire 2"/>
-                                    </div>
-                                </li>
-                                <li class="m-0 float-left w-1/4 border-solid border-[#eee] border-2 text-center h-[145px] leading-[145px] relative mt-[-2px] ml-[-2px] overflow-hidden">
-                                    <div
-                                        class="list_inner w-full h-full clear-both float-left opacity-50 transition-all duration-300 hover:opacity-100">
-                                        <img class="max-w-[50%] max-h-[100px] inline-block"
-                                             src="{{ asset('img/partners/dark/3.png') }}" alt="Logo partenaire 3"/>
-                                    </div>
-                                </li>
-                                <li class="m-0 float-left w-1/4 border-solid border-[#eee] border-2 text-center h-[145px] leading-[145px] relative mt-[-2px] ml-[-2px] overflow-hidden">
-                                    <div
-                                        class="list_inner w-full h-full clear-both float-left opacity-50 transition-all duration-300 hover:opacity-100">
-                                        <img class="max-w-[50%] max-h-[100px] inline-block"
-                                             src="{{ asset('img/partners/dark/4.png') }}" alt="Logo partenaire 4"/>
-                                    </div>
-                                </li>
-                                <li class="m-0 float-left w-1/4 border-solid border-[#eee] border-2 text-center h-[145px] leading-[145px] relative mt-[-2px] ml-[-2px] overflow-hidden">
-                                    <div
-                                        class="list_inner w-full h-full clear-both float-left opacity-50 transition-all duration-300 hover:opacity-100">
-                                        <img class="max-w-[50%] max-h-[100px] inline-block"
-                                             src="{{ asset('img/partners/dark/5.png') }}" alt="Logo partenaire 5"/>
-                                    </div>
-                                </li>
-                                <li class="m-0 float-left w-1/4 border-solid border-[#eee] border-2 text-center h-[145px] leading-[145px] relative mt-[-2px] ml-[-2px] overflow-hidden">
-                                    <div
-                                        class="list_inner w-full h-full clear-both float-left opacity-50 transition-all duration-300 hover:opacity-100">
-                                        <img class="max-w-[50%] max-h-[100px] inline-block"
-                                             src="{{ asset('img/partners/dark/6.png') }}" alt="Logo partenaire 6"/>
-                                    </div>
-                                </li>
-                                <li class="m-0 float-left w-1/4 border-solid border-[#eee] border-2 text-center h-[145px] leading-[145px] relative mt-[-2px] ml-[-2px] overflow-hidden">
-                                    <div
-                                        class="list_inner w-full h-full clear-both float-left opacity-50 transition-all duration-300 hover:opacity-100">
-                                        <img class="max-w-[50%] max-h-[100px] inline-block"
-                                             src="{{ asset('img/partners/dark/7.png') }}" alt="Logo partenaire 7"/>
-                                    </div>
-                                </li>
-                                <li class="m-0 float-left w-1/4 border-solid border-[#eee] border-2 text-center h-[145px] leading-[145px] relative mt-[-2px] ml-[-2px] overflow-hidden">
-                                    <div
-                                        class="list_inner w-full h-full clear-both float-left opacity-50 transition-all duration-300 hover:opacity-100">
-                                        <img class="max-w-[50%] max-h-[100px] inline-block"
-                                             src="{{ asset('img/partners/dark/8.png') }}" alt="Logo partenaire 8"/>
+                            <ul class="flex flex-wrap justify-center items-center gap-5">
+
+                                <!-- Les 'li' n'ont plus besoin de classes de largeur fixe comme w-1/4 -->
+                                <!-- Ils sont maintenant des conteneurs flexibles pour centrer leur contenu -->
+                                <li class="w-full sm:w-1/3 md:w-1/5 flex justify-center items-center border-2 border-solid border-gray-200 h-[145px] overflow-hidden">
+                                    <div class="list_inner w-full h-full flex justify-center items-center opacity-50 transition-all duration-300 hover:opacity-100">
+                                        <img class="max-w-[60%] max-h-[100px]"
+                                             src="{{ asset('img/partners/astonehelmets.svg') }}" alt="Logo partenaire 1"/>
                                     </div>
                                 </li>
 
+                                <li class="w-full sm:w-1/3 md:w-1/5 flex justify-center items-center border-2 border-solid border-gray-200 h-[145px] overflow-hidden">
+                                    <div class="list_inner w-full h-full flex justify-center items-center opacity-50 transition-all duration-300 hover:opacity-100">
+                                        <img class="max-w-[60%] max-h-[100px]"
+                                             src="{{ asset('img/partners/hibook.svg') }}" alt="Logo partenaire 2"/>
+                                    </div>
+                                </li>
+
+                                <li class="w-full sm:w-1/3 md:w-1/5 flex justify-center items-center border-2 border-solid border-gray-200 h-[145px] overflow-hidden">
+                                    <div class="list_inner w-full h-full flex justify-center items-center opacity-50 transition-all duration-300 hover:opacity-100">
+                                        <img class="max-w-[60%] max-h-[100px]"
+                                             src="{{ asset('img/partners/overlap.svg') }}" alt="Logo partenaire 3"/>
+                                    </div>
+                                </li>
+
+                                <li class="w-full sm:w-1/3 md:w-1/5 flex justify-center items-center border-2 border-solid border-gray-200 h-[145px] overflow-hidden">
+                                    <div class="list_inner w-full h-full flex justify-center items-center opacity-50 transition-all duration-300 hover:opacity-100">
+                                        <img class="max-w-[60%] max-h-[100px]"
+                                             src="{{ asset('img/partners/ridervalley.svg') }}" alt="Logo partenaire 4"/>
+                                    </div>
+                                </li>
+
+                                <li class="w-full sm:w-1/3 md:w-1/5 flex justify-center items-center border-2 border-solid border-gray-200 h-[145px] overflow-hidden">
+                                    <div class="list_inner w-full h-full flex justify-center items-center opacity-50 transition-all duration-300 hover:opacity-100">
+                                        <img class="max-w-[70%] max-h-[100px]"
+                                             src="{{ asset('img/partners/vquatrodesign.svg') }}" alt="Logo partenaire 5"/>
+                                    </div>
+                                </li>
                             </ul>
                         </div>
                     </div>
