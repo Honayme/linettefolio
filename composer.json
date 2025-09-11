@@ -7,6 +7,13 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
+        "ext-dom": "*",
+        "ext-libxml": "*",
+        "ext-fileinfo": "*",
+        "ext-gd": "*",
+        "ext-simplexml": "*",
+        "ext-xml": "*",
+        "ext-zip": "*",
         "filament/filament": "^3.2",
         "laravel-frontend-presets/tall": "^9.1",
         "laravel/framework": "^12.0",

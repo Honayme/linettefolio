@@ -1,0 +1,52 @@
+{
+  "resources/css/app.css": {
+    "file": "assets/app-DlBGkk5M.css",
+    "src": "resources/css/app.css",
+    "isEntry": true,
+    "names": [
+      "app.css"
+    ]
+  },
+  "resources/font/fontello.eot": {
+    "file": "assets/fontello-C8o8f2cH.eot",
+    "src": "resources/font/fontello.eot"
+  },
+  "resources/font/fontello.svg": {
+    "file": "assets/fontello-C_335r9X.svg",
+    "src": "resources/font/fontello.svg"
+  },
+  "resources/font/fontello.ttf": {
+    "file": "assets/fontello-aLdPMUpT.ttf",
+    "src": "resources/font/fontello.ttf"
+  },
+  "resources/font/fontello.woff": {
+    "file": "assets/fontello-ChW_stBT.woff",
+    "src": "resources/font/fontello.woff"
+  },
+  "resources/font/fontello.woff2": {
+    "file": "assets/fontello-BMVimUy6.woff2",
+    "src": "resources/font/fontello.woff2"
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-CUEAsS9q.js",
+    "name": "app",
+    "src": "resources/js/app.js",
+    "isEntry": true,
+    "dynamicImports": [
+      "resources/js/template/plugins.js",
+      "resources/js/template/init.js"
+    ]
+  },
+  "resources/js/template/init.js": {
+    "file": "assets/init-rkHdH4vE.js",
+    "name": "init",
+    "src": "resources/js/template/init.js",
+    "isDynamicEntry": true
+  },
+  "resources/js/template/plugins.js": {
+    "file": "assets/plugins-BYWFzVzD.js",
+    "name": "plugins",
+    "src": "resources/js/template/plugins.js",
+    "isDynamicEntry": true
+  }
+}
