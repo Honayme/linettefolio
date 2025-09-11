@@ -3,6 +3,8 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 use Spatie\ImageOptimizer\OptimizerChain;
 
 class OptimizeImages extends Command
@@ -32,13 +34,16 @@ class OptimizeImages extends Command
      */
     public function handle(): int
     {
-        // Définir le chemin en fonction de l'environnement
-        if (app()->environment('production')) {
-            // En production, utiliser le chemin vers le dossier storage
-            $this->baseDirectory = storage_path('app/public/img');
+        $publicImg  = public_path('img');                         // actuel
+        $storageImg = Storage::disk('public')->path('img');       // option future
+
+        if (File::isDirectory($publicImg)) {
+            $this->baseDirectory = $publicImg;
+        } elseif (File::isDirectory($storageImg)) {
+            $this->baseDirectory = $storageImg;
         } else {
-            // En local, utiliser le chemin vers le dossier public/img
-            $this->baseDirectory = public_path('img');
+            $this->error("Aucun dossier images trouvé (ni $publicImg ni $storageImg).");
+            return self::FAILURE;
         }
 
         // Vérifier si le dossier existe
