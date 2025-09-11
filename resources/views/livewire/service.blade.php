@@ -16,8 +16,6 @@
                         </div>
                         <div class="list w-full h-auto clear-both float-left">
                             <ul class="ml-[-40px] list-none flex flex-wrap">
-
-                                {{-- On vérifie s'il y a des services à afficher --}}
                                 @forelse ($services as $service)
                                     <li class="mb-[40px] w-1/3 pl-[40px]">
                                         <div
@@ -203,7 +201,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
