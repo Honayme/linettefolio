@@ -24,19 +24,25 @@ class PortfolioItemSeeder extends Seeder
 
         // 2. On récupère les catégories qui nous intéressent pour les associations.
         // C'est plus performant de tout charger une fois.
-        $linkedinCategory = Category::where('slug', 'realisation-graphiques-web-linkedin')->first();
-        $brochureCategory = Category::where('slug', 'realisations-graphiques-print-brochures')->first();
-        $videoCategory = Category::where('slug', 'photos-videos-videos-produits')->first();
-        $businessCardCategory = Category::where('slug', 'supports-internes-cartes-de-visite')->first();
-        $instagramCategory = Category::where('slug', 'realisation-graphiques-web-instagram')->first();
-        $newsletterCategory = Category::where('slug', 'realisation-graphiques-web-newsletter')->first();
-        $eventCategory = Category::where('slug', 'realisations-graphiques-print-evenements')->first();
-        $catalogCategory = Category::where('slug', 'realisations-graphiques-print-catalogues')->first();
-        $adCategory = Category::where('slug', 'realisations-graphiques-print-publicite')->first();
-        $powerpointCategory = Category::where('slug', 'supports-internes-presentation-powerpoint')->first();
-        $retouchingCategory = Category::where('slug', 'photos-videos-avant-apres-retouches-photos')->first();
-        $interviewCategory = Category::where('slug', 'photos-videos-temoignage-interview')->first();
-        $youtubeCategory = Category::where('slug', 'photos-videos-gestion-de-la-page-youtube')->first();
+        $web     = Category::whereNull('parent_id')->where('name', 'Réalisation graphiques Web')->firstOrFail();
+        $print   = Category::whereNull('parent_id')->where('name', 'Réalisations graphiques Print')->firstOrFail();
+        $support = Category::whereNull('parent_id')->where('name', 'Supports internes')->firstOrFail();
+        $photos  = Category::whereNull('parent_id')->where('name', 'Photos & videos')->firstOrFail();
+
+// Enfants: name + parent_id
+        $linkedinCategory     = Category::where('name', 'LinkedIn')->where('parent_id', $web->id)->first();
+        $instagramCategory    = Category::where('name', 'Instagram')->where('parent_id', $web->id)->first();
+        $newsletterCategory   = Category::where('name', 'Newsletter')->where('parent_id', $web->id)->first();
+        $brochureCategory     = Category::where('name', 'Brochures')->where('parent_id', $print->id)->first();
+        $eventCategory        = Category::where('name', 'Evènements')->where('parent_id', $print->id)->first();
+        $catalogCategory      = Category::where('name', 'Catalogues')->where('parent_id', $print->id)->first();
+        $adCategory           = Category::where('name', 'Publicité')->where('parent_id', $print->id)->first();
+        $businessCardCategory = Category::where('name', 'Cartes de visite')->where('parent_id', $support->id)->first();
+        $powerpointCategory   = Category::where('name', 'Présentation powerpoint')->where('parent_id', $support->id)->first();
+        $retouchingCategory   = Category::where('name', 'Avant / après retouches photos')->where('parent_id', $photos->id)->first();
+        $videoCategory        = Category::where('name', 'Vidéos produits')->where('parent_id', $photos->id)->first();
+        $interviewCategory    = Category::where('name', 'Témoignage / interview')->where('parent_id', $photos->id)->first();
+        $youtubeCategory  = Category::where('name', 'Gestion de la page youtube')->where('parent_id', $photos->id)->first();
 
         // 3. On crée les éléments du portfolio et on les attache aux catégories.
 
