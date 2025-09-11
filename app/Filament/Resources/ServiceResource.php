@@ -54,7 +54,7 @@ class ServiceResource extends Resource
                                     ->label('Contenu complet')
                                     ->required()
                                     ->columnSpanFull()
-                                    ->reactive(), // <-- C'EST LA CLÉ MAGIQUE !
+                                    ->reactive(),
 
 
                                 // 2. Le conteneur pour l'aperçu

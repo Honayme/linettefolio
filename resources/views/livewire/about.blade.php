@@ -254,7 +254,7 @@
                         <div class="in w-full h-auto clear-both float-left flex">
                             <div class="left w-1/2 pr-[50px]">
                                 <div class="tokyo_section_title w-full h-auto clear-both float-left mb-[40px]">
-                                    <h3 class="text-[20px] font-bold">Knowledge</h3>
+                                    <h3 class="text-[20px] font-bold">Outil</h3>
                                 </div>
                                 <div class="tokyo_tm_skill_list w-full h-auto clear-both float-left">
                                     <ul class="m-0 list-none">

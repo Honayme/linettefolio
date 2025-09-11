@@ -19,7 +19,8 @@
                                 @forelse ($services as $service)
                                     <li class="mb-[40px] w-1/3 pl-[40px]">
                                         <div
-                                            class="list_inner w-full h-auto clear-both float-left relative border-solid border-[rgba(0,0,0,.1)] border bg-white pt-[45px] pr-[30px] pb-[40px] pl-[30px] transition-all duration-300">
+                                            class="list_inner w-full h-auto clear-both float-left relative border-solid border-[rgba(0,0,0,.1)] border bg-white pt-[45px] pr-[30px] pb-[40px] pl-[30px] transition-all duration-300"
+                                            data-image-url="{{ asset($service->image_path) }}">
                                             <span
                                                 class="number inline-block mb-[25px] relative w-[60px] h-[60px] leading-[60px] text-center rounded-full bg-[rgba(0,0,0,.03)] font-bold text-black font-montserrat transition-all duration-300">
                                                 {{-- On affiche le numéro formaté (01, 02, etc.) --}}
@@ -34,9 +35,10 @@
 
                                             <!-- Service Popup Start -->
                                             {{-- On utilise asset() pour générer le bon chemin vers l'image --}}
-                                            <img class="popup_service_image hidden absolute z-[-111]"
-                                                 src="{{ asset($service->image_path) }}"
+                                            <img class="popup_service_image w-full h-64 hidden absolute z-[-111]"
+                                                 src="{{ Storage::url($service->image_path) }}"
                                                  alt="Image du service {{ $service->title }}"/>
+
                                             <div
                                                 class="service_hidden_details opacity-0 invisible hidden absolute z-[-111]">
                                                 <div
@@ -72,37 +74,44 @@
                                 <!-- Les 'li' n'ont plus besoin de classes de largeur fixe comme w-1/4 -->
                                 <!-- Ils sont maintenant des conteneurs flexibles pour centrer leur contenu -->
                                 <li class="w-full sm:w-1/3 md:w-1/5 flex justify-center items-center border-2 border-solid border-gray-200 h-[145px] overflow-hidden">
-                                    <div class="list_inner w-full h-full flex justify-center items-center opacity-50 transition-all duration-300 hover:opacity-100">
+                                    <div
+                                        class="list_inner w-full h-full flex justify-center items-center opacity-50 transition-all duration-300 hover:opacity-100">
                                         <img class="max-w-[60%] max-h-[100px]"
-                                             src="{{ asset('img/partners/astonehelmets.svg') }}" alt="Logo partenaire 1"/>
+                                             src="{{ asset('img/partners/astonehelmets.svg') }}"
+                                             alt="Logo partenaire 1"/>
                                     </div>
                                 </li>
 
                                 <li class="w-full sm:w-1/3 md:w-1/5 flex justify-center items-center border-2 border-solid border-gray-200 h-[145px] overflow-hidden">
-                                    <div class="list_inner w-full h-full flex justify-center items-center opacity-50 transition-all duration-300 hover:opacity-100">
+                                    <div
+                                        class="list_inner w-full h-full flex justify-center items-center opacity-50 transition-all duration-300 hover:opacity-100">
                                         <img class="max-w-[60%] max-h-[100px]"
                                              src="{{ asset('img/partners/hibook.svg') }}" alt="Logo partenaire 2"/>
                                     </div>
                                 </li>
 
                                 <li class="w-full sm:w-1/3 md:w-1/5 flex justify-center items-center border-2 border-solid border-gray-200 h-[145px] overflow-hidden">
-                                    <div class="list_inner w-full h-full flex justify-center items-center opacity-50 transition-all duration-300 hover:opacity-100">
+                                    <div
+                                        class="list_inner w-full h-full flex justify-center items-center opacity-50 transition-all duration-300 hover:opacity-100">
                                         <img class="max-w-[60%] max-h-[100px]"
                                              src="{{ asset('img/partners/overlap.svg') }}" alt="Logo partenaire 3"/>
                                     </div>
                                 </li>
 
                                 <li class="w-full sm:w-1/3 md:w-1/5 flex justify-center items-center border-2 border-solid border-gray-200 h-[145px] overflow-hidden">
-                                    <div class="list_inner w-full h-full flex justify-center items-center opacity-50 transition-all duration-300 hover:opacity-100">
+                                    <div
+                                        class="list_inner w-full h-full flex justify-center items-center opacity-50 transition-all duration-300 hover:opacity-100">
                                         <img class="max-w-[60%] max-h-[100px]"
                                              src="{{ asset('img/partners/ridervalley.svg') }}" alt="Logo partenaire 4"/>
                                     </div>
                                 </li>
 
                                 <li class="w-full sm:w-1/3 md:w-1/5 flex justify-center items-center border-2 border-solid border-gray-200 h-[145px] overflow-hidden">
-                                    <div class="list_inner w-full h-full flex justify-center items-center opacity-50 transition-all duration-300 hover:opacity-100">
+                                    <div
+                                        class="list_inner w-full h-full flex justify-center items-center opacity-50 transition-all duration-300 hover:opacity-100">
                                         <img class="max-w-[70%] max-h-[100px]"
-                                             src="{{ asset('img/partners/vquatrodesign.svg') }}" alt="Logo partenaire 5"/>
+                                             src="{{ asset('img/partners/vquatrodesign.svg') }}"
+                                             alt="Logo partenaire 5"/>
                                     </div>
                                 </li>
                             </ul>
@@ -122,7 +131,8 @@
                                     x-data="factCard(25)"
                                     @mouseenter="isHovered = true"
                                     @mouseleave="isHovered = false">
-                                    <div class="relative w-full cursor-pointer overflow-hidden border border-solid border-[rgba(0,0,0,.1)] p-10 text-center">
+                                    <div
+                                        class="relative w-full cursor-pointer overflow-hidden border border-solid border-[rgba(0,0,0,.1)] p-10 text-center">
                                         <div class="relative z-10">
                                             <h3 class="mb-1 text-2xl font-semibold transition-colors duration-300"
                                                 x-intersect:enter.once="startAnimation()"
@@ -149,7 +159,8 @@
                                     x-data="factCard(6)"
                                     @mouseenter="isHovered = true"
                                     @mouseleave="isHovered = false">
-                                    <div class="relative w-full cursor-pointer overflow-hidden border border-solid border-[rgba(0,0,0,.1)] p-10 text-center">
+                                    <div
+                                        class="relative w-full cursor-pointer overflow-hidden border border-solid border-[rgba(0,0,0,.1)] p-10 text-center">
                                         <div class="relative z-10">
                                             <h3 class="mb-1 text-2xl font-semibold transition-colors duration-300"
                                                 x-intersect:enter.once="startAnimation()"
@@ -176,7 +187,8 @@
                                     x-data="factCard(4)"
                                     @mouseenter="isHovered = true"
                                     @mouseleave="isHovered = false">
-                                    <div class="relative w-full cursor-pointer overflow-hidden border border-solid border-[rgba(0,0,0,.1)] p-10 text-center">
+                                    <div
+                                        class="relative w-full cursor-pointer overflow-hidden border border-solid border-[rgba(0,0,0,.1)] p-10 text-center">
                                         <div class="relative z-10">
                                             <h3 class="mb-1 text-2xl font-semibold transition-colors duration-300"
                                                 x-intersect:enter.once="startAnimation()"

@@ -51,7 +51,6 @@ class CategorySeeder extends Seeder
             // Crée la catégorie parente avec la colonne d'ordre
             $parent = Category::create([
                 'name' => $parentName,
-                'slug' => Str::slug($parentName),
                 'order_column' => $order,
             ]);
 
@@ -61,7 +60,6 @@ class CategorySeeder extends Seeder
                 Category::create([
                     'parent_id' => $parent->id,
                     'name' => $childName,
-                    'slug' => Str::slug(Str::slug($parentName) . '-' . $childName),
                 ]);
             }
 
