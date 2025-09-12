@@ -57,11 +57,16 @@ class PortfolioItemResource extends Resource
                                 Forms\Components\FileUpload::make('images')
                                     ->label('Images de la galerie')
                                     ->multiple()
-                                    ->image()
                                     ->reorderable()
                                     ->directory('portfolio-galleries')
                                     ->helperText('La première image sera utilisée pour la galerie. L\'image de couverture sera affichée sur la grille.')
                                     ->visible(fn (Get $get): bool => $get('layout') === PortfolioLayout::SLIDER->value),
+
+                                Forms\Components\FileUpload::make('images') // Assurez-vous d'avoir une colonne 'pdf_file' dans votre table
+                                ->label('Fichier PDF de la présentation')
+                                    ->directory('portfolio-presentations') // Un dossier de stockage dédié
+                                    ->acceptedFileTypes(['application/pdf']) // On n'accepte que les PDF
+                                    ->visible(fn (Get $get): bool => $get('layout') === PortfolioLayout::PRESENTATION->value),
                             ]),
                     ])
                     ->columnSpan(['lg' => 2]),

@@ -1,13 +1,13 @@
 <div>
+{{--    <script>
+        const initialCategories = @json($alpineCategories); // Assurez-vous que $categories est défini dans votre contrôleur
+        const initialItems = @json($alpineItems); // Assurez-vous que $items est défini dans votre contrôleur
+        console.log('initialCategories:', initialCategories);
+        console.log('initialItems:', initialItems);
+    </script>--}}
     <script>
+
         function portfolioGallery(initialCategories, initialItems) {
-
-            // ÉTAPE DE DÉBOGAGE : Vérifiez que les données arrivent ici.
-            console.log('Données reçues dans la fonction :', {
-                categories: initialCategories,
-                items: initialItems
-            });
-
             return {
                 // --- ÉTAT (STATE) ---
                 modalOpen: false,
@@ -17,16 +17,18 @@
                 categories: initialCategories,
                 items: initialItems,
 
-
                 // --- GETTERS (Propriétés calculées) ---
                 get filteredItems() {
-                    if (this.activeFilter === 'All') {
-                        return this.items;
-                    }
-                    return this.items.filter(item => item.tags.includes(this.activeFilter));
+                    const filtered = this.activeFilter === 'All' ?
+                        this.items :
+                        this.items.filter(item => item.tags.includes(this.activeFilter));
+                    console.log('filteredItems calculé:', filtered);
+                    return filtered;
                 },
                 get currentItem() {
-                    return this.filteredItems.length > 0 ? this.filteredItems[this.currentIndex] : null;
+                    const item = this.filteredItems.length > 0 ? this.filteredItems[this.currentIndex] : null;
+                    console.log('currentItem calculé:', item);
+                    return item;
                 },
 
                 // --- MÉTHODES ---
@@ -35,7 +37,15 @@
                     this.$watch('modalOpen', open => {
                         document.body.style.overflow = open ? 'hidden' : 'auto';
                     });
-                    console.log('Galerie initialisée avec', this.items.length, 'items et', this.categories.length, 'catégories.');
+                    this.$watch('currentIndex', index => {
+                        console.log('currentIndex mis à jour:', index);
+                    });
+                    this.$watch('filteredItems', items => {
+                        console.log('filteredItems mis à jour:', items);
+                    });
+                    this.$watch('currentItem', item => {
+                        console.log('currentItem mis à jour:', item);
+                    });
                 },
                 selectFilter(filter, isParent = false) {
                     if (isParent) {
@@ -52,26 +62,34 @@
                             this.activeParent = null;
                         }
                     }
+                    console.log('Filtre sélectionné:', filter, 'activeParent:', this.activeParent, 'activeFilter:', this.activeFilter);
                 },
                 openModal(index) {
+                    console.log('openModal appelé avec index:', index);
                     this.currentIndex = index;
                     this.modalOpen = true;
                 },
                 closeModal() {
+                    console.log('closeModal appelé.');
                     this.modalOpen = false;
                 },
                 nextItem() {
                     if (!this.modalOpen || !this.filteredItems.length) return;
-                    this.currentIndex = (this.currentIndex + 1) % this.filteredItems.length;
+                    const newIndex = (this.currentIndex + 1) % this.filteredItems.length;
+                    console.log('nextItem: currentIndex mis à jour de', this.currentIndex, 'à', newIndex);
+                    this.currentIndex = newIndex;
                 },
                 prevItem() {
                     if (!this.modalOpen || !this.filteredItems.length) return;
-                    this.currentIndex = (this.currentIndex - 1 + this.filteredItems.length) % this.filteredItems.length;
+                    const newIndex = (this.currentIndex - 1 + this.filteredItems.length) % this.filteredItems.length;
+                    console.log('prevItem: currentIndex mis à jour de', this.currentIndex, 'à', newIndex);
+                    this.currentIndex = newIndex;
                 }
             }
-
         }
     </script>
+
+
 
     <div x-data='portfolioGallery(@json($alpineCategories), @json($alpineItems))' x-init="init()">
         <!-- Composant autonome -->
@@ -185,32 +203,23 @@
                                                 <span class="sr-only">Fermer la modale</span>
                                             </button>
                                             <div class="w-full h-full flex items-center justify-center overflow-auto">
+                                                <script>
+                                                    console.log('Affichage de la vue vidéo pour currentItem');
+                                                </script>
                                                 <template x-if="currentItem">
-                                                    <div class="w-full h-full">
-                                                        <template x-if="currentItem.mediaType === 'image'">
-                                                            <img :src="currentItem.mediaSrc" :alt="currentItem.alt"
-                                                                 class="max-w-full max-h-[80vh] object-contain mx-auto">
-                                                        </template>
-                                                        <template x-if="currentItem.mediaType === 'video'">
-                                                            <div class="aspect-w-16 aspect-h-9 w-full">
-                                                                <iframe :src="currentItem.mediaSrc" frameborder="0"
-                                                                        allow="autoplay; fullscreen; picture-in-picture"
-                                                                        allowfullscreen></iframe>
-                                                            </div>
-                                                        </template>
-                                                        <template x-if="currentItem.mediaType === 'presentation'">
-                                                            <div class="w-full h-full">
-                                                                <template
-                                                                    x-if="currentItem.mediaType === 'presentation'">
-                                                                    <div class="w-full h-[75vh]" x-show="true">
-                                                                        <iframe :src="currentItem.mediaSrc" width="100%"
-                                                                                height="100%" style="border:0"
-                                                                                allowfullscreen loading="lazy"
-                                                                                referrerpolicy="no-referrer-when-downgrade"></iframe>
-                                                                    </div>
-                                                                </template>
-                                                            </div>
-                                                        </template>
+                                                    <div x-init="console.log('currentItem.mediaType:', currentItem.mediaType)">
+                                                        <div x-show="currentItem.mediaType === 'video'">
+                                                            @include('portfolio-display._video')
+                                                        </div>
+                                                        <div x-show="currentItem.mediaType === 'presentation'">
+                                                            @include('portfolio-display._pdf')
+                                                        </div>
+                                                        <div x-show="currentItem.mediaType === 'image'">
+                                                            @include('portfolio-display._image')
+                                                        </div>
+                                                        <div x-show="currentItem.mediaType === 'slider'">
+                                                            @include('portfolio-display._slider')
+                                                        </div>
                                                     </div>
                                                 </template>
                                             </div>
@@ -221,22 +230,6 @@
                                                    x-text="currentItem?.tags.join(', ')"></p>
                                             </div>
                                         </div>
-                                        <button @click.stop="prevItem"
-                                                class="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 text-white bg-black/50 rounded-full p-2 hover:bg-black/80 z-10">
-                                            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                      d="M15 19l-7-7 7-7"/>
-                                            </svg>
-                                            <span class="sr-only">Précédent</span>
-                                        </button>
-                                        <button @click.stop="nextItem"
-                                                class="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 text-white bg-black/50 rounded-full p-2 hover:bg-black/80 z-10">
-                                            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                      d="M9 5l7 7-7 7"/>
-                                            </svg>
-                                            <span class="sr-only">Suivant</span>
-                                        </button>
                                     </div>
                                 </ul>
                             </div>
