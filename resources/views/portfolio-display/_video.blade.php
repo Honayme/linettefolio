@@ -21,7 +21,8 @@
         </video>
     </template>
 </div>
---}}
+--}}{{--
+
 
 <div x-data="{
         playing: false,
@@ -183,8 +184,12 @@
         crossorigin="anonymous"
     >
         <source :src="currentItem.mediaSrc" type="video/mp4" />
-{{--        <source :src="sources.webm" type="video/webm" />--}}
-{{--        <source :src="sources.ogg" type="video/ogg" />--}}
+--}}
+{{--        <source :src="sources.webm" type="video/webm" />--}}{{--
+
+--}}
+{{--        <source :src="sources.ogg" type="video/ogg" />--}}{{--
+
     </video>
     <div x-show="videoPlayerReady" class="absolute inset-0 w-full h-full">
         <div x-ref="videoBackground" @click="togglePlay()" class="flex absolute inset-0 z-30 justify-center items-center w-full h-full bg-black cursor-pointer group">
@@ -307,3 +312,4 @@
         </div>
     </div>
 </div>
+--}}

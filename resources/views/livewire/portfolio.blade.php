@@ -1,12 +1,5 @@
 <div>
-{{--    <script>
-        const initialCategories = @json($alpineCategories); // Assurez-vous que $categories est défini dans votre contrôleur
-        const initialItems = @json($alpineItems); // Assurez-vous que $items est défini dans votre contrôleur
-        console.log('initialCategories:', initialCategories);
-        console.log('initialItems:', initialItems);
-    </script>--}}
     <script>
-
         function portfolioGallery(initialCategories, initialItems) {
             return {
                 // --- ÉTAT (STATE) ---
@@ -22,12 +15,12 @@
                     const filtered = this.activeFilter === 'All' ?
                         this.items :
                         this.items.filter(item => item.tags.includes(this.activeFilter));
-                    console.log('filteredItems calculé:', filtered);
+                    // console.log('filteredItems calculé:', filtered);
                     return filtered;
                 },
                 get currentItem() {
                     const item = this.filteredItems.length > 0 ? this.filteredItems[this.currentIndex] : null;
-                    console.log('currentItem calculé:', item);
+                    // console.log('currentItem calculé:', item);
                     return item;
                 },
 
@@ -38,13 +31,13 @@
                         document.body.style.overflow = open ? 'hidden' : 'auto';
                     });
                     this.$watch('currentIndex', index => {
-                        console.log('currentIndex mis à jour:', index);
+                        // console.log('currentIndex mis à jour:', index);
                     });
                     this.$watch('filteredItems', items => {
-                        console.log('filteredItems mis à jour:', items);
+                        // console.log('filteredItems mis à jour:', items);
                     });
                     this.$watch('currentItem', item => {
-                        console.log('currentItem mis à jour:', item);
+                        // console.log('currentItem mis à jour:', item);
                     });
                 },
                 selectFilter(filter, isParent = false) {
@@ -65,7 +58,7 @@
                     console.log('Filtre sélectionné:', filter, 'activeParent:', this.activeParent, 'activeFilter:', this.activeFilter);
                 },
                 openModal(index) {
-                    console.log('openModal appelé avec index:', index);
+                    // console.log('openModal appelé avec index:', index);
                     this.currentIndex = index;
                     this.modalOpen = true;
                 },
@@ -76,13 +69,13 @@
                 nextItem() {
                     if (!this.modalOpen || !this.filteredItems.length) return;
                     const newIndex = (this.currentIndex + 1) % this.filteredItems.length;
-                    console.log('nextItem: currentIndex mis à jour de', this.currentIndex, 'à', newIndex);
+                    // console.log('nextItem: currentIndex mis à jour de', this.currentIndex, 'à', newIndex);
                     this.currentIndex = newIndex;
                 },
                 prevItem() {
                     if (!this.modalOpen || !this.filteredItems.length) return;
                     const newIndex = (this.currentIndex - 1 + this.filteredItems.length) % this.filteredItems.length;
-                    console.log('prevItem: currentIndex mis à jour de', this.currentIndex, 'à', newIndex);
+                    // console.log('prevItem: currentIndex mis à jour de', this.currentIndex, 'à', newIndex);
                     this.currentIndex = newIndex;
                 }
             }

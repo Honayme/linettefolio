@@ -16,6 +16,10 @@
         <!-- Fonts -->
         <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
 
+        <script>
+            window.APP_URL = '{{ config('app.url') }}';
+        </script>
+
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         @livewireStyles
 
@@ -32,5 +36,8 @@
 
     @livewireScriptConfig
     @stack('scripts')
+
+    <script src="{{ asset('template/plugins.js') }}" defer></script>
+    <script src="{{ asset('template/init.js') }}" defer></script>
     </body>
 </html>

@@ -7,6 +7,24 @@ window.$ = window.jQuery = $;
 // Importer Livewire et son instance d'Alpine
 import { Livewire, Alpine } from '../../vendor/livewire/livewire/dist/livewire.esm';
 
+
+// --- Configuration de PDF.js (Méthode 100% ES Module / .mjs) ---
+
+// 1. Importer la librairie principale en tant que module.
+// On ne spécifie plus de chemin, `pdfjs-dist` va automatiquement
+// nous donner son point d'entrée principal en module (.mjs).
+import * as pdfjsLib from 'pdfjs-dist';
+
+// 2. Importer le WORKER module (.mjs) en tant qu'URL pour Vite.
+import pdfjsWorker from 'pdfjs-dist/build/pdf.worker.min.mjs?url';
+
+// 3. Assigner l'URL du worker générée par Vite.
+pdfjsLib.GlobalWorkerOptions.workerSrc = pdfjsWorker;
+
+// 4. Exposer la librairie à 'window' pour Alpine.js.
+window.pdfjsLib = pdfjsLib;
+
+
 // Enregistrer votre composant DIRECTEMENT sur l'objet Alpine
 Alpine.data('factCard', (targetNumber) => ({
     isHovered: false,      // Gère l'état de survol de la carte
@@ -46,24 +64,26 @@ Alpine.data('factCard', (targetNumber) => ({
 Livewire.start();
 
 // Attend que le DOM soit entièrement chargé avant d'exécuter le code.
+/*
 $(function() {
     console.log("DOM is ready. Loading plugins first...");
 
     // 1. On charge d'abord plugins.js
-    import('./template/plugins.js')
+    import('../../public/template/plugins.js')
         .then(() => {
             // 2. On utilise setTimeout pour pousser l'exécution de init.js
             //    à la fin de la file d'attente du navigateur.
             //    Cela garantit que TOUS les plugins ont eu le temps de s'initialiser.
             setTimeout(() => {
                 console.log("Plugins should be fully initialized. Now loading init script.");
-                import('./template/init.js');
+                import('../../public/template/init.js');
             }, 0); // Le délai de 0ms est crucial ici
         })
         .catch(error => {
             console.error("Error loading template scripts:", error);
         });
 });
+*/
 
 // La version améliorée avec la délégation d'événements
 function tokyo_tm_trigger_menu_delegated(){
