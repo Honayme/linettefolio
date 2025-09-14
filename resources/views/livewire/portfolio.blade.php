@@ -151,7 +151,9 @@
                                     <!-- Grille Masonry -->
                                     <div class="columns-1 sm:columns-2 md:columns-3 lg:columns-3 xl:columns-3 gap-4">
                                         <template x-for="(item, index) in filteredItems" :key="item.id">
-                                            <div @click="openModal(index)"
+                                            <div @click.prevent="item.mediaType === 'presentation'
+                                                                 ? $dispatch('open-pdf-overlay', { url: item.mediaSrc })
+                                                                 : openModal(index)"
                                                  class="mb-4 break-inside-avoid cursor-pointer group relative rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300">
                                                 <img :src="item.coverSrc" :alt="item.alt" :width="item.width"
                                                      :height="item.height" loading="lazy"
@@ -196,16 +198,10 @@
                                                 <span class="sr-only">Fermer la modale</span>
                                             </button>
                                             <div class="w-full h-full flex items-center justify-center overflow-auto">
-                                                <script>
-                                                    console.log('Affichage de la vue vidéo pour currentItem');
-                                                </script>
                                                 <template x-if="currentItem">
                                                     <div x-init="console.log('currentItem.mediaType:', currentItem.mediaType)">
                                                         <div x-show="currentItem.mediaType === 'video'">
                                                             @include('portfolio-display._video')
-                                                        </div>
-                                                        <div x-show="currentItem.mediaType === 'presentation'">
-                                                            @include('portfolio-display._pdf')
                                                         </div>
                                                         <div x-show="currentItem.mediaType === 'image'">
                                                             @include('portfolio-display._image')
@@ -232,6 +228,11 @@
             </div>
         </div>
     </div>
+    <!-- ========================================================== -->
+    <!-- ============           PDF VIEWER            ============= -->
+    <!-- ========================================================== -->
+    @include('portfolio-display._pdf-viewer-overlay')
+
 </div>
 
 
