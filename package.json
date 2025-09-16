@@ -19,6 +19,6 @@
     },
     "dependencies": {
         "jquery": "^3.7.1",
-        "pdfjs-dist": "^5.4.149"
+        "pdfjs-dist": "^2.16.105"
     }
 }
