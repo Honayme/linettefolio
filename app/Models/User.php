@@ -53,10 +53,10 @@ class User extends Authenticatable implements FilamentUser
     {
         // Ici, vous définissez la logique d'autorisation.
         // Exemple 1 : Autoriser tous les utilisateurs (pour un test rapide, non recommandé en production)
-//        return true;
+        return true;
 
         // Exemple 2 : Autoriser uniquement les utilisateurs avec une adresse e-mail spécifique
-         return $this->email === 'lina-marie.michel@hotmail.fr';
+//         return $this->email === 'lina-marie.michel@hotmail.fr';
 
         // Exemple 3 : Autoriser les utilisateurs dont l'e-mail se termine par un domaine spécifique
         // et qui ont vérifié leur e-mail. [16]
