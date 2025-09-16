@@ -1,7 +1,7 @@
 {
-  "node_modules/pdfjs-dist/build/pdf.worker.min.mjs": {
-    "file": "assets/pdf.worker.min-r-TJsTTt.mjs",
-    "src": "node_modules/pdfjs-dist/build/pdf.worker.min.mjs"
+  "node_modules/pdfjs-dist/build/pdf.worker.js": {
+    "file": "assets/pdf.worker-JgWQ90x2.js",
+    "src": "node_modules/pdfjs-dist/build/pdf.worker.js"
   },
   "resources/css/app.css": {
     "file": "assets/app-DuNbfd0t.css",
@@ -32,12 +32,12 @@
     "src": "resources/font/fontello.woff2"
   },
   "resources/js/app.js": {
-    "file": "assets/app-DlsnqVCr.js",
+    "file": "assets/app-mh8zPMb1.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
     "assets": [
-      "assets/pdf.worker.min-r-TJsTTt.mjs"
+      "assets/pdf.worker-JgWQ90x2.js"
     ]
   }
 }

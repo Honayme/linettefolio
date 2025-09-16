@@ -15,8 +15,8 @@ import { Livewire, Alpine } from '../../vendor/livewire/livewire/dist/livewire.e
 // nous donner son point d'entrée principal en module (.mjs).
 import * as pdfjsLib from 'pdfjs-dist';
 
-// 2. Importer le WORKER module (.mjs) en tant qu'URL pour Vite.
-import pdfjsWorker from 'pdfjs-dist/build/pdf.worker.min.mjs?url';
+// 2. Importer le WORKER module pour la version 2.x
+import pdfjsWorker from 'pdfjs-dist/build/pdf.worker.js?url';
 
 // 3. Assigner l'URL du worker générée par Vite.
 pdfjsLib.GlobalWorkerOptions.workerSrc = pdfjsWorker;
@@ -58,7 +58,112 @@ Alpine.data('factCard', (targetNumber) => ({
     }
 }));
 
+// Composant pour l'overlay PDF - Version simple et directe
+Alpine.data('pdfViewerOverlay', () => ({
+    isOpen: false,
+    pdfUrl: null,
+    pdfFileName: null,
+    pdfDoc: null,
+    pageNum: 1,
+    numPages: 0,
+    pageRendering: false,
+    scale: 1.5,
 
+    open(url) {
+        this.pdfUrl = url;
+        this.pdfFileName = url.split('/').pop();
+        this.isOpen = true;
+
+        // Attendre que l'overlay soit visible
+        this.$nextTick(() => {
+            this.loadPDF();
+        });
+    },
+
+    close() {
+        this.isOpen = false;
+        this.cleanup();
+    },
+
+    cleanup() {
+        this.pdfDoc = null;
+        this.pdfUrl = null;
+        this.pdfFileName = null;
+        this.pageNum = 1;
+        this.numPages = 0;
+        this.pageRendering = false;
+    },
+
+    loadPDF() {
+        if (!this.pdfUrl) return;
+
+        const loadingTask = pdfjsLib.getDocument({
+            url: this.pdfUrl,
+            cMapUrl: '/node_modules/pdfjs-dist/cmaps/',
+            cMapPacked: true
+        });
+
+        loadingTask.promise.then((pdfDoc) => {
+            this.pdfDoc = pdfDoc;
+            this.numPages = pdfDoc.numPages;
+            this.pageNum = 1;
+            this.renderPage(1);
+
+        }).catch((error) => {
+            console.error('Error loading PDF:', error);
+            alert('Erreur de chargement du PDF: ' + error.message);
+            this.close();
+        });
+    },
+
+    renderPage(pageNumber) {
+        if (!this.pdfDoc || this.pageRendering) return;
+
+        this.pageRendering = true;
+
+        // Utiliser Alpine.raw() pour éviter le proxy d'Alpine
+        Alpine.raw(this.pdfDoc).getPage(pageNumber).then((page) => {
+            const canvas = this.$refs.pdfCanvas;
+            if (!canvas) {
+                this.pageRendering = false;
+                return;
+            }
+
+            const context = canvas.getContext('2d');
+            const viewport = page.getViewport({ scale: this.scale });
+
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+
+            const renderContext = {
+                canvasContext: context,
+                viewport: viewport
+            };
+
+            return page.render(renderContext).promise;
+
+        }).then(() => {
+            this.pageRendering = false;
+
+        }).catch((error) => {
+            console.error('Error rendering PDF page:', error);
+            this.pageRendering = false;
+            alert('Erreur de rendu: ' + error.message);
+        });
+    },
+
+    prevPage() {
+        if (this.pageNum <= 1) return;
+        this.pageNum--;
+        this.renderPage(this.pageNum);
+    },
+
+    nextPage() {
+        if (this.pageNum >= this.numPages) return;
+        this.pageNum++;
+        this.renderPage(this.pageNum);
+    }
+}));
 
 // Maintenant que tout est configuré, démarrer Livewire (qui démarrera Alpine)
 Livewire.start();

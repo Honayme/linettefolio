@@ -74,6 +74,7 @@
 
 <script>
     function pdfViewerOverlay() {
+        console.log('PDF Viewer Overlay initialized');
         return {
             // état
             isOpen: false,
@@ -88,10 +89,15 @@
 
             // API
             open(url) {
-                if (!url) return;
+                console.log('PDF overlay open() called with:', url);
+                if (!url) {
+                    console.error('No URL provided to open()');
+                    return;
+                }
                 this.pdfUrl = url;
                 this.pdfFileName = this._extractName(url);
                 this.isOpen = true;
+                console.log('Overlay state set to open, isOpen:', this.isOpen);
 
                 // Charge après rendu du DOM (ne dépend plus de transitionend)
                 const start = () => this.loadAndRender();
@@ -128,6 +134,16 @@
             // coeur
             loadAndRender() {
                 if (!this.pdfUrl || this._pdfDoc) return;
+
+                console.log('Loading PDF:', this.pdfUrl);
+                console.log('pdfjsLib available:', typeof pdfjsLib !== 'undefined');
+
+                if (typeof pdfjsLib === 'undefined') {
+                    console.error('pdfjsLib is not available!');
+                    alert('PDF.js not loaded properly');
+                    return;
+                }
+
                 this.pageRendering = true;
 
                 const task = pdfjsLib.getDocument(this.pdfUrl);
@@ -249,8 +265,7 @@
                     this.pageRendering = false;
                     this._renderTask = null;
                 });
-            }
-
+            },
 
             prevPage() {
                 if (this.pageNum <= 1 || this.pageRendering) return;
