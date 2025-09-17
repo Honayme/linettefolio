@@ -10,84 +10,99 @@
                                 <div class="left">
                                     <span
                                         class="inline-block bg-[rgba(0,0,0,.04)] uppercase py-[4px] px-[10px] font-semibold text-[12px] text-[#333] font-montserrat tracking-[0px] mb-[11px]">About</span>
-                                    <h3 class="font-extrabold font-montserrat">About Me</h3>
+                                    <h3 class="font-extrabold font-montserrat">{{ $content->page_title ?? 'About Me' }}</h3>
                                 </div>
                             </div>
                         </div>
                         <div class="top_author_image w-full h-auto clear-both float-left relative mb-[35px]">
-                            <img class="w-full h-auto object-cover" src="{{ asset('img/slider/1.jpg') }}"
-                                 alt="Description pertinente de l'image">
+                            <img class="w-full h-auto object-cover"
+                                 src="{{ $content->hero_image ? asset('storage/' . $content->hero_image) : asset('img/slider/1.jpg') }}"
+                                 alt="{{ $content->hero_image_alt ?? 'Description pertinente de l\'image' }}">
 
                         </div>
                         <div
                             class="about_title w-full h-auto clear-both float-left border-solid border-[#DFDFDF] border-b pb-[20px] mb-[30px]">
-                            <h3 class="text-[22px] font-bold">Lina-Marie MICHEL</h3>
-                            <span>Marketing & Communication</span>
+                            <h3 class="text-[22px] font-bold">{{ $content->full_name ?? 'Lina-Marie MICHEL' }}</h3>
+                            <span>{{ $content->job_title ?? 'Marketing & Communication' }}</span>
                         </div>
                         <div
                             class="about_text w-full h-auto clear-both float-left border-solid border-[#DFDFDF] border-b pb-[31px] mb-[30px]">
-                            <p class="mb-[11px]">Chargée de communication et marketing digital avec plus de 6 ans
-                                d’expérience. Gestion de projets multicanaux, community management et graphic design
-                                (print & web).</p>
-                            <p>Actuellement en poste chez Pellenc ST, je suis habituée à travailler en équipe
-                                multiculturelle, à piloter des projets et à m’adapter au besoin.</p>
+                            {!! nl2br(e($content->description ?? 'Chargée de communication et marketing digital avec plus de 6 ans d\'expérience. Gestion de projets multicanaux, community management et graphic design (print & web).\n\nActuellement en poste chez Pellenc ST, je suis habituée à travailler en équipe multiculturelle, à piloter des projets et à m\'adapter au besoin.')) !!}
                         </div>
                         <div
                             class="tokyo_tm_short_info w-full h-auto clear-both float-left flex border-solid border-[#DFDFDF] border-b pb-[30px] mb-[40px]">
                             <div class="left w-1/2 pr-[50px]">
                                 <div class="tokyo_tm_info w-full h-auto clear-both float-left">
                                     <ul class="m-0 list-none">
+                                        @if($content->address)
                                         <li class="m-0">
                                             <span class="min-w-[100px] float-left mr-[10px] font-bold text-black">Adresse:</span>
-                                            <span>88c rue de bas vernaz, 74240 GAILLARD</span>
+                                            <span>{{ $content->address }}</span>
                                         </li>
+                                        @endif
+                                        @if($content->email)
                                         <li class="m-0">
                                             <span
                                                 class="min-w-[100px] float-left mr-[10px] font-bold text-black">Email:</span>
                                             <span><a class="text-[#767676] transition-all duration-300 hover:text-black"
-                                                     href="mailto:lina-marie.michel@hotmail.fr">lina-marie.michel@hotmail.fr</a></span>
+                                                     href="mailto:{{ $content->email }}">{{ $content->email }}</a></span>
                                         </li>
+                                        @endif
+                                        @if($content->phone)
                                         <li class="m-0">
                                             <span class="min-w-[100px] float-left mr-[10px] font-bold text-black">Téléphone:</span>
                                             <span><a class="text-[#767676] transition-all duration-300 hover:text-black"
-                                                     href="tel:+33605276622">+33 6 05 27 66 22</a></span>
+                                                     href="tel:{{ str_replace(' ', '', $content->phone) }}">{{ $content->phone }}</a></span>
                                         </li>
+                                        @endif
+                                        @if($content->driving_license)
                                         <li class="m-0">
                                             <span class="min-w-[100px] float-left mr-[10px] font-bold text-black">Permis:</span>
-                                            <span>Permis B, véhiculée</span>
+                                            <span>{{ $content->driving_license }}</span>
                                         </li>
+                                        @endif
                                     </ul>
                                 </div>
                             </div>
                             <div class="right w-1/2 pl-[50px]">
                                 <div class="tokyo_tm_info">
                                     <ul class="m-0 list-none">
+                                        @if($content->nationality)
                                         <li class="m-0">
                                             <span class="min-w-[100px] float-left mr-[10px] font-bold text-black">Nationalité:</span>
-                                            <span>Française</span>
+                                            <span>{{ $content->nationality }}</span>
                                         </li>
+                                        @endif
+                                        @if($content->education_school)
                                         <li class="m-0">
                                             <span class="min-w-[100px] float-left mr-[10px] font-bold text-black">Études:</span>
-                                            <span>ESUPCOM</span>
+                                            <span>{{ $content->education_school }}</span>
                                         </li>
+                                        @endif
+                                        @if($content->education_degree)
                                         <li class="m-0">
                                             <span class="min-w-[100px] float-left mr-[10px] font-bold text-black">Diplôme:</span>
-                                            <span>Master</span>
+                                            <span>{{ $content->education_degree }}</span>
                                         </li>
+                                        @endif
+                                        @if($content->languages)
                                         <li class="m-0">
                                             <span class="min-w-[100px] float-left mr-[10px] font-bold text-black">Langues:</span>
-                                            <span>Français, Anglais (B2), Italien</span>
+                                            <span>{{ $content->languages }}</span>
                                         </li>
+                                        @endif
                                     </ul>
                                 </div>
                             </div>
                         </div>
 
+                        @if($content->cv_file)
                         <div class="tokyo_tm_button" data-position="left">
-                            <a href="{{ asset('img/CV_22.08.jpg') }}" download>
+                            <a href="{{ $content->cv_file && str_starts_with($content->cv_file, 'storage/') ? asset($content->cv_file) : ($content->cv_file ? asset('storage/' . $content->cv_file) : asset('img/CV_22.08.jpg')) }}" download>
                                 <span>Télécharger le CV</span>
                             </a>
                         </div>
+                        @endif
                     </div>
                 </div>
                 <!-- Le conteneur principal qui gère l'état de l'animation -->
@@ -102,145 +117,64 @@
                             <!-- Colonne de gauche -->
                             <div class="left w-full md:w-1/2 md:pr-[50px]">
                                 <div class="tokyo_section_title w-full h-auto clear-both float-left mb-[40px]">
-                                    <h3 class="text-[20px] font-bold">Graphisme & Web</h3>
+                                    <h3 class="text-[20px] font-bold">{{ $content->skills_section1_title ?? 'Graphisme & Web' }}</h3>
                                 </div>
                                 <div class="tokyo_progress space-y-8">
-
-                                    <!-- Compétence: Suite Adobe -->
-                                    <div class="progress_inner"
-                                         x-data="{ target: 95, current: 0, interval: null, speed: 15 }"
-                                         x-init="$watch('startAnimation', value => {
-                                        if (!value) return;
-                                        interval = setInterval(() => {
-                                            if (current < target) current++;
-                                            else clearInterval(interval);
-                                        }, speed);
-                                     })">
-                        <span>
-                            <span class="label">Suite Adobe (Illustrator, InDesign, Photoshop)</span>
-                            <span class="number"><span x-text="current">0</span>%</span>
-                        </span>
-                                        <div class="background bg-gray-200 rounded-full h-2">
-                                            <div
-                                                class="bar h-full bg-black rounded-full transition-all duration-100 ease-linear"
-                                                :style="`width: ${current}%`"></div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Compétence: Premiere Pro -->
-                                    <div class="progress_inner"
-                                         x-data="{ target: 85, current: 0, interval: null, speed: 20 }"
-                                         x-init="$watch('startAnimation', value => {
-                                        if (!value) return;
-                                        interval = setInterval(() => {
-                                            if (current < target) current++;
-                                            else clearInterval(interval);
-                                        }, speed);
-                                     })">
-                        <span>
-                            <span class="label">Premiere Pro</span>
-                            <span class="number"><span x-text="current">0</span>%</span>
-                        </span>
-                                        <div class="background bg-gray-200 rounded-full h-2">
-                                            <div
-                                                class="bar h-full bg-black rounded-full transition-all duration-100 ease-linear"
-                                                :style="`width: ${current}%`"></div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Compétence: WordPress -->
-                                    <div class="progress_inner"
-                                         x-data="{ target: 90, current: 0, interval: null, speed: 18 }"
-                                         x-init="$watch('startAnimation', value => {
-                                        if (!value) return;
-                                        interval = setInterval(() => {
-                                            if (current < target) current++;
-                                            else clearInterval(interval);
-                                        }, speed);
-                                     })">
-                        <span>
-                            <span class="label">WordPress</span>
-                            <span class="number"><span x-text="current">0</span>%</span>
-                        </span>
-                                        <div class="background bg-gray-200 rounded-full h-2">
-                                            <div
-                                                class="bar h-full bg-black rounded-full transition-all duration-100 ease-linear"
-                                                :style="`width: ${current}%`"></div>
-                                        </div>
-                                    </div>
-
+                                    @if($content && $content->skills_graphism)
+                                        @foreach($content->skills_graphism as $skill)
+                                            <div class="progress_inner"
+                                                 x-data="{ target: {{ $skill['percentage'] }}, current: 0, interval: null, speed: {{ 100 - $skill['percentage'] < 20 ? 15 : 20 }} }"
+                                                 x-init="$watch('startAnimation', value => {
+                                                    if (!value) return;
+                                                    interval = setInterval(() => {
+                                                        if (current < target) current++;
+                                                        else clearInterval(interval);
+                                                    }, speed);
+                                                 })">
+                                <span>
+                                    <span class="label">{{ $skill['name'] }}</span>
+                                    <span class="number"><span x-text="current">0</span>%</span>
+                                </span>
+                                                <div class="background bg-gray-200 rounded-full h-2">
+                                                    <div
+                                                        class="bar h-full bg-black rounded-full transition-all duration-100 ease-linear"
+                                                        :style="`width: ${current}%`"></div>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    @endif
                                 </div>
                             </div>
 
                             <!-- Colonne de droite -->
                             <div class="right w-full md:w-1/2 md:pl-[50px]">
                                 <div class="tokyo_section_title w-full h-auto clear-both float-left mb-[40px]">
-                                    <h3 class="text-[20px] font-bold">Marketing & Outils</h3>
+                                    <h3 class="text-[20px] font-bold">{{ $content->skills_section2_title ?? 'Marketing & Outils' }}</h3>
                                 </div>
                                 <div class="tokyo_progress space-y-8">
-
-                                    <!-- Compétence: Salesforce -->
-                                    <div class="progress_inner"
-                                         x-data="{ target: 90, current: 0, interval: null, speed: 18 }"
-                                         x-init="$watch('startAnimation', value => {
-                                        if (!value) return;
-                                        interval = setInterval(() => {
-                                            if (current < target) current++;
-                                            else clearInterval(interval);
-                                        }, speed);
-                                     })">
-                        <span>
-                            <span class="label">Salesforce (CRM)</span>
-                            <span class="number"><span x-text="current">0</span>%</span>
-                        </span>
-                                        <div class="background bg-gray-200 rounded-full h-2">
-                                            <div
-                                                class="bar h-full bg-black rounded-full transition-all duration-100 ease-linear"
-                                                :style="`width: ${current}%`"></div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Compétence: Microsoft Office -->
-                                    <div class="progress_inner"
-                                         x-data="{ target: 95, current: 0, interval: null, speed: 15 }"
-                                         x-init="$watch('startAnimation', value => {
-                                         if (!value) return;
-                                         interval = setInterval(() => {
-                                             if (current < target) current++;
-                                             else clearInterval(interval);
-                                         }, speed);
-                                         })">
-                        <span>
-                            <span class="label">Microsoft Office</span>
-                            <span class="number"><span x-text="current">0</span>%</span>
-                        </span>
-                                        <div class="background bg-gray-200 rounded-full h-2">
-                                            <div
-                                                class="bar h-full bg-black rounded-full transition-all duration-100 ease-linear"
-                                                :style="`width: ${current}%`"></div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Compétence: Canva -->
-                                    <div class="progress_inner"
-                                         x-data="{ target: 80, current: 0, interval: null, speed: 22 }"
-                                         x-init="$watch('startAnimation', value => {
-                                        if (!value) return;
-                                        interval = setInterval(() => {
-                                            if (current < target) current++;
-                                            else clearInterval(interval);
-                                        }, speed);
-                                     })">
-                        <span>
-                            <span class="label">Canva</span>
-                            <span class="number"><span x-text="current">0</span>%</span>
-                        </span>
-                                        <div class="background bg-gray-200 rounded-full h-2">
-                                            <div
-                                                class="bar h-full bg-black rounded-full transition-all duration-100 ease-linear"
-                                                :style="`width: ${current}%`"></div>
-                                        </div>
-                                    </div>
+                                    @if($content && $content->skills_marketing)
+                                        @foreach($content->skills_marketing as $skill)
+                                            <div class="progress_inner"
+                                                 x-data="{ target: {{ $skill['percentage'] }}, current: 0, interval: null, speed: {{ 100 - $skill['percentage'] < 20 ? 15 : 20 }} }"
+                                                 x-init="$watch('startAnimation', value => {
+                                                    if (!value) return;
+                                                    interval = setInterval(() => {
+                                                        if (current < target) current++;
+                                                        else clearInterval(interval);
+                                                    }, speed);
+                                                 })">
+                                <span>
+                                    <span class="label">{{ $skill['name'] }}</span>
+                                    <span class="number"><span x-text="current">0</span>%</span>
+                                </span>
+                                                <div class="background bg-gray-200 rounded-full h-2">
+                                                    <div
+                                                        class="bar h-full bg-black rounded-full transition-all duration-100 ease-linear"
+                                                        :style="`width: ${current}%`"></div>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -254,40 +188,20 @@
                         <div class="in w-full h-auto clear-both float-left flex">
                             <div class="left w-1/2 pr-[50px]">
                                 <div class="tokyo_section_title w-full h-auto clear-both float-left mb-[40px]">
-                                    <h3 class="text-[20px] font-bold">Outil</h3>
+                                    <h3 class="text-[20px] font-bold">{{ $content->tools_section_title ?? 'Outil' }}</h3>
                                 </div>
                                 <div class="tokyo_tm_skill_list w-full h-auto clear-both float-left">
                                     <ul class="m-0 list-none">
-                                        <li class="m-0 pl-[25px] relative">
-                                            <span>
-                                                <img class="svg text-black w-[10px] h-[10px] absolute left-0 top-1/2 translate-y-[-50%]" src="{{ asset('img/svg/rightarrow.svg') }}" alt=""/>
-                                                Suite Adobe (Illustrator, InDesign, Photoshop, Premiere Pro)
-                                            </span>
-                                        </li>
-                                        <li class="m-0 pl-[25px] relative">
-                                            <span>
-                                                <img class="svg text-black w-[10px] h-[10px] absolute left-0 top-1/2 translate-y-[-50%]" src="{{ asset('img/svg/rightarrow.svg') }}" alt=""/>
-                                                Marketing &amp; Communication (Salesforce, Wordpress, E-mailing)
-                                            </span>
-                                        </li>
-                                        <li class="m-0 pl-[25px] relative">
-                                            <span>
-                                                <img class="svg text-black w-[10px] h-[10px] absolute left-0 top-1/2 translate-y-[-50%]" src="{{ asset('img/svg/rightarrow.svg') }}" alt=""/>
-                                                Suite Microsoft Office
-                                            </span>
-                                        </li>
-                                        <li class="m-0 pl-[25px] relative">
-                                            <span>
-                                                <img class="svg text-black w-[10px] h-[10px] absolute left-0 top-1/2 translate-y-[-50%]" src="{{ asset('img/svg/rightarrow.svg') }}" alt=""/>
-                                                Canva
-                                            </span>
-                                        </li>
-                                        <li class="m-0 pl-[25px] relative">
-                                            <span>
-                                                <img class="svg text-black w-[10px] h-[10px] absolute left-0 top-1/2 translate-y-[-50%]" src="{{ asset('img/svg/rightarrow.svg') }}" alt=""/>
-                                                Sponsoring
-                                            </span>
-                                        </li>
+                                        @if($content && $content->tools_list)
+                                            @foreach($content->tools_list as $tool)
+                                                <li class="m-0 pl-[25px] relative">
+                                                    <span>
+                                                        <img class="svg text-black w-[10px] h-[10px] absolute left-0 top-1/2 translate-y-[-50%]" src="{{ asset('img/svg/rightarrow.svg') }}" alt=""/>
+                                                        {{ $tool }}
+                                                    </span>
+                                                </li>
+                                            @endforeach
+                                        @endif
                                     </ul>
                                 </div>
 
@@ -295,25 +209,20 @@
                             </div>
                             <div class="right w-1/2 pl-[50px]">
                                 <div class="tokyo_section_title w-full h-auto clear-both float-left mb-[40px]">
-                                    <h3 class="text-[20px] font-bold">Centres d'intérêt</h3>
+                                    <h3 class="text-[20px] font-bold">{{ $content->interests_section_title ?? 'Centres d\'intérêt' }}</h3>
                                 </div>
                                 <div class="tokyo_tm_skill_list w-full h-auto clear-both float-left">
                                     <ul class="m-0 list-none">
-                                        <li class="m-0 pl-[25px] relative">
-                                            <span><img
-                                            class="svg text-black w-[10px] h-[10px] absolute left-0 top-1/2 translate-y-[-50%]"
-                                            src="{{ asset('img/svg/rightarrow.svg') }}" alt=""/>Voyages (Amérique du Nord, Asie)</span>
-                                        </li>
-                                        <li class="m-0 pl-[25px] relative">
-                                            <span><img
-                                            class="svg text-black w-[10px] h-[10px] absolute left-0 top-1/2 translate-y-[-50%]"
-                                            src="{{ asset('img/svg/rightarrow.svg') }}" alt=""/>Randonnée (trekking)</span>
-                                        </li>
-                                        <li class="m-0 pl-[25px] relative">
-                                            <span><img
-                                            class="svg text-black w-[10px] h-[10px] absolute left-0 top-1/2 translate-y-[-50%]"
-                                            src="{{ asset('img/svg/rightarrow.svg') }}" alt=""/>Littérature</span>
-                                        </li>
+                                        @if($content && $content->interests_list)
+                                            @foreach($content->interests_list as $interest)
+                                                <li class="m-0 pl-[25px] relative">
+                                                    <span>
+                                                        <img class="svg text-black w-[10px] h-[10px] absolute left-0 top-1/2 translate-y-[-50%]" src="{{ asset('img/svg/rightarrow.svg') }}" alt=""/>
+                                                        {{ $interest }}
+                                                    </span>
+                                                </li>
+                                            @endforeach
+                                        @endif
                                     </ul>
                                 </div>
                             </div>
@@ -326,96 +235,49 @@
                         <div class="in w-full h-auto clear-both float-left flex">
                             <div class="left w-1/2 pr-[50px]">
                                 <div class="tokyo_section_title w-full h-auto clear-both float-left mb-[40px]">
-                                    <h3 class="text-[20px] font-bold">Formations</h3>
+                                    <h3 class="text-[20px] font-bold">{{ $content->education_section_title ?? 'Formations' }}</h3>
                                 </div>
                                 <div class="tokyo_tm_resume_list w-full h-auto clear-both float-left">
                                     <ul class="m-0 list-none relative inline-block pt-[10px]">
-                                        <li class="m-0 w-full float-left relative pl-[20px] pb-[45px]">
-                                            <div class="list_inner w-full h-auto clear-both float-left relative flex">
-                                                <div class="time w-1/2 pr-[20px]">
-                                                    <span class="inline-block py-[5px] px-[25px] bg-[rgba(0,0,0,.05)] rounded-[50px] text-[14px] whitespace-nowrap">2020 - 2022</span>
-                                                </div>
-                                                <div class="place w-1/2 pl-[20px]">
-                                                    <h3 class="text-[16px] mb-[2px] font-semibold">ESUPCOM</h3>
-                                                    <span class="text-[14px]">Master Communication des entreprises &amp; des organisations</span>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="m-0 w-full float-left relative pl-[20px] pb-[45px]">
-                                            <div class="list_inner w-full h-auto clear-both float-left relative flex">
-                                                <div class="time w-1/2 pr-[20px]">
-                                                    <span class="inline-block py-[5px] px-[25px] bg-[rgba(0,0,0,.05)] rounded-[50px] text-[14px] whitespace-nowrap">2017 - 2020</span>
-                                                </div>
-                                                <div class="place w-1/2 pl-[20px]">
-                                                    <h3 class="text-[16px] mb-[2px] font-semibold">YNOV Campus</h3>
-                                                    <span class="text-[14px]">Bachelor Communication &amp; Marketing digital</span>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="m-0 w-full float-left relative pl-[20px]">
-                                            <div class="list_inner w-full h-auto clear-both float-left relative flex">
-                                                <div class="time w-1/2 pr-[20px]">
-                                                    <span class="inline-block py-[5px] px-[25px] bg-[rgba(0,0,0,.05)] rounded-[50px] text-[14px] whitespace-nowrap">2019</span>
-                                                </div>
-                                                <div class="place w-1/2 pl-[20px]">
-                                                    <h3 class="text-[16px] mb-[2px] font-semibold">Dublin Business School</h3>
-                                                    <span class="text-[14px]">Communication &amp; Management</span>
-                                                </div>
-                                            </div>
-                                        </li>
+                                        @if($content && $content->education_items)
+                                            @foreach($content->education_items as $index => $education)
+                                                <li class="m-0 w-full float-left relative pl-[20px] {{ $loop->last ? '' : 'pb-[45px]' }}">
+                                                    <div class="list_inner w-full h-auto clear-both float-left relative flex">
+                                                        <div class="time w-1/2 pr-[20px]">
+                                                            <span class="inline-block py-[5px] px-[25px] bg-[rgba(0,0,0,.05)] rounded-[50px] text-[14px] whitespace-nowrap">{{ $education['period'] }}</span>
+                                                        </div>
+                                                        <div class="place w-1/2 pl-[20px]">
+                                                            <h3 class="text-[16px] mb-[2px] font-semibold">{{ $education['school'] }}</h3>
+                                                            <span class="text-[14px]">{{ $education['degree'] }}</span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            @endforeach
+                                        @endif
                                     </ul>
                                 </div>
                             </div>
                             <div class="right w-1/2 pl-[50px]">
                                 <div class="tokyo_section_title w-full h-auto clear-both float-left mb-[40px]">
-                                    <h3 class="text-[20px] font-bold">Expériences</h3>
+                                    <h3 class="text-[20px] font-bold">{{ $content->experience_section_title ?? 'Expériences' }}</h3>
                                 </div>
                                 <div class="tokyo_tm_resume_list w-full h-auto clear-both float-left">
                                     <ul class="m-0 list-none relative inline-block pt-[10px]">
-                                        <li class="m-0 w-full float-left relative pl-[20px] pb-[45px]">
-                                            <div class="list_inner w-full h-auto clear-both float-left relative flex">
-                                                <div class="time w-1/2 pr-[20px]">
-                                                    <span class="inline-block py-[5px] px-[25px] bg-[rgba(0,0,0,.05)] rounded-[50px] text-[14px] whitespace-nowrap">2022 - Présent</span>
-                                                </div>
-                                                <div class="place w-1/2 pl-[20px]">
-                                                    <h3 class="text-[16px] mb-[2px] font-semibold">Pellenc ST</h3>
-                                                    <span class="text-[14px]">Chargée Marketing</span>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="m-0 w-full float-left relative pl-[20px] pb-[45px]">
-                                            <div class="list_inner w-full h-auto clear-both float-left relative flex">
-                                                <div class="time w-1/2 pr-[20px]">
-                                                    <span class="inline-block py-[5px] px-[25px] bg-[rgba(0,0,0,.05)] rounded-[50px] text-[14px] whitespace-nowrap">2019 - 2022</span>
-                                                </div>
-                                                <div class="place w-1/2 pl-[20px]">
-                                                    <h3 class="text-[16px] mb-[2px] font-semibold">RIDERVALLEY</h3>
-                                                    <span class="text-[14px]">Alternante Chargée Communication</span>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="m-0 w-full float-left relative pl-[20px] pb-[45px]">
-                                            <div class="list_inner w-full h-auto clear-both float-left relative flex">
-                                                <div class="time w-1/2 pr-[20px]">
-                                                    <span class="inline-block py-[5px] px-[25px] bg-[rgba(0,0,0,.05)] rounded-[50px] text-[14px] whitespace-nowrap">Mai - Août 2019</span>
-                                                </div>
-                                                <div class="place w-1/2 pl-[20px]">
-                                                    <h3 class="text-[16px] mb-[2px] font-semibold">ILLUSIO</h3>
-                                                    <span class="text-[14px]">Stage Community Manager</span>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="m-0 w-full float-left relative pl-[20px]">
-                                            <div class="list_inner w-full h-auto clear-both float-left relative flex">
-                                                <div class="time w-1/2 pr-[20px]">
-                                                    <span class="inline-block py-[5px] px-[25px] bg-[rgba(0,0,0,.05)] rounded-[50px] text-[14px] whitespace-nowrap">Juil - Août 2018</span>
-                                                </div>
-                                                <div class="place w-1/2 pl-[20px]">
-                                                    <h3 class="text-[16px] mb-[2px] font-semibold">SFC</h3>
-                                                    <span class="text-[14px]">Stage Chargée de communication</span>
-                                                </div>
-                                            </div>
-                                        </li>
+                                        @if($content && $content->experience_items)
+                                            @foreach($content->experience_items as $index => $experience)
+                                                <li class="m-0 w-full float-left relative pl-[20px] {{ $loop->last ? '' : 'pb-[45px]' }}">
+                                                    <div class="list_inner w-full h-auto clear-both float-left relative flex">
+                                                        <div class="time w-1/2 pr-[20px]">
+                                                            <span class="inline-block py-[5px] px-[25px] bg-[rgba(0,0,0,.05)] rounded-[50px] text-[14px] whitespace-nowrap">{{ $experience['period'] }}</span>
+                                                        </div>
+                                                        <div class="place w-1/2 pl-[20px]">
+                                                            <h3 class="text-[16px] mb-[2px] font-semibold">{{ $experience['company'] }}</h3>
+                                                            <span class="text-[14px]">{{ $experience['position'] }}</span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            @endforeach
+                                        @endif
                                     </ul>
                                 </div>
                             </div>
