@@ -43,30 +43,30 @@
                             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
 
                                 <!-- Email -->
-                                <div class="contact_item">
+                                <a href="mailto:lina-marie.michel@hotmail.fr" class="contact_item block p-6 rounded-xl cursor-pointer transition-all duration-300 hover:bg-gray-50 hover:shadow-lg hover:shadow-orange-500/20 group">
                                     <div class="w-16 h-16 bg-orange rounded-full flex items-center justify-center mx-auto mb-4">
                                         <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
                                         </svg>
                                     </div>
-                                    <h4 class="text-lg font-bold text-black mb-2">Email</h4>
-                                    <a href="mailto:lina-marie.michel@hotmail.fr" class="text-gray-700 text-base hover:text-black transition-colors font-medium">
+                                    <h4 class="text-lg font-bold text-black mb-2 group-hover:text-orange-600 transition-colors">Email</h4>
+                                    <span class="text-gray-700 text-base group-hover:text-black transition-colors font-medium">
                                         lina-marie.michel@hotmail.fr
-                                    </a>
-                                </div>
+                                    </span>
+                                </a>
 
                                 <!-- Téléphone -->
-                                <div class="contact_item">
+                                <a href="tel:+33605276622" class="contact_item block p-6 rounded-xl cursor-pointer transition-all duration-300 hover:bg-gray-50 hover:shadow-lg hover:shadow-orange-500/20 group">
                                     <div class="w-16 h-16 bg-orange rounded-full flex items-center justify-center mx-auto mb-4">
                                         <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
                                         </svg>
                                     </div>
-                                    <h4 class="text-lg font-bold text-black mb-2">Téléphone</h4>
-                                    <a href="tel:+33605276622" class="text-gray-700 text-base hover:text-black transition-colors font-medium">
+                                    <h4 class="text-lg font-bold text-black mb-2 group-hover:text-orange-600 transition-colors">Téléphone</h4>
+                                    <span class="text-gray-700 text-base group-hover:text-black transition-colors font-medium">
                                         +33 6 05 27 66 22
-                                    </a>
-                                </div>
+                                    </span>
+                                </a>
 
                                 <!-- Adresse -->
                                 <div class="contact_item">
