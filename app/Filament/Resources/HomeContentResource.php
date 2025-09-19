@@ -78,6 +78,7 @@ class HomeContentResource extends Resource
                                     ->image()
                                     ->directory('home-images')
                                     ->imageEditor()
+                                    ->hint(new \Illuminate\Support\HtmlString('Pour optimiser votre image: <a href="https://squoosh.app/" target="_blank" class="text-blue-600 hover:text-blue-800 underline">Squoosh</a>'))
                                     ->required(),
 
                                 TextInput::make('hero_image_alt')

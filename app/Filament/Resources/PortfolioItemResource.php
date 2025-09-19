@@ -12,6 +12,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Filament\Forms\Get; // <-- Import essentiel pour les formulaires dynamiques
 use Filament\Forms\Set;
+use Illuminate\Support\HtmlString;
 
 class PortfolioItemResource extends Resource
 {
@@ -52,8 +53,7 @@ class PortfolioItemResource extends Resource
                                     ->label('Fichier Vidéo')
                                     ->directory('portfolio-videos')
                                     ->acceptedFileTypes(['video/mp4', 'video/webm', 'video/ogg', 'video/avi', 'video/mov', 'video/quicktime'])
-                                    ->maxSize(500000) // 500MB max (en kilobytes)
-                                    ->helperText('Formats acceptés: MP4, WebM, OGG, AVI, MOV. Taille max: 500MB.')
+                                    ->hint(new HtmlString('Formats acceptés: MP4, WebM, OGG, AVI, MOV. <br>Pour optimiser vos vidéos: <a href="https://tinywow.com/" target="_blank" class="text-blue-600 hover:text-blue-800 underline">TinyWOW</a>'))
                                     ->visible(fn (Get $get): bool => $get('layout') === PortfolioLayout::VIDEO->value),
 
                                 // Champ pour les images simples
@@ -63,14 +63,14 @@ class PortfolioItemResource extends Resource
                                     ->reorderable()
                                     ->directory('portfolio-images')
                                     ->image()
-                                    ->helperText('Images qui seront affichées dans le projet.')
+                                    ->hint(new HtmlString('Images qui seront affichées dans le projet. <br>Pour optimiser vos images: <a href="https://squoosh.app/" target="_blank" class="text-blue-600 hover:text-blue-800 underline">Squoosh</a>'))
                                     ->visible(fn (Get $get): bool => $get('layout') === PortfolioLayout::IMAGE->value),
 
                                 Forms\Components\FileUpload::make('pdf_file')
                                     ->label('Fichier PDF de la présentation')
                                     ->directory('portfolio-presentations')
                                     ->acceptedFileTypes(['application/pdf'])
-                                    ->helperText('Fichier PDF qui sera affiché avec PDF.js.')
+                                    ->hint(new HtmlString('Pour optimiser vos PDFs: <a href="https://tinywow.com/" target="_blank" class="text-blue-600 hover:text-blue-800 underline">TinyWOW</a>'))
                                     ->visible(fn (Get $get): bool => $get('layout') === PortfolioLayout::PRESENTATION->value),
                             ]),
                     ])

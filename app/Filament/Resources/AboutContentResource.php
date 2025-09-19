@@ -73,7 +73,8 @@ class AboutContentResource extends Resource
                                                     ->label('Image de présentation')
                                                     ->image()
                                                     ->directory('about-images')
-                                                    ->imageEditor(),
+                                                    ->imageEditor()
+                                                    ->hint(new \Illuminate\Support\HtmlString('Pour optimiser votre image: <a href="https://squoosh.app/" target="_blank" class="text-blue-600 hover:text-blue-800 underline">Squoosh</a>')),
 
                                                 TextInput::make('hero_image_alt')
                                                     ->label('Texte alternatif de l\'image')
@@ -310,7 +311,7 @@ class AboutContentResource extends Resource
                                             ->label('Fichier CV')
                                             ->directory('cv-files')
                                             ->acceptedFileTypes(['application/pdf', 'image/jpeg', 'image/jpg', 'image/png'])
-                                            ->helperText('Formats acceptés : PDF, JPG, PNG'),
+                                            ->hint(new \Illuminate\Support\HtmlString('Formats acceptés : PDF, JPG, PNG. <br>Pour optimiser vos fichiers: PDF → <a href="https://tinywow.com/" target="_blank" class="text-blue-600 hover:text-blue-800 underline">TinyWOW</a> | Images → <a href="https://squoosh.app/" target="_blank" class="text-blue-600 hover:text-blue-800 underline">Squoosh</a>')),
                                     ]),
                             ]),
                     ])

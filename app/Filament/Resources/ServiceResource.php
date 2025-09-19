@@ -98,7 +98,8 @@ class ServiceResource extends Resource
                                     ->image()
                                     ->imageEditor() // Active un éditeur d'image simple (rogner, pivoter...)
                                     ->directory('service-images') // Stocke les images dans 'storage/app/public/service-images'
-                                    ->preserveFilenames(),
+                                    ->preserveFilenames()
+                                    ->hint(new \Illuminate\Support\HtmlString('Pour optimiser votre image: <a href="https://squoosh.app/" target="_blank" class="text-blue-600 hover:text-blue-800 underline">Squoosh</a>')),
                             ])
                     ])
                     ->columnSpan(1),
