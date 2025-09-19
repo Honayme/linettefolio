@@ -11,7 +11,6 @@ enum PortfolioLayout: string
     // En minuscules pour la valeur réelle qui sera stockée en base de données.
 
     case IMAGE = 'image';
-    case SLIDER = 'slider';
     case VIDEO = 'video';
     case PRESENTATION = 'presentation';
 }

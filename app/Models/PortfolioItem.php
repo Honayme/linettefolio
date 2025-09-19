@@ -7,9 +7,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-
-// app/Models/PortfolioItem.php
-
 class PortfolioItem extends Model
 {
     use HasFactory;
@@ -23,7 +20,8 @@ class PortfolioItem extends Model
         'cover_image',
         'cover_image_alt',
         'images',
-        'video_url',
+        'video_file',
+        'pdf_file',
         'is_visible',
     ];
 
@@ -47,5 +45,25 @@ class PortfolioItem extends Model
     public function categories(): BelongsToMany
     {
         return $this->belongsToMany(Category::class, 'category_portfolio_item');
+    }
+
+    /**
+     * Get the video URL for the frontend
+     */
+    public function getVideoUrlAttribute(): ?string
+    {
+        if (!$this->video_file) {
+            return null;
+        }
+
+        return asset('storage/' . $this->video_file);
+    }
+
+    /**
+     * Check if this item has a video
+     */
+    public function hasVideo(): bool
+    {
+        return !empty($this->video_file);
     }
 }

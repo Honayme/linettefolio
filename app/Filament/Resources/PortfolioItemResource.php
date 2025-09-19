@@ -11,6 +11,7 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Filament\Forms\Get; // <-- Import essentiel pour les formulaires dynamiques
+use Filament\Forms\Set;
 
 class PortfolioItemResource extends Resource
 {
@@ -46,26 +47,30 @@ class PortfolioItemResource extends Resource
                                     ->required()
                                     ->live(), // <-- Très important: met à jour le formulaire en temps réel
 
-                                // Ce champ ne s'affiche que si le layout est 'VIDEO'
-                                Forms\Components\TextInput::make('video_url')
-                                    ->label('URL de la Vidéo (Vimeo ou YouTube)')
-                                    ->url()
-                                    ->maxLength(255)
+                                // Upload de vidéo simple
+                                Forms\Components\FileUpload::make('video_file')
+                                    ->label('Fichier Vidéo')
+                                    ->directory('portfolio-videos')
+                                    ->acceptedFileTypes(['video/mp4', 'video/webm', 'video/ogg', 'video/avi', 'video/mov', 'video/quicktime'])
+                                    ->maxSize(500000) // 500MB max (en kilobytes)
+                                    ->helperText('Formats acceptés: MP4, WebM, OGG, AVI, MOV. Taille max: 500MB.')
                                     ->visible(fn (Get $get): bool => $get('layout') === PortfolioLayout::VIDEO->value),
 
-                                // Ce champ ne s'affiche que si le layout est 'GALLERY'
+                                // Champ pour les images simples
                                 Forms\Components\FileUpload::make('images')
-                                    ->label('Images de la galerie')
+                                    ->label('Images du projet')
                                     ->multiple()
                                     ->reorderable()
-                                    ->directory('portfolio-galleries')
-                                    ->helperText('La première image sera utilisée pour la galerie. L\'image de couverture sera affichée sur la grille.')
-                                    ->visible(fn (Get $get): bool => $get('layout') === PortfolioLayout::SLIDER->value),
+                                    ->directory('portfolio-images')
+                                    ->image()
+                                    ->helperText('Images qui seront affichées dans le projet.')
+                                    ->visible(fn (Get $get): bool => $get('layout') === PortfolioLayout::IMAGE->value),
 
-                                Forms\Components\FileUpload::make('images') // Assurez-vous d'avoir une colonne 'pdf_file' dans votre table
-                                ->label('Fichier PDF de la présentation')
-                                    ->directory('portfolio-presentations') // Un dossier de stockage dédié
-                                    ->acceptedFileTypes(['application/pdf']) // On n'accepte que les PDF
+                                Forms\Components\FileUpload::make('pdf_file')
+                                    ->label('Fichier PDF de la présentation')
+                                    ->directory('portfolio-presentations')
+                                    ->acceptedFileTypes(['application/pdf'])
+                                    ->helperText('Fichier PDF qui sera affiché avec PDF.js.')
                                     ->visible(fn (Get $get): bool => $get('layout') === PortfolioLayout::PRESENTATION->value),
                             ]),
                     ])
@@ -97,7 +102,8 @@ class PortfolioItemResource extends Resource
                                     ->label('Image de couverture')
                                     ->image()
                                     ->directory('portfolio-covers')
-                                    ->required(),
+                                    ->required()
+                                    ->helperText('Image qui sera affichée sur la grille du portfolio.'),
 
                                 Forms\Components\TextInput::make('cover_image_alt')
                                     ->label('Texte alternatif de l\'image')
@@ -135,7 +141,7 @@ class PortfolioItemResource extends Resource
                     ->color(fn (PortfolioLayout $state): string => match ($state->value) {
                         'video' => 'info',
                         'image' => 'success',
-                        'slider' => 'warning',
+                        'presentation' => 'warning',
                         default => 'gray',
                     })
                     ->formatStateUsing(fn (PortfolioLayout $state): string => ucfirst($state->value)),

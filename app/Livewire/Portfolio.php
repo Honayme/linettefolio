@@ -54,12 +54,11 @@ class Portfolio extends Component
         $this->alpineItems = $this->portfolioItems->map(function (PortfolioItem $item) {
 
             $mediaSrc = match ($item->layout) {
-                // Si le layout est VIDEO ou PRESENTATION, la source est l'URL de la vidéo.
                 PortfolioLayout::VIDEO => $item->video_url,
-                PortfolioLayout::SLIDER => collect($item->images)->map(fn($img) => asset('storage/' . $img))->all(),
-                PortfolioLayout::IMAGE => asset('storage/' . $item->cover_image),
-                PortfolioLayout::PRESENTATION => asset('storage/' . $item->images)
+                PortfolioLayout::IMAGE => collect($item->images)->map(fn($img) => asset('storage/' . $img))->all(),
+                PortfolioLayout::PRESENTATION => asset('storage/' . $item->pdf_file)
             };
+
 
             return [
                 'id' => $item->id,

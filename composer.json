@@ -8,9 +8,9 @@
     "require": {
         "php": "^8.2",
         "ext-dom": "*",
-        "ext-libxml": "*",
         "ext-fileinfo": "*",
         "ext-gd": "*",
+        "ext-libxml": "*",
         "ext-simplexml": "*",
         "ext-xml": "*",
         "ext-zip": "*",

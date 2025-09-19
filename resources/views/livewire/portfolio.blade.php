@@ -29,12 +29,10 @@
                         return item.tags.includes(this.activeFilter);
                     });
 
-                    console.log('filteredItems calculé pour', this.activeFilter, ':', filtered);
                     return filtered;
                 },
                 get currentItem() {
                     const item = this.filteredItems.length > 0 ? this.filteredItems[this.currentIndex] : null;
-                    // console.log('currentItem calculé:', item);
                     return item;
                 },
 
@@ -82,24 +80,20 @@
                     console.log('Filtre sélectionné:', filter, 'activeParent:', this.activeParent, 'activeFilter:', this.activeFilter);
                 },
                 openModal(index) {
-                    // console.log('openModal appelé avec index:', index);
                     this.currentIndex = index;
                     this.modalOpen = true;
                 },
                 closeModal() {
-                    console.log('closeModal appelé.');
                     this.modalOpen = false;
                 },
                 nextItem() {
                     if (!this.modalOpen || !this.filteredItems.length) return;
                     const newIndex = (this.currentIndex + 1) % this.filteredItems.length;
-                    // console.log('nextItem: currentIndex mis à jour de', this.currentIndex, 'à', newIndex);
                     this.currentIndex = newIndex;
                 },
                 prevItem() {
                     if (!this.modalOpen || !this.filteredItems.length) return;
                     const newIndex = (this.currentIndex - 1 + this.filteredItems.length) % this.filteredItems.length;
-                    // console.log('prevItem: currentIndex mis à jour de', this.currentIndex, 'à', newIndex);
                     this.currentIndex = newIndex;
                 }
             }
@@ -209,13 +203,19 @@
                                 </div>
                             </div>
                             <div class="list_wrapper w-full h-auto clear-both float-left">
-                                <ul class="gallery_zoom ml-[-40px] list-none">
+                                <ul class="gallery_zoom list-none">
                                     <!-- Grille Masonry -->
                                     <div class="columns-1 sm:columns-2 md:columns-3 lg:columns-3 xl:columns-3 gap-4">
                                         <template x-for="(item, index) in filteredItems" :key="item.id">
-                                            <div @click.prevent="item.mediaType === 'presentation'
-                                                                 ? $dispatch('open-pdf-overlay', { url: item.mediaSrc })
-                                                                 : openModal(index)"
+                                            <div @click.prevent="
+                                                if (item.mediaType === 'presentation') {
+                                                    $dispatch('open-pdf-overlay', { url: item.mediaSrc })
+                                                } else if (item.mediaType === 'video') {
+                                                    $dispatch('open-video-overlay', { url: item.mediaSrc })
+                                                } else {
+                                                    openModal(index)
+                                                }
+                                            "
                                                  class="mb-4 break-inside-avoid cursor-pointer group relative rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300">
                                                 <img :src="item.coverSrc" :alt="item.alt" :width="item.width"
                                                      :height="item.height" loading="lazy"
@@ -294,6 +294,11 @@
     <!-- ============           PDF VIEWER            ============= -->
     <!-- ========================================================== -->
     @include('portfolio-display._pdf-viewer-overlay')
+
+    <!-- ========================================================== -->
+    <!-- ============          VIDEO OVERLAY          ============= -->
+    <!-- ========================================================== -->
+    @include('portfolio-display._video-overlay')
 
 </div>
 
