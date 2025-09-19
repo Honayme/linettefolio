@@ -12,10 +12,24 @@
 
                 // --- GETTERS (Propriétés calculées) ---
                 get filteredItems() {
-                    const filtered = this.activeFilter === 'All' ?
-                        this.items :
-                        this.items.filter(item => item.tags.includes(this.activeFilter));
-                    // console.log('filteredItems calculé:', filtered);
+                    if (this.activeFilter === 'All') {
+                        return this.items;
+                    }
+
+                    // Trouver la catégorie parente si c'est une catégorie principale sélectionnée
+                    const parentCategory = this.categories.find(cat => cat.name === this.activeFilter);
+
+                    const filtered = this.items.filter(item => {
+                        // Si c'est une catégorie parente, inclure tous les items avec cette catégorie OU ses sous-catégories
+                        if (parentCategory) {
+                            return item.tags.includes(this.activeFilter) ||
+                                   parentCategory.subcategories.some(sub => item.tags.includes(sub));
+                        }
+                        // Sinon, filtrage normal pour les sous-catégories
+                        return item.tags.includes(this.activeFilter);
+                    });
+
+                    console.log('filteredItems calculé pour', this.activeFilter, ':', filtered);
                     return filtered;
                 },
                 get currentItem() {
