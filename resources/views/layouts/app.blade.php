@@ -6,9 +6,9 @@
     {{-- Ces composants ne seront rendus qu'une seule fois et ne changeront pas lors de la navigation SPA. --}}
     {{-- Le nom ('preloader', 'menu') doit être unique pour chaque bloc @persist. --}}
 
-{{--    @persist('preloader')
+    @persist('preloader')
     <livewire:partials.preloader />
-    @endpersist--}}
+    @endpersist
 
     @persist('mobile-menu')
     <livewire:partials.mobile-menu />
