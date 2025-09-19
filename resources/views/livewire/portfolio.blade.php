@@ -53,6 +53,16 @@
                         this.activeFilter = filter;
                         if (filter === 'All') {
                             this.activeParent = null;
+                        } else {
+                            // Trouver la catégorie parente de cette sous-catégorie
+                            const parentCategory = this.categories.find(cat =>
+                                cat.subcategories.includes(filter)
+                            );
+                            if (parentCategory) {
+                                this.activeParent = parentCategory.name;
+                            } else {
+                                this.activeParent = null;
+                            }
                         }
                     }
                     console.log('Filtre sélectionné:', filter, 'activeParent:', this.activeParent, 'activeFilter:', this.activeFilter);
@@ -100,45 +110,83 @@
                                         <h3 class="font-extrabold font-montserrat">Creative Portfolio</h3>
                                     </div>
 
-                                    <div class="portfolio_filter">
-                                        <!-- Bouton "Tous" -->
-                                        <button @click="selectFilter('All')"
-                                                class="filter-btn px-4 py-2 text-[#767676] text-sm font-medium font-montserrat hover:text-black">
-                                            Tous
-                                        </button>
-                                        <!-- Boutons des catégories parentes -->
-                                        <template x-for="category in categories" :key="category.name">
-                                            <button @click="selectFilter(category.name, true)"
-                                                    class="filter-btn px-4 py-2 text-[#767676] text-sm font-medium font-montserrat hover:text-black"
-                                                    x-text="category.name">
+                                    <div class="portfolio_filter" x-data="{
+                                        dropdownOpen: false,
+                                        activeDropdown: null,
+                                        closeTimeout: null,
+                                        openDropdown(categoryName) {
+                                            if (this.closeTimeout) {
+                                                clearTimeout(this.closeTimeout);
+                                                this.closeTimeout = null;
+                                            }
+                                            this.activeDropdown = categoryName;
+                                            this.dropdownOpen = true;
+                                        },
+                                        closeDropdown() {
+                                            this.closeTimeout = setTimeout(() => {
+                                                this.dropdownOpen = false;
+                                                this.activeDropdown = null;
+                                            }, 150);
+                                        }
+                                    }">
+                                        <div class="flex flex-wrap items-center gap-2">
+                                            <!-- Bouton "Tous" -->
+                                            <button @click="selectFilter('All'); closeDropdown()"
+                                                    :class="{ 'bg-[#f25835] text-white': activeFilter === 'All', 'text-[#767676] hover:text-black': activeFilter !== 'All' }"
+                                                    class="filter-btn px-4 py-2 text-sm font-medium font-montserrat transition-colors duration-200 rounded-md">
+                                                Tous
                                             </button>
-                                        </template>
-                                        <div class="relative w-full overflow-hidden">
-                                            <template x-for="category in categories" :key="category.name">
-                                                <div x-show="activeParent === category.name"
-                                                     x-transition:enter="transition ease-out duration-300"
-                                                     x-transition:enter-start="-translate-y-4 opacity-0"
-                                                     x-transition:enter-end="translate-y-0 opacity-100"
-                                                     x-transition:leave="transition ease-in duration-200"
-                                                     x-transition:leave-start="translate-y-0 opacity-100"
-                                                     x-transition:leave-end="-translate-y-4 opacity-0"
-                                                     class="flex flex-wrap justify-center gap-2 pt-4 border-t border-gray-200">
 
-                                                    <!-- Bouton pour la catégorie parente (ex: "Voir tout le Web") -->
-                                                    <button @click="selectFilter(category.name)"
-                                                            :class="{ 'bg-gray-700 text-white border-gray-700': activeFilter === category.name, 'bg-white text-gray-500 border-gray-300': activeFilter !== category.name }"
-                                                            class="filter-btn px-3 py-1.5 text-xs font-semibold border rounded-full hover:bg-gray-200 transition-colors duration-300"
-                                                            x-text="`Tout ${category.name}`">
+                                            <!-- Boutons des catégories avec dropdowns -->
+                                            <template x-for="category in categories" :key="category.name">
+                                                <div class="relative"
+                                                     @mouseenter="category.subcategories.length > 0 ? openDropdown(category.name) : null"
+                                                     @mouseleave="closeDropdown()">
+                                                    <button @click="selectFilter(category.name, true); closeDropdown()"
+                                                            :class="{
+                                                                'bg-[#f25835] text-white': activeFilter === category.name || activeParent === category.name,
+                                                                'text-[#767676] hover:text-black': activeFilter !== category.name && activeParent !== category.name
+                                                            }"
+                                                            class="filter-btn px-4 py-2 text-sm font-medium font-montserrat transition-colors duration-200 rounded-md flex items-center gap-1">
+                                                        <span x-text="category.name"></span>
+                                                        <template x-if="category.subcategories.length > 0">
+                                                            <svg class="w-4 h-4 transition-transform duration-200"
+                                                                 :class="{ 'rotate-180': activeDropdown === category.name }"
+                                                                 fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                                            </svg>
+                                                        </template>
                                                     </button>
 
-                                                    <!-- Boutons des sous-catégories -->
-                                                    <template x-for="subcategory in category.subcategories"
-                                                              :key="subcategory">
-                                                        <button @click="selectFilter(subcategory)"
-                                                                :class="{ 'bg-gray-700 text-white border-gray-700': activeFilter === subcategory, 'bg-white text-gray-500 border-gray-300': activeFilter !== subcategory }"
-                                                                class="filter-btn px-3 py-1.5 text-xs font-semibold border rounded-full hover:bg-gray-200 transition-colors duration-300"
-                                                                x-text="subcategory">
-                                                        </button>
+                                                    <!-- Dropdown pour les sous-catégories -->
+                                                    <template x-if="category.subcategories.length > 0">
+                                                        <div x-show="dropdownOpen && activeDropdown === category.name"
+                                                             x-transition:enter="transition ease-out duration-200"
+                                                             x-transition:enter-start="opacity-0 scale-95 translate-y-1"
+                                                             x-transition:enter-end="opacity-100 scale-100 translate-y-0"
+                                                             x-transition:leave="transition ease-in duration-150"
+                                                             x-transition:leave-start="opacity-100 scale-100 translate-y-0"
+                                                             x-transition:leave-end="opacity-0 scale-95 translate-y-1"
+                                                             class="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50"
+                                                             @mouseenter="openDropdown(category.name)"
+                                                             @mouseleave="closeDropdown()"
+                                                             @click.stop>
+                                                            <!-- Option "Tout" pour la catégorie -->
+                                                            <button @click="selectFilter(category.name); closeDropdown()"
+                                                                    :class="{ 'bg-[#f25835] text-white': activeFilter === category.name, 'text-gray-700 hover:bg-gray-50': activeFilter !== category.name }"
+                                                                    class="w-full text-left px-4 py-2 text-sm font-medium transition-colors duration-150"
+                                                                    x-text="`Tout ${category.name}`">
+                                                            </button>
+                                                            <hr class="my-1 border-gray-100">
+                                                            <!-- Sous-catégories -->
+                                                            <template x-for="subcategory in category.subcategories" :key="subcategory">
+                                                                <button @click="selectFilter(subcategory); closeDropdown()"
+                                                                        :class="{ 'bg-[#f25835] text-white': activeFilter === subcategory, 'text-gray-600 hover:bg-gray-50 hover:text-gray-900': activeFilter !== subcategory }"
+                                                                        class="w-full text-left px-4 py-2 text-sm transition-colors duration-150"
+                                                                        x-text="subcategory">
+                                                                </button>
+                                                            </template>
+                                                        </div>
                                                     </template>
                                                 </div>
                                             </template>
