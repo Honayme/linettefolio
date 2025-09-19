@@ -16,6 +16,16 @@ class About extends Component
     public function mount()
     {
         $this->content = AboutContent::first();
+
+        // Créer un contenu par défaut si aucun n'existe
+        if (!$this->content) {
+            $this->content = new AboutContent([
+                'title' => 'À propos',
+                'subtitle' => 'Découvrez mon parcours',
+                'hero_image' => null,
+                'hero_image_alt' => 'Description pertinente de l\'image',
+            ]);
+        }
     }
 
     #[Layout('layouts.app')]

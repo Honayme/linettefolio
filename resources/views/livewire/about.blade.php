@@ -34,13 +34,13 @@
                             <div class="left w-1/2 pr-[50px]">
                                 <div class="tokyo_tm_info w-full h-auto clear-both float-left">
                                     <ul class="m-0 list-none">
-                                        @if($content->address)
+                                        @if($content && $content->address)
                                         <li class="m-0">
                                             <span class="min-w-[100px] float-left mr-[10px] font-bold text-black">Adresse:</span>
                                             <span>{{ $content->address }}</span>
                                         </li>
                                         @endif
-                                        @if($content->email)
+                                        @if($content && $content->email)
                                         <li class="m-0">
                                             <span
                                                 class="min-w-[100px] float-left mr-[10px] font-bold text-black">Email:</span>
@@ -48,14 +48,14 @@
                                                      href="mailto:{{ $content->email }}">{{ $content->email }}</a></span>
                                         </li>
                                         @endif
-                                        @if($content->phone)
+                                        @if($content && $content->phone)
                                         <li class="m-0">
                                             <span class="min-w-[100px] float-left mr-[10px] font-bold text-black">Téléphone:</span>
                                             <span><a class="text-[#767676] transition-all duration-300 hover:text-black"
                                                      href="tel:{{ str_replace(' ', '', $content->phone) }}">{{ $content->phone }}</a></span>
                                         </li>
                                         @endif
-                                        @if($content->driving_license)
+                                        @if($content && $content->driving_license)
                                         <li class="m-0">
                                             <span class="min-w-[100px] float-left mr-[10px] font-bold text-black">Permis:</span>
                                             <span>{{ $content->driving_license }}</span>
@@ -67,25 +67,25 @@
                             <div class="right w-1/2 pl-[50px]">
                                 <div class="tokyo_tm_info">
                                     <ul class="m-0 list-none">
-                                        @if($content->nationality)
+                                        @if($content && $content->nationality)
                                         <li class="m-0">
                                             <span class="min-w-[100px] float-left mr-[10px] font-bold text-black">Nationalité:</span>
                                             <span>{{ $content->nationality }}</span>
                                         </li>
                                         @endif
-                                        @if($content->education_school)
+                                        @if($content && $content->education_school)
                                         <li class="m-0">
                                             <span class="min-w-[100px] float-left mr-[10px] font-bold text-black">Études:</span>
                                             <span>{{ $content->education_school }}</span>
                                         </li>
                                         @endif
-                                        @if($content->education_degree)
+                                        @if($content && $content->education_degree)
                                         <li class="m-0">
                                             <span class="min-w-[100px] float-left mr-[10px] font-bold text-black">Diplôme:</span>
                                             <span>{{ $content->education_degree }}</span>
                                         </li>
                                         @endif
-                                        @if($content->languages)
+                                        @if($content && $content->languages)
                                         <li class="m-0">
                                             <span class="min-w-[100px] float-left mr-[10px] font-bold text-black">Langues:</span>
                                             <span>{{ $content->languages }}</span>
@@ -96,9 +96,9 @@
                             </div>
                         </div>
 
-                        @if($content->cv_file)
+                        @if($content && $content->cv_file)
                         <div class="tokyo_tm_button" data-position="left">
-                            <a href="{{ $content->cv_file && str_starts_with($content->cv_file, 'storage/') ? asset($content->cv_file) : ($content->cv_file ? asset('storage/' . $content->cv_file) : asset('img/CV_22.08.jpg')) }}" download>
+                            <a href="{{ ($content && $content->cv_file && str_starts_with($content->cv_file, 'storage/')) ? asset($content->cv_file) : (($content && $content->cv_file) ? asset('storage/' . $content->cv_file) : asset('img/CV_22.08.jpg')) }}" download>
                                 <span>Télécharger le CV</span>
                             </a>
                         </div>

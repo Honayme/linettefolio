@@ -16,6 +16,16 @@ class Home extends Component
     public function mount()
     {
         $this->content = HomeContent::first();
+
+        // Créer un contenu par défaut si aucun n'existe
+        if (!$this->content) {
+            $this->content = new HomeContent([
+                'hero_title' => 'Bienvenue',
+                'hero_subtitle' => 'Portfolio créatif',
+                'hero_image' => null,
+                'hero_image_alt' => 'Hero image',
+            ]);
+        }
     }
 
     #[Layout('layouts.app')]

@@ -38,8 +38,8 @@
                                     <!-- Image -->
                                     <div class="order-first lg:order-none lg:col-span-6 xl:col-span-7 relative rounded-3xl overflow-hidden bg-gray-200 shadow-sm h-[46vh] sm:h-[52vh] lg:h-[70vh] xl:h-[78vh]">
                                         <img
-                                            src="{{ $content->hero_image ? asset('storage/' . $content->hero_image) : asset('img/banner-image.jpg') }}"
-                                            alt="{{ $content->hero_image_alt ?? 'Hero image' }}"
+                                            src="{{ ($content && $content->hero_image) ? asset('storage/' . $content->hero_image) : asset('img/banner-image.jpg') }}"
+                                            alt="{{ ($content && $content->hero_image_alt) ? $content->hero_image_alt : 'Hero image' }}"
                                             class="absolute inset-0 w-full h-full object-cover object-center" />
 {{--                                        <div class="absolute inset-y-0 left-0 w-2/5 bg-gradient-to-r from-white to-transparent pointer-events-none hidden lg:block"></div>--}}
                                     </div>
