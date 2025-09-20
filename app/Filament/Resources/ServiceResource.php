@@ -26,6 +26,10 @@ use Illuminate\Support\Str;
 class ServiceResource extends Resource
 {
     protected static ?string $model = Service::class;
+    protected static ?string $navigationLabel = 'Services';
+    protected static ?string $modelLabel = 'Service';
+    protected static ?string $pluralModelLabel = 'Services';
+    protected static ?int $navigationSort = 3;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 

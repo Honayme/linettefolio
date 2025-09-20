@@ -24,7 +24,8 @@ class HomeContentResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-home';
 
-    protected static ?string $navigationLabel = 'Page d\'Accueil';
+    protected static ?string $navigationLabel = 'Accueil';
+    protected static ?int $navigationSort = 1;
 
     protected static ?string $modelLabel = 'Contenu de la page d\'accueil';
 

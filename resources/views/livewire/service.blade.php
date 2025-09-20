@@ -10,7 +10,7 @@
                                 <div class="left">
                                     <span
                                         class="inline-block bg-[rgba(0,0,0,.04)] uppercase py-[4px] px-[10px] font-semibold text-[12px] text-[#333] font-montserrat tracking-[0px] mb-[11px]">Services</span>
-                                    <h3 class="font-extrabold font-montserrat">Ce que je fais</h3>
+                                    <h3 class="font-extrabold font-montserrat">Services</h3>
                                 </div>
                             </div>
                         </div>
@@ -29,7 +29,7 @@
                                             <h3 class="title font-bold text-black text-[18px] mb-[15px]">{{ $service->title }}</h3>
                                             <p class="text">{{ $service->excerpt }}</p>
                                             <div class="tokyo_tm_read_more">
-                                                <a href="#"><span>Read More</span></a>
+                                                <a href="#"><span>Lire la suite</span></a>
                                             </div>
                                             <a class="tokyo_tm_full_link" href="#"></a>
 

@@ -26,7 +26,7 @@
                     <a href="{{ route('home') }}" wire:navigate
                        wire:current.exact="text-black font-semibold"
                        class="block text-[#767676] font-montserrat transition-colors duration-200 hover:text-black">
-                        Home
+                        Accueil
                     </a>
                 </li>
 
@@ -34,7 +34,7 @@
                     <a href="{{ route('about') }}" wire:navigate
                        wire:current.exact="text-black font-semibold"
                        class="block text-[#767676] font-montserrat transition-colors duration-200 hover:text-black">
-                        About
+                        À Propos
                     </a>
                 </li>
 
@@ -42,7 +42,7 @@
                     <a href="{{ route('services') }}" wire:navigate
                        wire:current.exact="text-black font-semibold"
                        class="block text-[#767676] font-montserrat transition-colors duration-200 hover:text-black">
-                        Service
+                        Services
                     </a>
                 </li>
 

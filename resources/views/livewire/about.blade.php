@@ -9,8 +9,8 @@
                             <div class="title_flex w-full h-auto clear-both flex justify-between items-end">
                                 <div class="left">
                                     <span
-                                        class="inline-block bg-[rgba(0,0,0,.04)] uppercase py-[4px] px-[10px] font-semibold text-[12px] text-[#333] font-montserrat tracking-[0px] mb-[11px]">About</span>
-                                    <h3 class="font-extrabold font-montserrat">{{ $content->page_title ?? 'About Me' }}</h3>
+                                        class="inline-block bg-[rgba(0,0,0,.04)] uppercase py-[4px] px-[10px] font-semibold text-[12px] text-[#333] font-montserrat tracking-[0px] mb-[11px]">À Propos</span>
+                                    <h3 class="font-extrabold font-montserrat">{{ $content->page_title ?? 'À Propos' }}</h3>
                                 </div>
                             </div>
                         </div>

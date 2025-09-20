@@ -14,8 +14,8 @@
                         <a href="{{ route('home') }}" wire:navigate
                            wire:current.exact="text-black font-semibold"
                            class="flex items-center text-[#767676] font-medium font-montserrat transition-all duration-300 hover:text-black">
-                            <img src="{{ asset('img/svg/menu/home-run.svg') }}" alt="Home" class="w-4 h-4 mr-3">
-                            Home
+                            <img src="{{ asset('img/svg/menu/home-run.svg') }}" alt="Accueil" class="w-4 h-4 mr-3">
+                            Accueil
                         </a>
                     </li>
 
@@ -23,8 +23,8 @@
                         <a href="{{ route('about') }}" wire:navigate
                            wire:current.exact="text-black font-semibold"
                            class="flex items-center text-[#767676] font-medium font-montserrat transition-all duration-300 hover:text-black">
-                            <img src="{{ asset('img/svg/menu/avatar.svg') }}" alt="About" class="w-4 h-4 mr-3">
-                            About
+                            <img src="{{ asset('img/svg/menu/avatar.svg') }}" alt="À Propos" class="w-4 h-4 mr-3">
+                            À Propos
                         </a>
                     </li>
 
@@ -32,8 +32,8 @@
                         <a href="{{ route('services') }}" wire:navigate
                            wire:current.exact="text-black font-semibold"
                            class="flex items-center text-[#767676] font-medium font-montserrat transition-all duration-300 hover:text-black">
-                            <img src="{{ asset('img/svg/menu/setting.svg') }}" alt="Service" class="w-4 h-4 mr-3">
-                            Service
+                            <img src="{{ asset('img/svg/menu/setting.svg') }}" alt="Services" class="w-4 h-4 mr-3">
+                            Services
                         </a>
                     </li>
 

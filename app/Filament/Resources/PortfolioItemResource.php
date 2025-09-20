@@ -17,8 +17,13 @@ use Illuminate\Support\HtmlString;
 class PortfolioItemResource extends Resource
 {
     protected static ?string $model = PortfolioItem::class;
+    protected static ?string $navigationLabel = 'Projets';
+    protected static ?string $modelLabel = 'Projet Portfolio';
+    protected static ?string $pluralModelLabel = 'Projets Portfolio';
+    protected static ?string $navigationGroup = 'Portfolio';
+    protected static ?int $navigationSort = 4;
 
-    protected static ?string $navigationIcon = 'heroicon-o-photo'; // Icône plus appropriée
+    protected static ?string $navigationIcon = 'heroicon-o-photo';
 
     public static function form(Form $form): Form
     {

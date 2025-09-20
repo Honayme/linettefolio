@@ -27,7 +27,8 @@ class AboutContentResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-user';
 
-    protected static ?string $navigationLabel = 'Page À Propos';
+    protected static ?string $navigationLabel = 'À Propos';
+    protected static ?int $navigationSort = 2;
 
     protected static ?string $modelLabel = 'Contenu de la page À propos';
 
