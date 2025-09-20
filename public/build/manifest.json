@@ -11,6 +11,14 @@
       "app.css"
     ]
   },
+  "resources/css/filament-theme.css": {
+    "file": "assets/filament-theme-DpeUf_VX.css",
+    "src": "resources/css/filament-theme.css",
+    "isEntry": true,
+    "names": [
+      "filament-theme.css"
+    ]
+  },
   "resources/font/fontello.eot": {
     "file": "assets/fontello-C8o8f2cH.eot",
     "src": "resources/font/fontello.eot"

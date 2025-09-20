@@ -1,0 +1,33 @@
+/* Personnalisation légère du thème Filament avec tes couleurs */
+
+/* Variables CSS personnalisées */
+:root {
+    --background-beige: #fff0e3;
+}
+
+/* Arrière-plan général beige */
+.fi-body {
+    background-color: var(--background-beige) !important;
+}
+
+/* Arrière-plan de la page principale */
+.fi-main {
+    background-color: var(--background-beige) !important;
+}
+
+/* Page de login avec arrière-plan beige */
+.fi-simple-layout {
+    background-color: var(--background-beige) !important;
+}
+
+/* Cards avec un arrière-plan blanc pour contraster */
+.fi-section, .fi-card, .fi-widget {
+    background-color: white !important;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06) !important;
+}
+
+/* Topbar avec fond blanc */
+.fi-topbar {
+    background-color: white !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
