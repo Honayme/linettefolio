@@ -4,19 +4,11 @@
     "src": "node_modules/pdfjs-dist/build/pdf.worker.js"
   },
   "resources/css/app.css": {
-    "file": "assets/app-DOlHg2ll.css",
+    "file": "assets/app-Cuul8L6r.css",
     "src": "resources/css/app.css",
     "isEntry": true,
     "names": [
       "app.css"
-    ]
-  },
-  "resources/css/filament-theme.css": {
-    "file": "assets/filament-theme-DpeUf_VX.css",
-    "src": "resources/css/filament-theme.css",
-    "isEntry": true,
-    "names": [
-      "filament-theme.css"
     ]
   },
   "resources/font/fontello.eot": {
