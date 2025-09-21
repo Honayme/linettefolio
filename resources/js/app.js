@@ -203,3 +203,23 @@ function tokyo_tm_trigger_menu_delegated(){
 
 // Appelle cette fonction une seule fois au chargement initial de ton JS.
 tokyo_tm_trigger_menu_delegated();
+
+// Fonction pour gérer la disparition du preloader
+function hidePreloader() {
+    const preloader = document.getElementById('preloader');
+    if (preloader) {
+        preloader.classList.add('preloaded');
+        // Retirer complètement le preloader après l'animation
+        setTimeout(() => {
+            preloader.style.display = 'none';
+        }, 800); // 0.3s pour l'animation + 0.5s de marge
+    }
+}
+
+// Déclencher la disparition du preloader quand la page est chargée
+window.addEventListener('load', hidePreloader);
+
+// Déclencher aussi au cas où la page est déjà chargée
+if (document.readyState === 'complete') {
+    hidePreloader();
+}
