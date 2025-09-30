@@ -1,0 +1,10 @@
+Contact: mailto:lina-marie.michel@hotmail.fr
+Expires: 2025-12-31T23:59:59.000Z
+Encryption: https://votre-domaine.com/.well-known/pgp-key.txt
+Preferred-Languages: fr, en
+Canonical: https://votre-domaine.com/.well-known/security.txt
+Policy: https://votre-domaine.com/security-policy
+
+# Si vous découvrez une vulnérabilité de sécurité,
+# veuillez nous contacter de manière responsable.
+# Nous nous engageons à traiter tous les rapports rapidement et confidentiellement.

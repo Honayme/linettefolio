@@ -63,15 +63,19 @@ Alpine.data('pdfViewerOverlay', () => ({
     isOpen: false,
     pdfUrl: null,
     pdfFileName: null,
+    pdfOriginalName: null,
     pdfDoc: null,
     pageNum: 1,
     numPages: 0,
     pageRendering: false,
     scale: 1.5,
+    minScale: 0.5,
+    maxScale: 3.0,
 
-    open(url) {
+    open(url, originalName = null) {
         this.pdfUrl = url;
         this.pdfFileName = url.split('/').pop();
+        this.pdfOriginalName = originalName || this.pdfFileName;
         this.isOpen = true;
 
         // Attendre que l'overlay soit visible
@@ -89,9 +93,11 @@ Alpine.data('pdfViewerOverlay', () => ({
         this.pdfDoc = null;
         this.pdfUrl = null;
         this.pdfFileName = null;
+        this.pdfOriginalName = null;
         this.pageNum = 1;
         this.numPages = 0;
         this.pageRendering = false;
+        this.scale = 1.5;
     },
 
     loadPDF() {
@@ -162,6 +168,48 @@ Alpine.data('pdfViewerOverlay', () => ({
         if (this.pageNum >= this.numPages) return;
         this.pageNum++;
         this.renderPage(this.pageNum);
+    },
+
+    zoomIn() {
+        if (this.scale >= this.maxScale) return;
+        this.scale += 0.25;
+        this.renderPage(this.pageNum);
+    },
+
+    zoomOut() {
+        if (this.scale <= this.minScale) return;
+        this.scale -= 0.25;
+        this.renderPage(this.pageNum);
+    },
+
+    resetZoom() {
+        this.scale = 1.5;
+        this.renderPage(this.pageNum);
+    }
+}));
+
+// Composant pour les modals de services
+Alpine.data('serviceModal', () => ({
+    isOpen: false,
+    title: '',
+    image: '',
+    content: '',
+
+    open(element) {
+        const container = element.closest('.list_inner');
+        this.title = container.querySelector('.title').textContent;
+        this.image = container.querySelector('.popup_service_image')?.getAttribute('src') || '';
+        this.content = container.querySelector('.service_hidden_details').innerHTML;
+        this.isOpen = true;
+        document.body.style.overflow = 'hidden';
+    },
+
+    close() {
+        this.isOpen = false;
+        document.body.style.overflow = '';
+        this.title = '';
+        this.image = '';
+        this.content = '';
     }
 }));
 

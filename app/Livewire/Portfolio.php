@@ -69,6 +69,7 @@ class Portfolio extends Component
                 'mediaSrc' => $mediaSrc,
                 'alt' => $item->cover_image_alt,
                 'tags' => $item->categories->pluck('name')->all(),
+                'title' => $item->title,
             ];
         })->all();
 

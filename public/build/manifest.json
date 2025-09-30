@@ -4,7 +4,7 @@
     "src": "node_modules/pdfjs-dist/build/pdf.worker.js"
   },
   "resources/css/app.css": {
-    "file": "assets/app-Cuul8L6r.css",
+    "file": "assets/app-D3nG62_t.css",
     "src": "resources/css/app.css",
     "isEntry": true,
     "names": [
@@ -32,7 +32,7 @@
     "src": "resources/font/fontello.woff2"
   },
   "resources/js/app.js": {
-    "file": "assets/app-Da-XRE3F.js",
+    "file": "assets/app-CFqRGg_m.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,

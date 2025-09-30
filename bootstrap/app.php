@@ -11,7 +11,10 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        //
+        // Ajouter les headers de sécurité uniquement en production
+        if (env('APP_ENV') === 'production') {
+            $middleware->web(\App\Http\Middleware\SecurityHeaders::class);
+        }
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //

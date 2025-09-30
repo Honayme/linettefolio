@@ -209,7 +209,7 @@
                                         <template x-for="(item, index) in filteredItems" :key="item.id">
                                             <div @click.prevent="
                                                 if (item.mediaType === 'presentation') {
-                                                    $dispatch('open-pdf-overlay', { url: item.mediaSrc })
+                                                    $dispatch('open-pdf-overlay', { url: item.mediaSrc, title: item.title })
                                                 } else if (item.mediaType === 'video') {
                                                     $dispatch('open-video-overlay', { url: item.mediaSrc })
                                                 } else {

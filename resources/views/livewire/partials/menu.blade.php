@@ -5,7 +5,7 @@
             <div class="logo" data-type="image">
                 <a href="#">
                     <img class="max-w-[150px]" src="{{ asset('img/logo/dark.png') }}" alt="" />
-                    <h3 class="font-poppins font-black text-[31px] tracking-[5px]">TOKYO</h3>
+                    <h3 class="font-poppins font-black text-[31px] tracking-[5px]">Lina-Marie MICHEL</h3>
                 </a>
             </div>
             <div class="menu px-[0px] py-[50px] w-full float-left">

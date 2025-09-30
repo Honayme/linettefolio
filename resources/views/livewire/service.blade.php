@@ -1,4 +1,8 @@
-<div>
+@php
+    use Illuminate\Support\Facades\Storage;
+@endphp
+
+<div x-data="serviceModal()">
     <div class="rightpart w-full min-h-[100vh] float-left relative bg-[#f8f8f8] pl-[450px]">
         <div
             class="rightpart_in relative w-full float-left clear-both border-solid border-[#ebebeb] border-l min-h-[100vh]">
@@ -20,7 +24,7 @@
                                     <li class="mb-[40px] w-1/3 pl-[40px]">
                                         <div
                                             class="list_inner w-full h-auto clear-both float-left relative border-solid border-[rgba(0,0,0,.1)] border bg-white pt-[45px] pr-[30px] pb-[40px] pl-[30px] transition-all duration-300"
-                                            data-image-url="{{ asset($service->image_path) }}">
+                                            data-image-url="{{ Storage::url($service->image_path) }}">
                                             <span
                                                 class="number inline-block mb-[25px] relative w-[60px] h-[60px] leading-[60px] text-center rounded-full bg-[rgba(0,0,0,.03)] font-bold text-black font-montserrat transition-all duration-300">
                                                 {{-- On affiche le numéro formaté (01, 02, etc.) --}}
@@ -29,9 +33,9 @@
                                             <h3 class="title font-bold text-black text-[18px] mb-[15px]">{{ $service->title }}</h3>
                                             <p class="text">{{ $service->excerpt }}</p>
                                             <div class="tokyo_tm_read_more">
-                                                <a href="#"><span>Lire la suite</span></a>
+                                                <a href="#" @click.prevent="open($el.closest('.list_inner'))"><span>Lire la suite</span></a>
                                             </div>
-                                            <a class="tokyo_tm_full_link" href="#"></a>
+                                            <a class="tokyo_tm_full_link" href="#" @click.prevent="open($el.closest('.list_inner'))"></a>
 
                                             <!-- Service Popup Start -->
                                             {{-- On utilise asset() pour générer le bon chemin vers l'image --}}
@@ -118,7 +122,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="tokyo_tm_facts w-full h-auto clear-both float-left px-0 pt-[100px] pb-[60px]">
+                <div class="tokyo_tm_facts w-full h-auto clear-both float-left px-0 pt-[100px] pb-[60px] hidden md:block">
                     <div class="container">
                         <div class="tokyo_section_title w-full h-auto clear-both float-left mb-[40px]">
                             <h3 class="text-[20px] font-bold">Quelques chiffres</h3>
@@ -213,6 +217,48 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de service -->
+    <div x-show="isOpen"
+         x-cloak
+         @click="close()"
+         class="fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 p-4"
+         x-transition:enter="transition ease-out duration-300"
+         x-transition:enter-start="opacity-0"
+         x-transition:enter-end="opacity-100"
+         x-transition:leave="transition ease-in duration-200"
+         x-transition:leave-start="opacity-100"
+         x-transition:leave-end="opacity-0">
+
+        <div @click.stop
+             class="relative max-h-[90vh] w-full max-w-6xl overflow-y-auto bg-white rounded-lg shadow-2xl"
+             x-transition:enter="transition ease-out duration-300"
+             x-transition:enter-start="opacity-0 scale-95"
+             x-transition:enter-end="opacity-100 scale-100"
+             x-transition:leave="transition ease-in duration-200"
+             x-transition:leave-start="opacity-100 scale-100"
+             x-transition:leave-end="opacity-0 scale-95">
+
+            <!-- Bouton de fermeture -->
+            <button @click="close()"
+                    class="absolute right-6 top-6 z-10 flex h-12 w-12 items-center justify-center rounded-full bg-black/50 text-white transition-colors hover:bg-black/70">
+                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                </svg>
+            </button>
+
+            <!-- Image -->
+            <div x-show="image" class="w-full">
+                <img :src="image" :alt="title" class="h-80 w-full object-cover">
+            </div>
+
+            <!-- Contenu -->
+            <div class="p-12">
+                <h3 class="mb-8 text-4xl font-bold text-black" x-text="title"></h3>
+                <div class="prose prose-lg max-w-none" x-html="content"></div>
             </div>
         </div>
     </div>

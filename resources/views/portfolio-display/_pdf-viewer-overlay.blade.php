@@ -9,7 +9,7 @@
 <div
     x-data="pdfViewerOverlay()"
     x-show="isOpen"
-    @open-pdf-overlay.window="open($event.detail.url)"
+    @open-pdf-overlay.window="open($event.detail.url, $event.detail.title)"
     @keydown.escape.window="close()"
     x-cloak
     style="display: none;"
@@ -45,29 +45,42 @@
     >
         <!-- Titre / fermeture -->
         <header class="flex-shrink-0 flex items-center justify-between p-3 border-b border-gray-700">
-            <h2 id="pdf-viewer-title" class="text-lg font-semibold text-white truncate" x-text="pdfFileName || 'Chargement...'"></h2>
-            <button @click="close()" class="text-gray-400 hover:text-white transition-colors">&times;</button>
+            <h2 id="pdf-viewer-title" class="text-lg font-semibold text-white truncate" x-text="pdfOriginalName || pdfFileName || 'Chargement...'"></h2>
+            <button @click="close()" class="text-gray-400 hover:text-white transition-colors text-3xl leading-none px-2">&times;</button>
         </header>
 
         <!-- Zone Canvas -->
-        <div x-ref="pdfContainer" class="flex-grow w-full h-full overflow-auto flex justify-center py-4" style="min-height: 0;">
-            <div x-show="pageRendering || !numPages" class="flex items-center justify-center text-white">
+        <div x-ref="pdfContainer" class="flex-grow w-full h-full overflow-auto bg-gray-700 py-4" style="min-height: 0;">
+            <div x-show="pageRendering || !numPages" class="flex items-center justify-center text-white h-full">
                 <svg class="animate-spin -ml-1 mr-3 h-10 w-10 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                     <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                     <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                 </svg>
                 <span>Chargement du document...</span>
             </div>
-            <canvas x-ref="pdfCanvas" :class="{ 'hidden': pageRendering || !numPages }"></canvas>
+            <div class="flex justify-center min-h-full">
+                <canvas x-ref="pdfCanvas" :class="{ 'hidden': pageRendering || !numPages }" class="shadow-lg"></canvas>
+            </div>
         </div>
 
-        <!-- Pagination -->
-        <footer class="flex-shrink-0 bg-gray-800 text-white p-2 w-full flex items-center justify-center space-x-4">
-            <button @click="prevPage()" :disabled="pageNum <= 1 || pageRendering" class="px-3 py-1 bg-gray-600 rounded disabled:opacity-50 disabled:cursor-not-allowed transition-colors">&#x2190; Précédent</button>
-            <span class="text-sm">
-                Page <span x-text="pageNum"></span> sur <span x-text="numPages > 0 ? numPages : '...' "></span>
-            </span>
-            <button @click="nextPage()" :disabled="pageNum >= numPages || pageRendering" class="px-3 py-1 bg-gray-600 rounded disabled:opacity-50 disabled:cursor-not-allowed transition-colors">Suivant &#x2192;</button>
+        <!-- Pagination et Zoom -->
+        <footer class="flex-shrink-0 bg-gray-800 text-white p-2 w-full flex items-center justify-between px-4">
+            <!-- Navigation pages -->
+            <div class="flex items-center space-x-2">
+                <button @click="prevPage()" :disabled="pageNum <= 1 || pageRendering" class="px-3 py-1 bg-gray-600 rounded disabled:opacity-50 disabled:cursor-not-allowed transition-colors hover:bg-gray-500">&#x2190; Précédent</button>
+                <span class="text-sm">
+                    Page <span x-text="pageNum"></span> sur <span x-text="numPages > 0 ? numPages : '...' "></span>
+                </span>
+                <button @click="nextPage()" :disabled="pageNum >= numPages || pageRendering" class="px-3 py-1 bg-gray-600 rounded disabled:opacity-50 disabled:cursor-not-allowed transition-colors hover:bg-gray-500">Suivant &#x2192;</button>
+            </div>
+
+            <!-- Contrôles de zoom -->
+            <div class="flex items-center space-x-2">
+                <button @click="zoomOut()" :disabled="scale <= minScale || pageRendering" class="px-3 py-1 bg-gray-600 rounded disabled:opacity-50 disabled:cursor-not-allowed transition-colors hover:bg-gray-500" title="Zoom arrière">−</button>
+                <span class="text-sm" x-text="Math.round(scale * 100) + '%'"></span>
+                <button @click="zoomIn()" :disabled="scale >= maxScale || pageRendering" class="px-3 py-1 bg-gray-600 rounded disabled:opacity-50 disabled:cursor-not-allowed transition-colors hover:bg-gray-500" title="Zoom avant">+</button>
+                <button @click="resetZoom()" :disabled="pageRendering" class="px-3 py-1 bg-gray-600 rounded disabled:opacity-50 disabled:cursor-not-allowed transition-colors hover:bg-gray-500" title="Réinitialiser le zoom">100%</button>
+            </div>
         </footer>
     </div>
 </div>
@@ -80,22 +93,27 @@
             isOpen: false,
             pdfUrl: null,
             pdfFileName: null,
+            pdfOriginalName: null,
             _loadingTask: null,
             _pdfDoc: null,
             _renderTask: null,
             numPages: 0,
             pageNum: 1,
             pageRendering: false,
+            scale: 1.5,
+            minScale: 0.5,
+            maxScale: 3.0,
 
             // API
-            open(url) {
-                console.log('PDF overlay open() called with:', url);
+            open(url, originalName = null) {
+                console.log('PDF overlay open() called with:', url, originalName);
                 if (!url) {
                     console.error('No URL provided to open()');
                     return;
                 }
                 this.pdfUrl = url;
                 this.pdfFileName = this._extractName(url);
+                this.pdfOriginalName = originalName || this.pdfFileName;
                 this.isOpen = true;
                 console.log('Overlay state set to open, isOpen:', this.isOpen);
 
@@ -125,9 +143,11 @@
                 this._pdfDoc = null;
                 this.pdfUrl = null;
                 this.pdfFileName = null;
+                this.pdfOriginalName = null;
                 this.numPages = 0;
                 this.pageNum = 1;
                 this.pageRendering = false;
+                this.scale = 1.5;
                 this._unwatchResize?.();
             },
 
@@ -231,23 +251,11 @@
                 try { this._renderTask?.cancel?.(); } catch (e) {}
                 this._renderTask = null;
 
-                const width = container.clientWidth || container.getBoundingClientRect().width || 0;
-
-                // Si le conteneur n'a pas encore de largeur, on réessaie
-                if (!width) {
-                    if (retry < 20) {
-                        return setTimeout(() => this.renderPage(num, retry + 1), 100);
-                    }
-                    this.pageRendering = false;
-                    return;
-                }
-
                 this.pageRendering = true;
 
                 this._pdfDoc.getPage(num).then(page => {
-                    const unscaled = page.getViewport({ scale: 1 });
-                    const scale = width / unscaled.width;
-                    const viewport = page.getViewport({ scale });
+                    const viewport = page.getViewport({ scale: this.scale });
+                    console.log('Rendering with scale:', this.scale, 'viewport:', viewport.width, 'x', viewport.height);
 
                     canvas.width = Math.round(viewport.width);
                     canvas.height = Math.round(viewport.height);
@@ -276,6 +284,26 @@
             nextPage() {
                 if (this.pageNum >= this.numPages || this.pageRendering) return;
                 this.pageNum++;
+                this.renderPage(this.pageNum);
+            },
+
+            zoomIn() {
+                if (this.scale >= this.maxScale) return;
+                this.scale += 0.25;
+                console.log('Zoom in to:', this.scale);
+                this.renderPage(this.pageNum);
+            },
+
+            zoomOut() {
+                if (this.scale <= this.minScale) return;
+                this.scale -= 0.25;
+                console.log('Zoom out to:', this.scale);
+                this.renderPage(this.pageNum);
+            },
+
+            resetZoom() {
+                this.scale = 1.5;
+                console.log('Reset zoom to:', this.scale);
                 this.renderPage(this.pageNum);
             },
 
