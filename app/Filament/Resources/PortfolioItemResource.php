@@ -61,15 +61,21 @@ class PortfolioItemResource extends Resource
                                     ->hint(new HtmlString('Formats acceptés: MP4, WebM, OGG, AVI, MOV. <br>Pour optimiser vos vidéos: <a href="https://tinywow.com/" target="_blank" class="text-blue-600 hover:text-blue-800 underline">TinyWOW</a>'))
                                     ->visible(fn (Get $get): bool => $get('layout') === PortfolioLayout::VIDEO->value),
 
-                                // Champ pour les images simples
+                                // Champ pour les images simples et carrousels
                                 Forms\Components\FileUpload::make('images')
                                     ->label('Images du projet')
                                     ->multiple()
                                     ->reorderable()
                                     ->directory('portfolio-images')
                                     ->image()
-                                    ->hint(new HtmlString('Images qui seront affichées dans le projet. <br>Pour optimiser vos images: <a href="https://squoosh.app/" target="_blank" class="text-blue-600 hover:text-blue-800 underline">Squoosh</a>'))
-                                    ->visible(fn (Get $get): bool => $get('layout') === PortfolioLayout::IMAGE->value),
+                                    ->hint(fn (Get $get) => $get('layout') === PortfolioLayout::CARROUSEL->value
+                                        ? new HtmlString('Images qui seront affichées dans le carrousel. <br>Pour optimiser vos images: <a href="https://squoosh.app/" target="_blank" class="text-blue-600 hover:text-blue-800 underline">Squoosh</a>')
+                                        : new HtmlString('Images qui seront affichées dans le projet. <br>Pour optimiser vos images: <a href="https://squoosh.app/" target="_blank" class="text-blue-600 hover:text-blue-800 underline">Squoosh</a>')
+                                    )
+                                    ->visible(fn (Get $get): bool =>
+                                        $get('layout') === PortfolioLayout::IMAGE->value ||
+                                        $get('layout') === PortfolioLayout::CARROUSEL->value
+                                    ),
 
                                 Forms\Components\FileUpload::make('pdf_file')
                                     ->label('Fichier PDF de la présentation')
@@ -147,6 +153,7 @@ class PortfolioItemResource extends Resource
                         'video' => 'info',
                         'image' => 'success',
                         'presentation' => 'warning',
+                        'carrousel' => 'purple',
                         default => 'gray',
                     })
                     ->formatStateUsing(fn (PortfolioLayout $state): string => ucfirst($state->value)),

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->string('cover_image'); // L'image de couverture principale
 
-            // La clé pour les carrousels !
+            // La clé pour les carrousel
             // On stocke un tableau de chemins d'images.
             $table->json('images')->nullable();
 

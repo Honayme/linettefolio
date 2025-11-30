@@ -58,7 +58,8 @@ class Portfolio extends Component
             $mediaSrc = match ($item->layout) {
                 PortfolioLayout::VIDEO => $item->video_url,
                 PortfolioLayout::IMAGE => collect($item->images)->map(fn($img) => asset('storage/' . $img))->all(),
-                PortfolioLayout::PRESENTATION => asset('storage/' . $item->pdf_file)
+                PortfolioLayout::PRESENTATION => asset('storage/' . $item->pdf_file),
+                PortfolioLayout::CARROUSEL => collect($item->images)->map(fn($img) => asset('storage/' . $img))->all(),
             };
 
 
@@ -70,6 +71,7 @@ class Portfolio extends Component
                 'alt' => $item->cover_image_alt,
                 'tags' => $item->categories->pluck('name')->all(),
                 'title' => $item->title,
+                'description' => $item->description,
             ];
         })->all();
 

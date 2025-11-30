@@ -3,9 +3,12 @@
     <div class="leftpart w-[450px] h-[100vh] fixed flex items-center z-[12] px-[100px] py-[0px] bg-white">
         <div class="leftpart_inner w-full h-auto">
             <div class="logo" data-type="image">
-                <a href="#">
-                    <img class="max-w-[150px]" src="{{ asset('img/logo/dark.png') }}" alt="" />
-                    <h3 class="font-poppins font-black text-[31px] tracking-[5px]">Lina-Marie MICHEL</h3>
+                <a href="{{ route('home') }}">
+                    @if($siteSettings && $siteSettings->logo)
+                        <img class="max-w-[150px]" src="{{ asset('storage/' . $siteSettings->logo) }}" alt="{{ $siteSettings->logo_alt ?? 'Logo' }}" />
+                    @else
+                        <img class="max-w-[150px]" src="{{ asset('img/logo/dark.png') }}" alt="Logo" />
+                    @endif
                 </a>
             </div>
             <div class="menu px-[0px] py-[50px] w-full float-left">

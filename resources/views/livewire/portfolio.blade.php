@@ -209,7 +209,7 @@
                                         <template x-for="(item, index) in filteredItems" :key="item.id">
                                             <div @click.prevent="
                                                 if (item.mediaType === 'presentation') {
-                                                    $dispatch('open-pdf-overlay', { url: item.mediaSrc, title: item.title })
+                                                    $dispatch('open-pdf-overlay', { url: item.mediaSrc, title: item.description })
                                                 } else if (item.mediaType === 'video') {
                                                     $dispatch('open-video-overlay', { url: item.mediaSrc })
                                                 } else {
@@ -268,15 +268,15 @@
                                                         <div x-show="currentItem.mediaType === 'image'">
                                                             @include('portfolio-display._image')
                                                         </div>
-                                                        <div x-show="currentItem.mediaType === 'slider'">
-                                                            @include('portfolio-display._slider')
+                                                        <div x-show="currentItem.mediaType === 'carrousel'">
+                                                            @include('portfolio-display._carrousel')
                                                         </div>
                                                     </div>
                                                 </template>
                                             </div>
                                             <div class="w-full text-center mt-2 p-2 bg-gray-50 rounded-b-lg">
                                                 <h2 id="modal-title" class="text-lg font-bold text-gray-800"
-                                                    x-text="currentItem?.alt"></h2>
+                                                    x-text="currentItem?.description"></h2>
                                                 <p class="text-sm text-gray-600"
                                                    x-text="currentItem?.tags.join(', ')"></p>
                                             </div>

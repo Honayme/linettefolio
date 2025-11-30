@@ -11,7 +11,12 @@
         @endif
 
         <!-- Favicon -->
-		<link rel="shortcut icon" href="{{ url(asset('favicon.ico')) }}">
+        @if($globalSiteSettings && $globalSiteSettings->favicon)
+            <link rel="shortcut icon" href="{{ asset('storage/' . $globalSiteSettings->favicon) }}">
+            <link rel="icon" type="image/png" href="{{ asset('storage/' . $globalSiteSettings->favicon) }}">
+        @else
+            <link rel="shortcut icon" href="{{ url(asset('favicon.ico')) }}">
+        @endif
 
         <!-- Preconnect et DNS Prefetch pour les polices externes -->
         <link rel="preconnect" href="https://fonts.googleapis.com">

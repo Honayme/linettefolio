@@ -182,53 +182,7 @@
                 });
             },
 
-            /*renderPage(num, retry = 0) {
-                if (!this._pdfDoc) return;
 
-                // annule rendu précédent
-                try { this._renderTask?.cancel?.(); } catch(e) {}
-                this._renderTask = null;
-
-                const canvas = this.$refs.pdfCanvas;
-                const container = this.$refs.pdfContainer;
-                const width = container?.clientWidth || container?.getBoundingClientRect()?.width || 0;
-
-                // conteneur pas encore dimensionné -> retry simple
-                if (!width) {
-                    if (retry < 20) { // max ~2s
-                        setTimeout(() => this.renderPage(num, retry + 1), 100);
-                    } else {
-                        console.warn('[PDF] container width is 0 after retries');
-                        this.pageRendering = false;
-                    }
-                    return;
-                }
-
-                this.pageRendering = true;
-
-                this._pdfDoc.getPage(num).then(page => {
-                    const unscaled = page.getViewport({ scale: 1 });
-                    const scale = width / unscaled.width;
-                    const viewport = page.getViewport({ scale });
-
-                    canvas.width = Math.round(viewport.width);
-                    canvas.height = Math.round(viewport.height);
-
-                    const ctx = canvas.getContext('2d');
-                    this._renderTask = page.render({ canvasContext: ctx, viewport });
-
-                    return this._renderTask.promise;
-                }).then(() => {
-                    this.pageRendering = false;
-                    this._renderTask = null;
-                }).catch(err => {
-                    if (err?.name !== 'RenderingCancelledException') {
-                        console.error('[PDF] render error', err);
-                    }
-                    this.pageRendering = false;
-                    this._renderTask = null;
-                });
-            },*/
             // Remplace ta méthode par celle-ci (utilise this.$refs correctement et gère l'absence de refs)
             renderPage(num, retry = 0) {
                 if (!this._pdfDoc) return;

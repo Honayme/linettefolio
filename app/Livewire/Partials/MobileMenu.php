@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Partials;
 
+use App\Models\SiteSettings;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Application;
@@ -10,6 +11,14 @@ use Livewire\Component;
 
 class MobileMenu extends Component
 {
+    public $siteSettings;
+
+    public function mount(): void
+    {
+        // Charger les paramètres du site
+        $this->siteSettings = SiteSettings::first();
+    }
+
     #[Layout('layouts.app')]
     public function render() : Factory|Application|View
     {

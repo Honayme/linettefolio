@@ -13,4 +13,6 @@ enum PortfolioLayout: string
     case IMAGE = 'image';
     case VIDEO = 'video';
     case PRESENTATION = 'presentation';
+
+    case CARROUSEL = 'carrousel';
 }

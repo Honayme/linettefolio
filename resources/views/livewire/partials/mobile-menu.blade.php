@@ -4,8 +4,11 @@
         <div class="topbar_inner w-full h-full clear-both flex items-center justify-between py-0 px-[20px]">
             <div class="logo" data-type="image">
                 <a href="{{ route('home') }}">
-                    <img class="max-w-[100px] max-h-[40px]" src="{{ asset('img/logo/dark.png') }}" alt="Logo du site" />
-                    <h3 class="font-black font-poppins text-[25px] tracking-[4px]">TOKYO</h3>
+                    @if($siteSettings && $siteSettings->logo)
+                        <img class="max-w-[100px] max-h-[40px]" src="{{ asset('storage/' . $siteSettings->logo) }}" alt="{{ $siteSettings->logo_alt ?? 'Logo' }}" />
+                    @else
+                        <img class="max-w-[100px] max-h-[40px]" src="{{ asset('img/logo/dark.png') }}" alt="Logo" />
+                    @endif
                 </a>
             </div>
             <div class="trigger relative top-[5px]">
