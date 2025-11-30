@@ -259,7 +259,7 @@
                                                 </svg>
                                                 <span class="sr-only">Fermer la modale</span>
                                             </button>
-                                            <div class="w-full h-full flex items-center justify-center overflow-auto">
+                                            <div class="w-full h-full flex items-center justify-center">
                                                 <template x-if="currentItem">
                                                     <div x-init="console.log('currentItem.mediaType:', currentItem.mediaType)">
                                                         <div x-show="currentItem.mediaType === 'image'">
