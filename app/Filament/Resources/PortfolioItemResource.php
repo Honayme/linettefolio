@@ -68,6 +68,7 @@ class PortfolioItemResource extends Resource
                                     ->reorderable()
                                     ->directory('portfolio-images')
                                     ->image()
+                                    ->imageEditor()
                                     ->hint(fn (Get $get) => $get('layout') === PortfolioLayout::CARROUSEL->value
                                         ? new HtmlString('Images qui seront affichées dans le carrousel. <br>Pour optimiser vos images: <a href="https://squoosh.app/" target="_blank" class="text-blue-600 hover:text-blue-800 underline">Squoosh</a>')
                                         : new HtmlString('Images qui seront affichées dans le projet. <br>Pour optimiser vos images: <a href="https://squoosh.app/" target="_blank" class="text-blue-600 hover:text-blue-800 underline">Squoosh</a>')
@@ -112,6 +113,7 @@ class PortfolioItemResource extends Resource
                                 Forms\Components\FileUpload::make('cover_image')
                                     ->label('Image de couverture')
                                     ->image()
+                                    ->imageEditor()
                                     ->directory('portfolio-covers')
                                     ->required()
                                     ->helperText('Image qui sera affichée sur la grille du portfolio.'),

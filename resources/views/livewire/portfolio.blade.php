@@ -262,9 +262,6 @@
                                             <div class="w-full h-full flex items-center justify-center overflow-auto">
                                                 <template x-if="currentItem">
                                                     <div x-init="console.log('currentItem.mediaType:', currentItem.mediaType)">
-                                                        <div x-show="currentItem.mediaType === 'video'">
-                                                            @include('portfolio-display._video')
-                                                        </div>
                                                         <div x-show="currentItem.mediaType === 'image'">
                                                             @include('portfolio-display._image')
                                                         </div>

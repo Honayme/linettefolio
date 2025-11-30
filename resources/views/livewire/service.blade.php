@@ -48,8 +48,8 @@
                                                 <div
                                                     class="service_popup_informations w-full h-auto clear-both float-left">
                                                     <div class="descriptions w-full float-left">
-                                                        {{-- IMPORTANT : On utilise {!! !!} pour que le HTML du contenu complet soit interprété et non affiché comme du texte brut --}}
-                                                        {!! $service->full_content !!}
+                                                        {{-- Conversion du markdown en HTML avec sanitization (méthode Filament v3) --}}
+                                                        {!! str($service->full_content)->markdown()->sanitizeHtml() !!}
                                                     </div>
                                                 </div>
                                             </div>
@@ -115,6 +115,22 @@
                                         class="list_inner w-full h-full flex justify-center items-center opacity-50 transition-all duration-300 hover:opacity-100">
                                         <img class="max-w-[70%] max-h-[100px]"
                                              src="{{ asset('img/partners/vquatrodesign.svg') }}"
+                                             alt="Logo partenaire 5"/>
+                                    </div>
+                                </li>
+                                <li class="w-full sm:w-1/3 md:w-1/5 flex justify-center items-center border-2 border-solid border-gray-200 h-[145px] overflow-hidden">
+                                    <div
+                                        class="list_inner w-full h-full flex justify-center items-center opacity-50 transition-all duration-300 hover:opacity-100">
+                                        <img class="max-w-[70%] max-h-[100px] scale-150"
+                                             src="{{ asset('img/partners/jb.svg') }}"
+                                             alt="Logo partenaire 5"/>
+                                    </div>
+                                </li>
+                                <li class="w-full sm:w-1/3 md:w-1/5 flex justify-center items-center border-2 border-solid border-gray-200 h-[145px] overflow-hidden">
+                                    <div
+                                        class="list_inner w-full h-full flex justify-center items-center opacity-50 transition-all duration-300 hover:opacity-100">
+                                        <img class="max-w-[70%] max-h-[100px]"
+                                             src="{{ asset('img/partners/sfg.svg') }}"
                                              alt="Logo partenaire 5"/>
                                     </div>
                                 </li>
